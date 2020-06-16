@@ -16,5 +16,11 @@
       "**/.DS_Store": true,
       "**/.theia": true,
    },
-   "emmet.extensionsPath": ".theia"
+   "editor.renderWhitespace": "all",
+  "editor.tabSize": 2,
+"emmet.extensionsPath": ".theia",
+"htmlhint.documentSelector": [
+    "html",
+    "htm"
+]
 }

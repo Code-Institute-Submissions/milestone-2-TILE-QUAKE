@@ -42,10 +42,11 @@ const setup = {
     
     gridOptions.forEach(option => {
       option.addEventListener('click', (e) => {
-        const clickedGridText = e.target.parentElement.dataset['grid'];
         const clickedGrid = e.target.parentElement;
         const gridSizeValue = document.querySelector('.grid-size__value');
-        console.log('Grid = ', clickedGrid.dataset['grid']);
+
+        if (!clickedGrid.dataset['grid']) return;
+        
         gridOptions.forEach(option => { option.classList.remove('grid-size__chosen'); });
         clickedGrid.classList.add('grid-size__chosen');
         gridSizeValue.innerHTML = clickedGrid.dataset['grid'];

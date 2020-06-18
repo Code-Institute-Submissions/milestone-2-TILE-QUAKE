@@ -1,26 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"> -->
-  <link rel="stylesheet" href="assets/css/style.css">
-  <title>TILE QUAKE - puzzle slide game</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"> -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <title>TILE QUAKE - puzzle slide game</title>
   </head>
-<body>
-  <div class="wrapper">
-    <div class="welcome">
-      <img class="welcome__logo" src="assets/images/logo.png" alt="Tile Quake" title="Tile Quake">
-      <button id="new--game" class="welcome__button">NEW GAME</button>
-      <button class="welcome__button">HI SCORES</button>
+  <body>
+    <div class="wrapper">
+      <div class="welcome">
+        <img
+          class="welcome__logo"
+          src="assets/images/logo.png"
+          alt="Tile Quake"
+          title="Tile Quake"
+        />
+        <button id="new--game" class="welcome__button">NEW GAME</button>
+        <button class="welcome__button">HI SCORES</button>
+      </div>
+      <div class="game-setup">
+        <h1 class="screen-title">GAME OPTIONS</h1>
+        <div class="game-setup__content">
+          <div class="difficulty">
+            <p>DIFFICULTY LEVEL: <span class="difficulty__value">1</span></p>
+            <span class="float-left">Super Easy</span>
+            <span class="float-right">Beyond Yoda</span>
+            <input id="difficulty--input" class="difficulty__slider" type="range" min="1" max="10" step="1" value="1">
+          </div>
+          <div class="grid-size">
+            select grid size<br>
+            3x3 <br> 4x4 <br> 5x5
+          </div>
+          <div class="puzzle-image">
+            carousel to select image for the puzzle
+            <br><br>
+            300px square <br>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="game-setup">
-      GAME SETUP OPTIONS HERE! <br>
-      <br>
-      Difficulty / Puzzle Image / Grid Size / ?
-    </div>
-  </div>
-</body>
-<script src="assets/js/tile-quake.js"></script>
+  </body>
+  <script src="assets/js/tile-quake.js"></script>
 </html>

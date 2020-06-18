@@ -20,10 +20,26 @@ body {
   height: 100vh;
 }
 
+/* Helpers */
+
+.screen-title {
+  font-size: 30px;
+  text-align: center;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
 /* Welcome screen */
 .welcome {
   position: absolute;
   height: 100vh;
+  width: 100%;
   display: grid;
   align-content: center;
   justify-items: center;
@@ -56,7 +72,7 @@ body {
   font-size: 22px;
 }
 
-/* Game setup options */
+/* Game setup */
 
 .game-setup {
   height: 100vh;
@@ -68,4 +84,61 @@ body {
 
 .game-setup__move-down {
   transform: translateY(0);
+}
+
+.game-setup__content {
+  margin: 50px;
+  display: grid;
+  grid-template-areas:
+    "difficulty difficulty"
+    "image grid-size";
+  grid-gap: 40px;
+  font-size: 18px;
+}
+
+.difficulty {
+  grid-area: difficulty;
+}
+
+.difficulty__value {
+  color: var(--gameGreen);
+  font-size: 22px;
+}
+
+.difficulty__slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 25px;
+  background: var(--gameGreen);
+  outline: none;
+  opacity: 0.8;
+  border-radius: 10px;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+  margin-top: 14px;
+}
+
+.difficulty__slider:hover {
+  opacity: 1;
+}
+
+/* this one */
+.difficulty__slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  content: "";
+  width: 35px;
+  height: 45px;
+  border-radius: 10px;
+  border: 2px solid red;
+  background: orange;
+  cursor: pointer;
+}
+
+.grid-size {
+  grid-area: grid-size;
+}
+
+.puzzle-image {
+  grid-area: image;
 }

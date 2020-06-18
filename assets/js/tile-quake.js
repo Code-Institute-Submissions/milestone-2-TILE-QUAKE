@@ -4,7 +4,13 @@ const setup = {
     setTimeout(() => {
       welcomeScreen.classList.add('welcome__scale-up');
     }, 400);
+  },
+  
+  eventListeners: () => {
   }
+  
 }
 
 setup.welcomeScreen();
+setup.eventListeners();
+

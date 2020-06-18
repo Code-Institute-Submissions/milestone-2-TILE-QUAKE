@@ -30,16 +30,33 @@ const setup = {
 
   eventListeners: () => {
     const newGameButton = document.querySelector('#new--game');
-    const difficultyInput = document.querySelector('#difficulty--input');
-    
     newGameButton.addEventListener('click', setup.displayGameSetup);
     
+    const difficultyInput = document.querySelector('#difficulty--input');
     difficultyInput.addEventListener('change', (e) => {
       const difficultyLevel = document.querySelector('.difficulty__value');
       difficultyLevel.innerHTML = e.target.value;
     });
+    
+    const gridOptions = document.querySelectorAll('.js-grid-option');
+    gridOptions.forEach(option => {
+      // console.log(option);
+      option.addEventListener('click', (e) => {
+        console.log(e);
+        console.log(e.target.parentElement.dataset);
+
+        const clickedGridText = e.target.parentElement.dataset['grid'];
+
+        console.log('Text: ', clickedGridText);
+        const clickedGrid = e.target.parentElement;
+        gridOptions.forEach(option => { option.classList.remove('grid-size__chosen'); });
+        clickedGrid.classList.add('grid-size__chosen');
+        const gridSizeValue = document.querySelector('.grid-size__value');
+        gridSizeValue.innerHTML = clickedGridText;
+      });
+    });
   }
-};
+}
 
 setup.welcomeScreen();
 

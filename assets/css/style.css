@@ -22,6 +22,10 @@ body {
   transform: scale(1);
 }
 
+.welcome__move-down {
+  transform: translateY(100%);
+}
+
 .welcome__logo {
   width: 80%;
   height: auto;

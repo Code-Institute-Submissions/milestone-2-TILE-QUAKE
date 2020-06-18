@@ -11,12 +11,7 @@
   <body>
     <div class="wrapper">
       <div class="welcome">
-        <img
-          class="welcome__logo"
-          src="assets/images/logo.png"
-          alt="Tile Quake"
-          title="Tile Quake"
-        />
+        <img class="welcome__logo" src="assets/images/logo.png" alt="Tile Quake" title="Tile Quake"/>
         <button id="new--game" class="welcome__button">NEW GAME</button>
         <button class="welcome__button">HI SCORES</button>
       </div>
@@ -30,8 +25,18 @@
             <input id="difficulty--input" class="difficulty__slider" type="range" min="1" max="10" step="1" value="1">
           </div>
           <div class="grid-size">
-            select grid size<br>
-            3x3 <br> 4x4 <br> 5x5
+            <p>GRID SIZE: <span class="grid-size__value">3x3</span></p>
+            <div class="grid-size__options">
+              <div>
+                <div data-grid="3x3" class="grid-size__3x3 js-grid-option grid-size__chosen"></div>
+              </div>
+              <div>
+                <div data-grid="4x4" class="grid-size__4x4 js-grid-option"></div>
+              </div>
+              <div>
+                <div data-grid="5x5" class="grid-size__5x5 js-grid-option"></div>
+              </div>
+            </div>
           </div>
           <div class="puzzle-image">
             carousel to select image for the puzzle

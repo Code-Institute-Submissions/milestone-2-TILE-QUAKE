@@ -139,6 +139,47 @@ body {
   grid-area: grid-size;
 }
 
+.grid-size__options {
+  display: grid;
+  grid-template-columns: 86px 106px 126px;
+}
+
+.grid-size__value {
+  color: var(--gameRed);
+}
+
+.grid-size__3x3 {
+  width: 60px;
+  display: grid;
+  grid-template-columns: repeat(3, 20px);
+  align-content: start;
+}
+
+.grid-size__4x4 {
+  width: 80px;
+  display: grid;
+  grid-template-columns: repeat(4, 20px);
+  align-content: start;
+}
+
+.grid-size__5x5 {
+  width: 100px;
+  display: grid;
+  grid-template-columns: repeat(5, 20px);
+  align-content: start;
+}
+
+.grid-size__square {
+  background: transparent;
+  border: 1px solid #fff;
+  height: 20px;
+}
+
+.grid-size__chosen {
+  border: 2px solid transparent;
+  outline: 2px solid #f50a0a;
+}
+
 .puzzle-image {
   grid-area: image;
 }

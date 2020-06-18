@@ -6,6 +6,12 @@ body {
   background-color: black;
 }
 
+.wrapper {
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+}
+
 /* Welcome screen */
 .welcome {
   position: absolute;

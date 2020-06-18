@@ -47,3 +47,18 @@ body {
   font-family: 'Press Start 2P', cursive;
   font-size: 22px;
 }
+
+/* Game setup options */
+
+.game-setup {
+  height: 100vh;
+  background: purple;
+  color: #fff;
+  font-size: 50px;
+  transform: translateY(-100%);
+  transition: all 0.8s;
+}
+
+.game-setup__move-down {
+  transform: translateY(0);
+}

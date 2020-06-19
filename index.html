@@ -39,9 +39,26 @@
             </div>
           </div>
           <div class="puzzle-image">
-            carousel to select image for the puzzle
-            <br><br>
-            300px square <br>
+            <p>PUZZLE IMAGE: <span class="puzzle-image__value">1</span></p>
+            <div class="puzzle-image__slideshow">
+              <div class="puzzle-image__containerzzzzzzz puzzle-image__fade">
+                <div class="puzzle-image__number">1 / 3</div>
+                <img class="puzzle-image__image" src="assets/images/puzzles/img1.jpg">
+                <div class="puzzle-image__text">Billy Casper</div>
+              </div>
+              <div class="puzzle-image__container puzzle-image__fade">
+                <div class="puzzle-image__number">2 / 3</div>
+                <img class="puzzle-image__image" src="assets/images/puzzles/img2.jpg">
+                <div class="puzzle-image__text">Harry Potter</div>
+              </div>
+              <div class="puzzle-image__container puzzle-image__fade">
+                <div class="puzzle-image__number">3 / 3</div>
+                <img class="puzzle-image__image" src="assets/images/puzzles/img3.jpg">
+                <div class="puzzle-image__text">The Martian</div>
+              </div>
+              <a class="puzzle-image__prev" onclick="setup.selectPuzzleImage(-1)">&#10094;</a>
+              <a class="puzzle-image__next" onclick="setup.selectPuzzleImage(1)">&#10095;</a>
+            </div>
           </div>
         </div>
       </div>

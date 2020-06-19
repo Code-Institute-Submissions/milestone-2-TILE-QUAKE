@@ -76,6 +76,7 @@ body {
 
 .game-setup {
   height: 100vh;
+  position: relative;
   background: #000;
   color: #fff;
   transform: translateY(-100%);
@@ -130,7 +131,7 @@ body {
   width: 35px;
   height: 45px;
   border-radius: 10px;
-  border: 2px solid red;
+  border: 2px solid var(--gameRed);
   background: orange;
   cursor: pointer;
 }
@@ -177,9 +178,88 @@ body {
 
 .grid-size__chosen {
   border: 2px solid transparent;
-  outline: 2px solid #f50a0a;
+  outline: 2px solid var(--gameRed);
 }
 
 .puzzle-image {
   grid-area: image;
+  position: relative;
+}
+
+/* Slideshow styles adapted from the W3Schools slide-show example */
+
+.puzzle-image__slideshow {
+  position: relative;
+  max-width: 320px;
+}
+
+.puzzle-image__image {
+  max-width: 320px;
+  border: 2px solid transparent;
+  outline: 2px solid var(--gameBlue);
+}
+
+.puzzle-image__container {
+  display: none;
+}
+
+.puzzle-image__prev, .puzzle-image__next {
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: #fff;
+  border-radius: 0 23px 23px 0;
+  font-weight: bold;
+  font-size: 18px;
+  text-shadow: 1px 1px #000;
+  transition: 0.6s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+.puzzle-image__next {
+  right: 0;
+  border-radius: 23px 0 0 23px;
+}
+
+.puzzle-image__prev:hover, .puzzle-image__next:hover {
+  background-color: var(--gameBlue);
+}
+
+.puzzle-image__text {
+  position: absolute;
+  bottom: -28px;
+  width: 100%;
+  padding: 8px 12px;
+  color: #f7f7f7;
+  font-size: 14px;
+  text-shadow: 1px 1px var(--gameBlue);
+  text-align: center;
+}
+
+.puzzle-image__number {
+  position: absolute;
+  top: 0;
+  padding: 8px 12px;
+  color: #f2f2f2;
+  font-size: 12px;
+}
+
+.puzzle-image__fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
 }

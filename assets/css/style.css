@@ -186,6 +186,10 @@ body {
   position: relative;
 }
 
+.puzzle-image__value{
+  color: var(--gameBlue);
+}
+
 /* Slideshow styles adapted from the W3Schools slide-show example */
 
 .puzzle-image__slideshow {
@@ -232,7 +236,7 @@ body {
   position: absolute;
   bottom: -28px;
   width: 100%;
-  padding: 8px 12px;
+  padding: 4px 2px;
   color: #f7f7f7;
   font-size: 14px;
   text-shadow: 1px 1px var(--gameBlue);

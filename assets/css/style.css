@@ -271,6 +271,8 @@ body {
 
 .game-start {
   grid-area: control;
+  text-align: center;
+  margin-top: 25px;
 }
 
 @media (max-width: 768px) {
@@ -278,11 +280,12 @@ body {
     margin: 25px;
     display: grid;
     grid-template-areas:
+      "control"
       "difficulty"
       "image"
-      "grid-size"
-      "control";
-    grid-gap: 60px;
+      "grid-size";
+      
+    grid-gap: 40px;
     font-size: 14px;
   }
 }

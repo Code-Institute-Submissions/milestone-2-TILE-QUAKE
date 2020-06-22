@@ -1,3 +1,12 @@
+const puzzleGame = {
+  showGameArea: () => {
+    const setupScreen = document.querySelector('.game-setup');
+    const gameScreen = document.querySelector('.game-area');
+    setupScreen.classList.remove('game-setup__move-right');
+    gameScreen.classList.add('game-area__move-left');
+  }
+}
+
 // Object to handle all game setup options
 const gameSetupOptions = {
   puzzleImageIndex: 1,
@@ -70,10 +79,12 @@ const setup = {
   
   eventListeners: () => {
     const newGameButton = document.querySelector('#new--game');
+    const startGameButton = document.querySelector('#start--game');
     const difficultyInput = document.querySelector('#difficulty--input');
     const gridOptions = document.querySelectorAll('.js-grid-option');
 
     newGameButton.addEventListener('click', gameSetupOptions.displayGameSetup);
+    startGameButton.addEventListener('click', puzzleGame.showGameArea);
     
     difficultyInput.addEventListener('change', (e) => {
       gameSetupOptions.displayDifficultLevel(e);

@@ -76,7 +76,8 @@ body {
 
 .game-setup {
   height: 100vh;
-  position: relative;
+  width: 100%;
+  position: absolute;
   background: #000;
   color: #fff;
   transform: translateX(-100%);
@@ -187,7 +188,7 @@ body {
   position: relative;
 }
 
-.puzzle-image__value{
+.puzzle-image__value {
   color: var(--gameBlue);
 }
 
@@ -208,7 +209,8 @@ body {
   display: none;
 }
 
-.puzzle-image__prev, .puzzle-image__next {
+.puzzle-image__prev,
+.puzzle-image__next {
   position: absolute;
   top: 50%;
   width: auto;
@@ -229,7 +231,8 @@ body {
   border-radius: 23px 0 0 23px;
 }
 
-.puzzle-image__prev:hover, .puzzle-image__next:hover {
+.puzzle-image__prev:hover,
+.puzzle-image__next:hover {
   background-color: var(--gameBlue);
 }
 
@@ -263,19 +266,84 @@ body {
 }
 
 @-webkit-keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .game-start {
   grid-area: control;
   text-align: center;
   margin-top: 25px;
+}
+
+/* Game area */
+
+.game-area {
+  display: grid;
+  position: absolute;
+  width: 100%;
+  grid-template-columns: auto auto 1fr auto auto;
+  /* grid-gap: 20px; */
+  background: grey;
+  height: 100vh;
+  transform: translateX(100%);
+  transition: all 0.8s;
+}
+
+.game-area__move-left {
+  transform: translateX(0);
+}
+
+.game-area__info {
+  background: var(--gameBlue);
+  color: white;
+  padding: 20px 10px 20px 10px;
+  text-align: center;
+  font-size: 20px;
+}
+
+.game-area__border {
+  width: 20px;
+  background: linear-gradient(
+    to right, rgb(252, 72, 8), rgb(250, 250, 54), rgb(252, 72, 8)
+  );
+}
+
+.game-area__content {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  /* background: rgb(13, 182, 13); */
+  background: var(--gameGreen);
+  color: white;
+  padding: 20px;
+}
+
+.game-area__grid {
+  height: 500px;
+  width: 500px;
+  background: slategray;
+}
+
+.game-area__buttons {
+  background: var(--gameBlue);
+  color: white;
+  padding: 20px 10px 20px 10px;
+  text-align: center;
+  font-size: 20px;
 }
 
 @media (max-width: 768px) {
@@ -287,7 +355,7 @@ body {
       "difficulty"
       "image"
       "grid-size";
-      
+
     grid-gap: 40px;
     font-size: 14px;
   }

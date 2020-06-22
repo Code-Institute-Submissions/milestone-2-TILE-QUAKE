@@ -50,12 +50,12 @@ const gameSetupOptions = {
     const gridSize3x3 = document.querySelector('.grid-size__3x3');
     const gridSize4x4 = document.querySelector('.grid-size__4x4');
     const gridSize5x5 = document.querySelector('.grid-size__5x5');
-    welcomeScreen.classList.add('welcome__move-down');
+    welcomeScreen.classList.add('welcome__move-right');
     gridSize3x3.innerHTML = gameSetupOptions.displayGridSize(3);
     gridSize4x4.innerHTML = gameSetupOptions.displayGridSize(4);
     gridSize5x5.innerHTML = gameSetupOptions.displayGridSize(5);
     gameSetupOptions.showPuzzleImage(gameSetupOptions.puzzleImageIndex);
-    setupScreen.classList.add('game-setup__move-down');
+    setupScreen.classList.add('game-setup__move-right');
   }
 }
 

@@ -52,7 +52,7 @@ body {
   transform: scale(1);
 }
 
-.welcome__move-down {
+.welcome__move-right {
   transform: translateX(100%);
 }
 
@@ -83,7 +83,7 @@ body {
   transition: all 0.8s;
 }
 
-.game-setup__move-down {
+.game-setup__move-right {
   transform: translateX(0);
 }
 

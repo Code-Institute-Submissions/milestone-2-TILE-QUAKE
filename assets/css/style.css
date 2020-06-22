@@ -103,7 +103,6 @@ body {
 
 .difficulty__value {
   color: var(--gameGreen);
-  font-size: 22px;
 }
 
 .difficulty__slider {

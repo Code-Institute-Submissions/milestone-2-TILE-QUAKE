@@ -93,6 +93,7 @@ body {
   grid-template-areas:
     "difficulty difficulty"
     "image grid-size";
+  justify-content: center;
   grid-gap: 40px;
   font-size: 18px;
 }

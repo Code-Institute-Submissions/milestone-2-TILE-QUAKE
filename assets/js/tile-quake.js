@@ -1,12 +1,7 @@
-const setup = {
+// Object to handle all game setup options
+const gameSetupOptions = {
   puzzleImageIndex: 1,
-  welcomeScreen: () => {
-    const welcomeScreen = document.querySelector('.welcome');
-    setTimeout(() => {
-      welcomeScreen.classList.add('welcome__scale-up');
-    }, 400);
-  },
-  
+
   displayGridSize: (gridSize) => {
     let html = '';
     const totalSquares = gridSize * gridSize;
@@ -16,20 +11,37 @@ const setup = {
     return html;
   },
 
+  displayDifficultLevel: (e) => {
+    const difficultyLevel = document.querySelector('.difficulty__value');
+    difficultyLevel.innerHTML = e.target.value;
+  },
+
+  displaySelectedGrid: (e) => {
+    const clickedGrid = e.target.parentElement;
+    const gridSizeValue = document.querySelector('.grid-size__value');
+    const gridOptions = document.querySelectorAll('.js-grid-option');
+
+    if (!clickedGrid.dataset['grid']) return;
+    
+    gridOptions.forEach(option => { option.classList.remove('grid-size__chosen'); });
+    clickedGrid.classList.add('grid-size__chosen');
+    gridSizeValue.innerHTML = clickedGrid.dataset['grid'];
+  },
+
   selectPuzzleImage: (n) => {
     const puzzleImage = document.querySelector('.puzzle-image__value');
-    setup.showPuzzleImage(setup.puzzleImageIndex += n);
-    puzzleImage.innerHTML = setup.puzzleImageIndex;
+    gameSetupOptions.showPuzzleImage(gameSetupOptions.puzzleImageIndex += n);
+    puzzleImage.innerHTML = gameSetupOptions.puzzleImageIndex;
   },
 
   showPuzzleImage: (n) => {
     const puzzleImages = document.getElementsByClassName("puzzle-image__container");
-    if (n > puzzleImages.length) { setup.puzzleImageIndex = 1; }
-    if (n < 1) { setup.puzzleImageIndex = puzzleImages.length; }
+    if (n > puzzleImages.length) { gameSetupOptions.puzzleImageIndex = 1; }
+    if (n < 1) { gameSetupOptions.puzzleImageIndex = puzzleImages.length; }
     for (let i = 0; i < puzzleImages.length; i++) {
         puzzleImages[i].style.display = "none";
     }
-    puzzleImages[setup.puzzleImageIndex - 1].style.display = "block";
+    puzzleImages[gameSetupOptions.puzzleImageIndex - 1].style.display = "block";
   },
 
   displayGameSetup: () => {
@@ -39,35 +51,37 @@ const setup = {
     const gridSize4x4 = document.querySelector('.grid-size__4x4');
     const gridSize5x5 = document.querySelector('.grid-size__5x5');
     welcomeScreen.classList.add('welcome__move-down');
-    gridSize3x3.innerHTML = setup.displayGridSize(3);
-    gridSize4x4.innerHTML = setup.displayGridSize(4);
-    gridSize5x5.innerHTML = setup.displayGridSize(5);
-    setup.showPuzzleImage(setup.puzzleImageIndex);
+    gridSize3x3.innerHTML = gameSetupOptions.displayGridSize(3);
+    gridSize4x4.innerHTML = gameSetupOptions.displayGridSize(4);
+    gridSize5x5.innerHTML = gameSetupOptions.displayGridSize(5);
+    gameSetupOptions.showPuzzleImage(gameSetupOptions.puzzleImageIndex);
     setupScreen.classList.add('game-setup__move-down');
-  },
+  }
+}
 
+// Object to handle the welcome logo screen and setup any eventListeners
+const setup = {
+  welcomeScreen: () => {
+    const welcomeScreen = document.querySelector('.welcome');
+    setTimeout(() => {
+      welcomeScreen.classList.add('welcome__scale-up');
+    }, 400);
+  },
+  
   eventListeners: () => {
     const newGameButton = document.querySelector('#new--game');
     const difficultyInput = document.querySelector('#difficulty--input');
     const gridOptions = document.querySelectorAll('.js-grid-option');
 
-    newGameButton.addEventListener('click', setup.displayGameSetup);
+    newGameButton.addEventListener('click', gameSetupOptions.displayGameSetup);
     
     difficultyInput.addEventListener('change', (e) => {
-      const difficultyLevel = document.querySelector('.difficulty__value');
-      difficultyLevel.innerHTML = e.target.value;
+      gameSetupOptions.displayDifficultLevel(e);
     });
     
-    gridOptions.forEach(option => {
+    gridOptions.forEach(option => { 
       option.addEventListener('click', (e) => {
-        const clickedGrid = e.target.parentElement;
-        const gridSizeValue = document.querySelector('.grid-size__value');
-
-        if (!clickedGrid.dataset['grid']) return;
-        
-        gridOptions.forEach(option => { option.classList.remove('grid-size__chosen'); });
-        clickedGrid.classList.add('grid-size__chosen');
-        gridSizeValue.innerHTML = clickedGrid.dataset['grid'];
+        gameSetupOptions.displaySelectedGrid(e);
       });
     });
   }

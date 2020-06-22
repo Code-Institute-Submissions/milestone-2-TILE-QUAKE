@@ -92,7 +92,8 @@ body {
   display: grid;
   grid-template-areas:
     "difficulty difficulty"
-    "image grid-size";
+    "image grid-size"
+    "control control";
   justify-content: center;
   grid-gap: 40px;
   font-size: 18px;
@@ -268,6 +269,10 @@ body {
   to {opacity: 1}
 }
 
+.game-start {
+  grid-area: control;
+}
+
 @media (max-width: 768px) {
   .game-setup__content {
     margin: 25px;
@@ -275,7 +280,8 @@ body {
     grid-template-areas:
       "difficulty"
       "image"
-      "grid-size";
+      "grid-size"
+      "control";
     grid-gap: 60px;
     font-size: 14px;
   }

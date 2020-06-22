@@ -16,7 +16,7 @@ body {
 
 .wrapper {
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
   height: 100vh;
 }
 
@@ -53,7 +53,7 @@ body {
 }
 
 .welcome__move-down {
-  transform: translateY(100%);
+  transform: translateX(100%);
 }
 
 .welcome__logo {
@@ -79,12 +79,12 @@ body {
   position: relative;
   background: #000;
   color: #fff;
-  transform: translateY(-100%);
+  transform: translateX(-100%);
   transition: all 0.8s;
 }
 
 .game-setup__move-down {
-  transform: translateY(0);
+  transform: translateX(0);
 }
 
 .game-setup__content {

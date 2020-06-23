@@ -25,6 +25,11 @@ const puzzleGame = {
     puzzleGame.createHTMLGrid();
     puzzleGame.tileGrid = Array.from(Array(puzzleGame.puzzleSize), () => new Array(puzzleGame.puzzleSize));
     puzzleGame.initPuzzle();
+    let test = puzzleGame.blankTileDetails('sides');
+    console.log('Sides: ', test);
+    let test2 = puzzleGame.blankTileDetails('grid');
+    console.log('Grids: ', test2);
+
   },
 
   initPuzzle: () => {
@@ -69,6 +74,23 @@ const puzzleGame = {
         nextTile++;
       }
     }
+  },
+
+  blankTileDetails: (sidesOrGrid) => {
+    const puzzleSize = puzzleGame.puzzleSize;
+    for (let x = 0; x < puzzleSize; x++) {
+      for (let y = 0; y < puzzleSize; y++) {
+        if ( puzzleGame.tileGrid[x][y].tileCode === 0 ) {
+          if(sidesOrGrid === "sides") {
+              tileDetails = puzzleGame.tileGrid[x][y];
+          }
+          if(sidesOrGrid === "grid") {
+              tileDetails = `gridpos-${x}${y}`;
+          }
+        }
+      }
+    }
+    return tileDetails;
   },
 
   createHTMLGrid: () => {

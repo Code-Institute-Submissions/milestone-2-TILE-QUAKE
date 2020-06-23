@@ -14,7 +14,6 @@ const puzzleGame = {
 
   // tileGrid array of TileData objects to store the position of each tile col,row
   tileGrid: [],
-
   tiles: [],
 
   showGameArea: () => {
@@ -35,7 +34,6 @@ const puzzleGame = {
     let nextTile = 0;
     let topCode, bottomCode, leftCode, rightCode;
     let nextSideCode = 101;
-    let gridElement, gridElementID;
 
     for (let x = 0; x < puzzleGame.puzzleSize; x++) {
       for (let y = 0; y < puzzleGame.puzzleSize; y++) {
@@ -64,7 +62,7 @@ const puzzleGame = {
 
         if (nextTile < (puzzleGame.puzzleSize * puzzleGame.puzzleSize)) {
             tileClass = "tile__p" + puzzleGame.tileGrid[x][y].tileCode;
-            gridElement.classList.add(`${tileClass}`);
+            gridElement.classList.add(tileClass, 'tile__border');
         }
 
         nextTile++;

@@ -1,5 +1,21 @@
+class TileData {
+    constructor(top, bottom, left, right, id) {
+        this.topSide = top;
+        this.bottomSide = bottom;
+        this.leftSide = left;
+        this.rightSide = right;
+        this.tileCode = id;
+    }
+}
+
+// Object to handle all in game functions
 const puzzleGame = {
   puzzleSize: 3,  //force value for now
+
+  // tileGrid array of TileData objects to store the position of each tile col,row
+  tileGrid: [],
+
+  tiles: [],
 
   showGameArea: () => {
     const setupScreen = document.querySelector('.game-setup');
@@ -7,6 +23,7 @@ const puzzleGame = {
     setupScreen.classList.remove('game-setup__move-right');
     gameScreen.classList.add('game-area__move-left');
     puzzleGame.createHTMLGrid();
+    puzzleGame.tileGrid = Array.from(Array(puzzleGame.puzzleSize), () => new Array(puzzleGame.puzzleSize));
   },
 
   createHTMLGrid: () => {

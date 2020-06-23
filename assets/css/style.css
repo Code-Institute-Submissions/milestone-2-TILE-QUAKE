@@ -4,6 +4,7 @@
   --gameBlue: rgb(16, 127, 192);
   --gameRed: rgb(245, 10, 10);
   --gameGreen: rgb(11, 206, 4);
+  --chosenImage: url('assets/images/puzzles/img1.jpg');
 }
 
 body {
@@ -412,6 +413,61 @@ body {
   left: 8em;
   background: indianred;
 }
+
+/* Puzzle tiles */
+
+.tile-0 {
+  background-color: lightgray;
+  background-position: -8em -8em;
+}
+
+.tile-1 {
+  background-image: var(--chosenImage);
+  background-position: 0px 0px;
+}
+
+.tile-2 {
+  background-image: var(--chosenImage);
+  background-position: 0px -4em;
+}
+
+.tile-3 {
+  background-image: var(--chosenImage);
+  background-position: 0px -8em;
+}
+
+.tile-4 {
+  background-image: var(--chosenImage);
+  background-position: -4em 0px;
+}
+
+.tile-5 {
+  background-image: var(--chosenImage);
+  background-position: -4em -4em;
+}
+
+.tile-6 {
+  background-image: var(--chosenImage);
+  background-position: -4em -8em;
+}
+
+.tile-7 {
+  background-image: var(--chosenImage);
+  background-position: -8em 0px;
+}
+
+.tile-8 {
+  background-image: var(--chosenImage);
+  background-position: -8em -4em;
+}
+
+.tile-9 {
+  background-image: var(--chosenImage);
+  background-position: -8em -8em;
+}
+
+
+
 
 @media (max-width: 768px) {
   .game-setup__content {

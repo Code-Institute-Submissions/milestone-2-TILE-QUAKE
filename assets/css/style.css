@@ -333,9 +333,13 @@ body {
 }
 
 .game-area__grid {
-  height: 500px;
-  width: 500px;
+  position: relative;
+  width: 12em;
+  height: 12em;
+  margin: 0 auto;
   background: slategray;
+  font-size: 25px;
+  cursor: pointer;
 }
 
 .game-area__buttons {

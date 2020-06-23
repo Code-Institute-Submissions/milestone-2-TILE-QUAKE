@@ -24,6 +24,52 @@ const puzzleGame = {
     gameScreen.classList.add('game-area__move-left');
     puzzleGame.createHTMLGrid();
     puzzleGame.tileGrid = Array.from(Array(puzzleGame.puzzleSize), () => new Array(puzzleGame.puzzleSize));
+    puzzleGame.initPuzzle();
+  },
+
+  initPuzzle: () => {
+    for (let x = 1; x < (puzzleGame.puzzleSize * puzzleGame.puzzleSize); x++) {
+      puzzleGame.tiles.push(x);
+    }
+    puzzleGame.tiles.push(0);
+    let nextTile = 0;
+    let topCode, bottomCode, leftCode, rightCode;
+    let nextSideCode = 101;
+    let gridElement, gridElementID;
+
+    for (let x = 0; x < puzzleGame.puzzleSize; x++) {
+      for (let y = 0; y < puzzleGame.puzzleSize; y++) {
+        // calculate side codes for the current tile
+        if (y > 0 ) {
+            topCode = puzzleGame.tileGrid[x][y-1].bottomSide; // find prev BOTTOM code from gridpos [x][y-1][0]
+        } else {
+            topCode = nextSideCode;
+            nextSideCode++;
+        }
+        bottomCode = nextSideCode;
+        nextSideCode++;
+        if (x > 0 ) {
+            leftCode = puzzleGame.tileGrid[x-1][y].rightSide; //find the RIGHT-SIDE code from gridpos [x-1][y]
+        } else {
+            leftCode = nextSideCode;
+            nextSideCode++;
+        }
+        rightCode = nextSideCode;
+        nextSideCode++;
+
+        puzzleGame.tileGrid[x][y] = new TileData(topCode, bottomCode, leftCode, rightCode, puzzleGame.tiles[nextTile]);
+
+        let gridElementID = `#gridpos-${x}${y}`;
+        let gridElement = document.querySelector(gridElementID);
+
+        if (nextTile < (puzzleGame.puzzleSize * puzzleGame.puzzleSize)) {
+            tileClass = "tile-" + puzzleGame.tileGrid[x][y].tileCode;
+            gridElement.classList.add(`${tileClass}`);
+        }
+
+        nextTile++;
+      }
+    }
   },
 
   createHTMLGrid: () => {

@@ -4,7 +4,7 @@
   --gameBlue: rgb(16, 127, 192);
   --gameRed: rgb(245, 10, 10);
   --gameGreen: rgb(11, 206, 4);
-  --chosenImage: url('assets/images/puzzles/img1.jpg');
+  --chosenImage: url('../images/puzzles/img1.jpg');
 }
 
 body {
@@ -363,55 +363,46 @@ body {
 #gridpos-00 {
   top: 0;
   left: 0;
-  background: red;
 }
 
 #gridpos-01 {
   top: 4em;
   left: 0;
-  background: green;
 }
 
 #gridpos-02 {
   top: 8em;
   left: 0;
-  background: blue;
 }
 
 #gridpos-10 {
   top: 0;
   left: 4em;
-  background: purple;
 }
 
 #gridpos-11 {
   top: 4em;
   left: 4em;
-  background: yellow;
 }
 
 #gridpos-12 {
   top: 8em;
   left: 4em;
-  background: orange;
 }
 
 #gridpos-20 {
   top: 0;
   left: 8em;
-  background: cyan;
 }
 
 #gridpos-21 {
   top: 4em;
   left: 8em;
-  background: magenta;
 }
 
 #gridpos-22 {
   top: 8em;
   left: 8em;
-  background: indianred;
 }
 
 /* Puzzle tiles */

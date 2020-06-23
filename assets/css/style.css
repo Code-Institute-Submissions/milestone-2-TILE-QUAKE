@@ -339,7 +339,7 @@ body {
   height: 12em;
   margin: 0 auto;
   background: slategray;
-  font-size: 25px;
+  font-size: 50px; /* used to increase grid square size via ems*/
   cursor: pointer;
 }
 

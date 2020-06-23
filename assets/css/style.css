@@ -407,56 +407,59 @@ body {
 
 /* Puzzle tiles */
 
-.tile-0 {
+.tile__p0 {
   background-color: lightgray;
   background-position: -8em -8em;
 }
 
-.tile-1 {
+.tile__p1 {
   background-image: var(--chosenImage);
   background-position: 0px 0px;
 }
 
-.tile-2 {
+.tile__p2 {
   background-image: var(--chosenImage);
   background-position: 0px -4em;
 }
 
-.tile-3 {
+.tile__p3 {
   background-image: var(--chosenImage);
   background-position: 0px -8em;
 }
 
-.tile-4 {
+.tile__p4 {
   background-image: var(--chosenImage);
   background-position: -4em 0px;
 }
 
-.tile-5 {
+.tile__p5 {
   background-image: var(--chosenImage);
   background-position: -4em -4em;
 }
 
-.tile-6 {
+.tile__p6 {
   background-image: var(--chosenImage);
   background-position: -4em -8em;
 }
 
-.tile-7 {
+.tile__p7 {
   background-image: var(--chosenImage);
   background-position: -8em 0px;
 }
 
-.tile-8 {
+.tile__p8 {
   background-image: var(--chosenImage);
   background-position: -8em -4em;
 }
 
-.tile-9 {
+.tile__p9 {
   background-image: var(--chosenImage);
   background-position: -8em -8em;
 }
 
+.tile__border {
+  border: 2px ridge;
+}
 
 
 

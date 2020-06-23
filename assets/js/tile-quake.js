@@ -63,7 +63,7 @@ const puzzleGame = {
         let gridElement = document.querySelector(gridElementID);
 
         if (nextTile < (puzzleGame.puzzleSize * puzzleGame.puzzleSize)) {
-            tileClass = "tile-" + puzzleGame.tileGrid[x][y].tileCode;
+            tileClass = "tile__p" + puzzleGame.tileGrid[x][y].tileCode;
             gridElement.classList.add(`${tileClass}`);
         }
 

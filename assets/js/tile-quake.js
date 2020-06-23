@@ -41,6 +41,8 @@ const puzzleGame = {
     }
     puzzleGame.tiles.push(0);
 
+    puzzleGame.tiles = puzzleGame.shuffle(puzzleGame.tiles);
+
     for (let x = 0; x < puzzleSize; x++) {
       for (let y = 0; y < puzzleSize; y++) {
         // calculate side codes for the current tile
@@ -86,6 +88,21 @@ const puzzleGame = {
       }
     }
     return tileDetails;
+  },
+
+  // Fisher-Yates shuffle below from stackoverflow.com (deekshith)
+  shuffle: (array) => {
+    let currentIndex = array.length, temporaryValue, randomIndex;
+    while (0 !== currentIndex) {
+
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+    return array;
   },
 
   createHTMLGrid: () => {

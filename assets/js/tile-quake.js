@@ -15,6 +15,7 @@ const puzzleGame = {
   // tileGrid array of TileData objects to store the position of each tile col,row
   tileGrid: [],
   tiles: [],
+  image: '',
 
   showGameArea: () => {
     const setupScreen = document.querySelector('.game-setup');
@@ -113,10 +114,18 @@ const gameSetupOptions = {
     gridSizeValue.innerHTML = clickedGrid.dataset['grid'];
   },
 
+  updatePuzzleImage: (imageIndex) => {
+    const root = document.documentElement;
+    const image = `url('../images/puzzles/img${imageIndex}.jpg')`;
+    console.log("Image is: ", image);
+    root.style.setProperty('--chosenImage', image);
+  },
+
   selectPuzzleImage: (n) => {
     const puzzleImage = document.querySelector('.puzzle-image__value');
     gameSetupOptions.showPuzzleImage(gameSetupOptions.puzzleImageIndex += n);
     puzzleImage.innerHTML = gameSetupOptions.puzzleImageIndex;
+    gameSetupOptions.updatePuzzleImage(gameSetupOptions.puzzleImageIndex);
   },
 
   showPuzzleImage: (n) => {

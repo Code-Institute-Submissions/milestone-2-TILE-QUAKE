@@ -1,9 +1,24 @@
 const puzzleGame = {
+  puzzleSize: 3,  //force value for now
+
   showGameArea: () => {
     const setupScreen = document.querySelector('.game-setup');
     const gameScreen = document.querySelector('.game-area');
     setupScreen.classList.remove('game-setup__move-right');
     gameScreen.classList.add('game-area__move-left');
+    puzzleGame.createHTMLGrid();
+  },
+
+  createHTMLGrid: () => {
+    const pageGrid = document.querySelector('.game-area__grid');
+    let gridDiv;
+    for (let x = 0; x < puzzleGame.puzzleSize; x++) {
+      for (let y = 0; y < puzzleGame.puzzleSize; y++) {
+        gridDiv = document.createElement("div");
+        gridDiv.id = `gridpos-${x}${y}`;
+        pageGrid.appendChild(gridDiv);
+      }
+    }
   }
 }
 

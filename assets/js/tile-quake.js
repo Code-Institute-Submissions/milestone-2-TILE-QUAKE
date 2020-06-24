@@ -108,12 +108,27 @@ const puzzleGame = {
     return { x: tile.substring(8,9), y: tile.substring(9) };
   },
 
-  canTileMove: (clickedTile) => {
-    const gridFrom = puzzleGame.getGridXY(clickedTile);
-    console.log('Grid-clicked-XY: ', gridFrom.x, gridFrom.y);
+  nextToBlankTile: (clickedTile) => {
     const blankTile = puzzleGame.blankTileDetails();
     const gridTo = puzzleGame.getGridXY(blankTile.gridPos);
-    console.log('Grid-blank-XY: ', gridTo.x, gridTo.y);
+    let allowedToMove = false;
+    //check if any sides of the clicked tile are touching any sides of the blank tile
+    if ( clickedTile.topSide === blankTile.bottomSide ||
+         clickedTile.bottomSide === blankTile.topSide ||
+         clickedTile.leftSide === blankTile.rightSide ||
+         clickedTile.rightSide === blankTile.leftSide )
+         { allowedToMove = true; }
+    return allowedToMove;
+  },
+
+  canTileMove: (clickedTile) => {
+    const gridFrom = puzzleGame.getGridXY(clickedTile);
+    const canIMove = puzzleGame.nextToBlankTile(puzzleGame.tileGrid[gridFrom.x][gridFrom.y]);
+    if (canIMove) {
+      console.log('Can MOVE');
+    } else { 
+      console.log('CANNOT move!');
+    }
   },
 
   createHTMLGrid: () => {

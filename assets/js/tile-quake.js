@@ -157,13 +157,32 @@ const puzzleGame = {
     return allowedToMove;
   },
 
+  puzzleComplete: () => {
+    let tilesCorrect = 0;  // number of tiles in correct position
+    let tileToCheck = 1;
+    const puzzleSize = puzzleGame.puzzleSize;
+    // check if the right puzzle piece is in the correct grid space
+    for (let x = 0; x < puzzleSize; x++) {
+      for (let y = 0; y < puzzleSize; y++) {
+        console.log(`Check TILE: ${tileToCheck}  Tiles Correct = ${tilesCorrect}`);
+        if ( puzzleGame.tileGrid[x][y].tileCode === tileToCheck ) { tilesCorrect++; }
+        tileToCheck++;
+        if (tileToCheck === (puzzleSize * puzzleSize)) { tileToCheck = 0; }
+      }
+    }
+    if (tilesCorrect === (puzzleSize * puzzleSize)) { return true; } else { return false; }
+  },
+
   canTileMove: (clickedTile) => {
     const gridFrom = puzzleGame.getGridXY(clickedTile);
     const canIMove = puzzleGame.nextToBlankTile(puzzleGame.tileGrid[gridFrom.x][gridFrom.y]);
+    let puzzleComplete = false;
     if (canIMove) {
       puzzleGame.moveTile(clickedTile);
-    } else { 
-      console.log('CANNOT move!');
+      puzzleComplete = puzzleGame.puzzleComplete();
+      if (puzzleComplete) {
+        console.log('Puzzle COMPLETE');
+      }
     }
   },
   

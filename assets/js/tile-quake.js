@@ -125,7 +125,6 @@ const puzzleGame = {
     const gridFrom = puzzleGame.getGridXY(clickedTile);
     const canIMove = puzzleGame.nextToBlankTile(puzzleGame.tileGrid[gridFrom.x][gridFrom.y]);
     if (canIMove) {
-      console.log('Can MOVE');
       puzzleGame.moveTile(clickedTile);
     } else { 
       console.log('CANNOT move!');
@@ -133,31 +132,19 @@ const puzzleGame = {
   },
   
   moveTile: (clickedTile) => {
-    
-    console.log('Move: ', clickedTile);
     const blankTile = puzzleGame.blankTileDetails();
     const gridTo = puzzleGame.getGridXY(blankTile.gridPos);
-    console.log(`Blank at ${gridTo.x} ${gridTo.y}`);
-    
     const gridFrom = puzzleGame.getGridXY(clickedTile);
-    console.log(`Move tile at ${gridFrom.x} ${gridFrom.y}`);
-
     const fromTile = document.querySelector(`#${clickedTile}`);
     const fromClass = fromTile.getAttribute('class');
-    console.log(`From CLASS: ${fromClass}`);
-    
     const toTile = document.querySelector(`#${blankTile.gridPos}`);
     const toClass = toTile.getAttribute('class');
-    console.log(`To CLASS: ${toClass}`);
 
-    // swap the two tiles over
+    // swap the two tiles over - class and tile code
     toTile.setAttribute('class', fromClass);
     fromTile.setAttribute('class', toClass);
-
-    // update the tile grid array
     puzzleGame.tileGrid[gridTo.x][gridTo.y].tileCode = puzzleGame.tileGrid[gridFrom.x][gridFrom.y].tileCode;
     puzzleGame.tileGrid[gridFrom.x][gridFrom.y].tileCode = 0;
-
   },
 
   createHTMLGrid: () => {

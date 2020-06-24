@@ -26,6 +26,7 @@ const puzzleGame = {
     puzzleGame.createHTMLGrid();
     puzzleGame.tileGrid = Array.from(Array(puzzleGame.puzzleSize), () => new Array(puzzleGame.puzzleSize));
     puzzleGame.initPuzzle();
+    puzzleGame.shuffleTileGrid();
     let test = puzzleGame.blankTileDetails();
     console.log('Tile Details: ', test);
     console.log('DiffLevel', puzzleGame.difficultyLevel);
@@ -42,7 +43,7 @@ const puzzleGame = {
     }
     puzzleGame.tiles.push(0);
 
-    puzzleGame.tiles = puzzleGame.shuffle(puzzleGame.tiles);
+    // puzzleGame.tiles = puzzleGame.shuffle(puzzleGame.tiles);
 
     for (let x = 0; x < puzzleSize; x++) {
       for (let y = 0; y < puzzleSize; y++) {
@@ -104,6 +105,39 @@ const puzzleGame = {
       array[randomIndex] = temporaryValue;
     }
     return array;
+  },
+
+  shuffleTileGrid: () => {
+    let isTileNextToBlank;
+    let previousTile = "";
+
+    // shuffle the grid depending on the difficulty level
+    // find all the tiles next to the blank tile
+    for (let n = 0; n < ((puzzleGame.difficultyLevel * 2) + 1); n++) {
+      let tilesNextToBlank = [];
+      let blankTileGridID = puzzleGame.blankTileDetails();
+      for (x = 0; x < puzzleGame.puzzleSize; x++) {
+        for (y = 0; y < puzzleGame.puzzleSize; y++) {
+          if ( puzzleGame.tileGrid[x][y].tileCode != 0 ) {
+            isTileNextToBlank = puzzleGame.nextToBlankTile(puzzleGame.tileGrid[x][y]);
+            console.log(`IF next-to-Blank ${isTileNextToBlank} AND tileGrid: "${("gridpos-" + x + y)}" != previousTile: "${previousTile}"`);
+            // if tile is next to the blank and it's not the tile which was shuffled before then consider it for next shuffle
+            if ((isTileNextToBlank) && ((`gridpos-${x}${y}`) != previousTile)) {
+              tilesNextToBlank.push((`gridpos-${x}${y}`));
+            }
+          }
+        }
+      }
+      // randomly select next tile to shuffle
+      do {
+          puzzleGame.shuffle(tilesNextToBlank);
+          console.log(`Comparing ${tilesNextToBlank[0]} with ${previousTile} they should not be equal`);
+      }
+      while (tilesNextToBlank[0] === previousTile);
+
+      puzzleGame.moveTile(tilesNextToBlank[0]);
+      previousTile = blankTileGridID.gridPos;
+    }
   },
 
   getGridXY: (tile) => {

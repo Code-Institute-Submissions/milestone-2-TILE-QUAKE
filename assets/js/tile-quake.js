@@ -16,6 +16,7 @@ const puzzleGame = {
   tileGrid: [],
   tiles: [],
   image: '',
+  difficultyLevel: 1,
 
   showGameArea: () => {
     const setupScreen = document.querySelector('.game-setup');
@@ -27,6 +28,7 @@ const puzzleGame = {
     puzzleGame.initPuzzle();
     let test = puzzleGame.blankTileDetails();
     console.log('Tile Details: ', test);
+    console.log('DiffLevel', puzzleGame.difficultyLevel);
   },
 
   initPuzzle: () => {
@@ -177,6 +179,7 @@ const gameSetupOptions = {
   displayDifficultLevel: (e) => {
     const difficultyLevel = document.querySelector('.difficulty__value');
     difficultyLevel.innerHTML = e.target.value;
+    puzzleGame.difficultyLevel = e.target.value;
   },
 
   displaySelectedGrid: (e) => {

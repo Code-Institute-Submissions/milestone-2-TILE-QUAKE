@@ -173,6 +173,14 @@ const puzzleGame = {
     if (tilesCorrect === (puzzleSize * puzzleSize)) { return true; } else { return false; }
   },
 
+  showLastTile: () => {
+    const puzzleSize = puzzleGame.puzzleSize;
+    const lastTileGirdID = `#gridpos-${puzzleSize-1}${puzzleSize-1}`;
+    const lastTile = document.querySelector(lastTileGirdID);
+    lastTile.classList.remove('tile__p0');
+    lastTile.classList.add(`tile__p${(puzzleSize * puzzleSize)}`);
+  },
+
   canTileMove: (clickedTile) => {
     const gridFrom = puzzleGame.getGridXY(clickedTile);
     const canIMove = puzzleGame.nextToBlankTile(puzzleGame.tileGrid[gridFrom.x][gridFrom.y]);
@@ -182,6 +190,7 @@ const puzzleGame = {
       puzzleComplete = puzzleGame.puzzleComplete();
       if (puzzleComplete) {
         console.log('Puzzle COMPLETE');
+        puzzleGame.showLastTile();
       }
     }
   },

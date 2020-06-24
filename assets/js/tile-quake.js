@@ -126,9 +126,25 @@ const puzzleGame = {
     const canIMove = puzzleGame.nextToBlankTile(puzzleGame.tileGrid[gridFrom.x][gridFrom.y]);
     if (canIMove) {
       console.log('Can MOVE');
+      puzzleGame.moveTile(clickedTile);
     } else { 
       console.log('CANNOT move!');
     }
+  },
+  
+  moveTile: (clickedTile) => {
+    
+    console.log('Move: ', clickedTile);
+    const blankTile = puzzleGame.blankTileDetails();
+    const gridTo = puzzleGame.getGridXY(blankTile.gridPos);
+    console.log(`Blank at ${gridTo.x} ${gridTo.y}`);
+    
+    const gridFrom = puzzleGame.getGridXY(clickedTile);
+    console.log(`Move tile at ${gridFrom.x} ${gridFrom.y}`);
+
+    const fromTile = document.querySelector(`#${clickedTile}`);
+    const fromClass = fromTile.getAttribute('class');
+    console.log(`From CLASS: ${fromClass}`);
   },
 
   createHTMLGrid: () => {

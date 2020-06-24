@@ -145,6 +145,19 @@ const puzzleGame = {
     const fromTile = document.querySelector(`#${clickedTile}`);
     const fromClass = fromTile.getAttribute('class');
     console.log(`From CLASS: ${fromClass}`);
+    
+    const toTile = document.querySelector(`#${blankTile.gridPos}`);
+    const toClass = toTile.getAttribute('class');
+    console.log(`To CLASS: ${toClass}`);
+
+    // swap the two tiles over
+    toTile.setAttribute('class', fromClass);
+    fromTile.setAttribute('class', toClass);
+
+    // update the tile grid array
+    puzzleGame.tileGrid[gridTo.x][gridTo.y].tileCode = puzzleGame.tileGrid[gridFrom.x][gridFrom.y].tileCode;
+    puzzleGame.tileGrid[gridFrom.x][gridFrom.y].tileCode = 0;
+
   },
 
   createHTMLGrid: () => {

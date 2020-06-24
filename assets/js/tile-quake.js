@@ -27,7 +27,6 @@ const puzzleGame = {
     puzzleGame.initPuzzle();
     let test = puzzleGame.blankTileDetails();
     console.log('Tile Details: ', test);
-
   },
 
   initPuzzle: () => {
@@ -105,6 +104,18 @@ const puzzleGame = {
     return array;
   },
 
+  getGridXY: (tile) => {
+    return { x: tile.substring(8,9), y: tile.substring(9) };
+  },
+
+  canTileMove: (clickedTile) => {
+    const gridFrom = puzzleGame.getGridXY(clickedTile);
+    console.log('Grid-clicked-XY: ', gridFrom.x, gridFrom.y);
+    const blankTile = puzzleGame.blankTileDetails();
+    const gridTo = puzzleGame.getGridXY(blankTile.gridPos);
+    console.log('Grid-blank-XY: ', gridTo.x, gridTo.y);
+  },
+
   createHTMLGrid: () => {
     const pageGrid = document.querySelector('.game-area__grid');
     let gridDiv;
@@ -112,6 +123,7 @@ const puzzleGame = {
       for (let y = 0; y < puzzleGame.puzzleSize; y++) {
         gridDiv = document.createElement("div");
         gridDiv.id = `gridpos-${x}${y}`;
+        gridDiv.setAttribute('onclick', 'puzzleGame.canTileMove(this.id)');
         pageGrid.appendChild(gridDiv);
       }
     }

@@ -182,12 +182,8 @@ const puzzleGame = {
   },
 
   clearTileBorders: () => {
-    for (let x = 0; x < puzzleGame.puzzleSize; x++) {
-      for (let y = 0; y < puzzleGame.puzzleSize; y++) {
-        const gridElement = document.querySelector(`#gridpos-${x}${y}`);
-        gridElement.classList.remove('tile__border');
-      }
-    }
+    const gridTiles = document.querySelectorAll('[id^=gridpos]');
+    gridTiles.forEach(tile => { tile.classList.remove('tile__border'); });
   },
 
   canTileMove: (clickedTile) => {

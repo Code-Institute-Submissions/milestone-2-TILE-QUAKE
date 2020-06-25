@@ -181,6 +181,15 @@ const puzzleGame = {
     lastTile.classList.add(`tile__p${(puzzleSize * puzzleSize)}`);
   },
 
+  clearTileBorders: () => {
+    for (let x = 0; x < puzzleGame.puzzleSize; x++) {
+      for (let y = 0; y < puzzleGame.puzzleSize; y++) {
+        const gridElement = document.querySelector(`#gridpos-${x}${y}`);
+        gridElement.classList.remove('tile__border');
+      }
+    }
+  },
+
   canTileMove: (clickedTile) => {
     const gridFrom = puzzleGame.getGridXY(clickedTile);
     const canIMove = puzzleGame.nextToBlankTile(puzzleGame.tileGrid[gridFrom.x][gridFrom.y]);
@@ -191,6 +200,7 @@ const puzzleGame = {
       if (puzzleComplete) {
         console.log('Puzzle COMPLETE');
         puzzleGame.showLastTile();
+        puzzleGame.clearTileBorders();
       }
     }
   },

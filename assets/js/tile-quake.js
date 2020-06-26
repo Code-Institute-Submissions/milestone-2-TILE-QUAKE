@@ -17,6 +17,7 @@ const puzzleGame = {
   tiles: [],
   image: '',
   difficultyLevel: 1,
+  moves: 0,
 
   showGameArea: () => {
     const setupScreen = document.querySelector('.game-setup');
@@ -27,7 +28,15 @@ const puzzleGame = {
     puzzleGame.tileGrid = Array.from(Array(puzzleGame.puzzleSize), () => new Array(puzzleGame.puzzleSize));
     puzzleGame.initPuzzle();
     puzzleGame.shuffleTileGrid();
-    let test = puzzleGame.blankTileDetails();
+    puzzleGame.updateGameInfo(['difficulty', 'moves']);
+  },
+
+  updateGameInfo: (gameInfo) => {
+    gameInfo.forEach(info => {
+      const infoDataElement = document.querySelector(`#info--data-${info}`);
+      if (info === 'difficulty') { infoDataElement.innerHTML = puzzleGame.difficultyLevel; }
+      if (info === 'moves') { infoDataElement.innerHTML = puzzleGame.moves; }
+    });
   },
 
   initPuzzle: () => {
@@ -136,7 +145,7 @@ const puzzleGame = {
       }
       while (tilesNextToBlank[0] === previousTile);
 
-      puzzleGame.moveTile(tilesNextToBlank[0]);
+      puzzleGame.moveTile(tilesNextToBlank[0], true);
       previousTile = blankTileGridID.gridPos;
     }
   },
@@ -201,7 +210,7 @@ const puzzleGame = {
     const canIMove = puzzleGame.nextToBlankTile(puzzleGame.tileGrid[gridFrom.x][gridFrom.y]);
     let puzzleComplete = false;
     if (canIMove) {
-      puzzleGame.moveTile(clickedTile);
+      puzzleGame.moveTile(clickedTile, false);
       puzzleComplete = puzzleGame.puzzleComplete();
       if (puzzleComplete) {
         puzzleGame.showLastTile();
@@ -211,7 +220,7 @@ const puzzleGame = {
     }
   },
   
-  moveTile: (clickedTile) => {
+  moveTile: (clickedTile, startShuffle) => {
     const blankTile = puzzleGame.blankTileDetails();
     const gridTo = puzzleGame.getGridXY(blankTile.gridPos);
     const gridFrom = puzzleGame.getGridXY(clickedTile);
@@ -225,6 +234,10 @@ const puzzleGame = {
     fromTile.setAttribute('class', toClass);
     puzzleGame.tileGrid[gridTo.x][gridTo.y].tileCode = puzzleGame.tileGrid[gridFrom.x][gridFrom.y].tileCode;
     puzzleGame.tileGrid[gridFrom.x][gridFrom.y].tileCode = 0;
+    if (!startShuffle) {
+      puzzleGame.moves++;
+      puzzleGame.updateGameInfo(['moves']);
+    }
   },
 
   createHTMLGrid: () => {

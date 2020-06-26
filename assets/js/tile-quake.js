@@ -8,6 +8,13 @@ class TileData {
     }
 }
 
+function gameTimer() {
+  console.log(puzzleGame.timer);
+  puzzleGame.updateGameInfo(['timer']);
+  puzzleGame.timer--;
+  if (puzzleGame.timer < 0) { clearInterval(puzzleGame.gameTime); }
+}
+
 // Object to handle all in game functions
 const puzzleGame = {
   puzzleSize: 3,  //force value for now
@@ -18,6 +25,8 @@ const puzzleGame = {
   image: '',
   difficultyLevel: 1,
   moves: 0,
+  gameTime: 0,
+  timer: 30,
 
   showGameArea: () => {
     const setupScreen = document.querySelector('.game-setup');
@@ -29,6 +38,7 @@ const puzzleGame = {
     puzzleGame.initPuzzle();
     puzzleGame.shuffleTileGrid();
     puzzleGame.updateGameInfo(['difficulty', 'moves']);
+    puzzleGame.gameTime = setInterval(gameTimer, 1000);
   },
 
   updateGameInfo: (gameInfo) => {
@@ -36,6 +46,7 @@ const puzzleGame = {
       const infoDataElement = document.querySelector(`#info--data-${info}`);
       if (info === 'difficulty') { infoDataElement.innerHTML = puzzleGame.difficultyLevel; }
       if (info === 'moves') { infoDataElement.innerHTML = puzzleGame.moves; }
+      if (info === 'timer') { infoDataElement.innerHTML = puzzleGame.timer; }
     });
   },
 
@@ -213,6 +224,7 @@ const puzzleGame = {
       puzzleGame.moveTile(clickedTile, false);
       puzzleComplete = puzzleGame.puzzleComplete();
       if (puzzleComplete) {
+        clearInterval(puzzleGame.gameTime);
         puzzleGame.showLastTile();
         puzzleGame.tidyCompletedPuzzle();
         puzzleGame.showScore();

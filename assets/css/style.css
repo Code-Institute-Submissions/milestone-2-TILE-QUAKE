@@ -40,6 +40,10 @@ body {
   cursor: not-allowed;
 }
 
+.cursor__default {
+  cursor: default;
+}
+
 /* Welcome screen */
 .welcome {
   position: absolute;

@@ -183,9 +183,10 @@ const puzzleGame = {
 
   tidyCompletedPuzzle: () => {
     const gridTiles = document.querySelectorAll('[id^=gridpos]');
-    gridTiles.forEach(tile => { 
+    gridTiles.forEach(tile => {
       tile.classList.remove('tile__border');
       tile.removeAttribute('onclick');
+      tile.classList.add('cursor__default');
     });
   },
 

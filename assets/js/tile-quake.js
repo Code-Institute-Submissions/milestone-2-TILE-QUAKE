@@ -181,15 +181,18 @@ const puzzleGame = {
     lastTile.classList.add(`tile__p${(puzzleSize * puzzleSize)}`);
   },
 
-  clearTileBorders: () => {
+  tidyCompletedPuzzle: () => {
     const gridTiles = document.querySelectorAll('[id^=gridpos]');
-    gridTiles.forEach(tile => { tile.classList.remove('tile__border'); });
+    gridTiles.forEach(tile => { 
+      tile.classList.remove('tile__border');
+      tile.removeAttribute('onclick');
+    });
   },
 
-  stopTileMoves: () => {
-    const gridTiles = document.querySelectorAll('[id^=gridpos]');
-    gridTiles.forEach(tile => { tile.removeAttribute('onclick'); });
-  },
+  // stopTileMoves: () => {
+  //   const gridTiles = document.querySelectorAll('[id^=gridpos]');
+  //   gridTiles.forEach(tile => { tile.removeAttribute('onclick'); });
+  // },
 
   canTileMove: (clickedTile) => {
     const gridFrom = puzzleGame.getGridXY(clickedTile);
@@ -201,8 +204,9 @@ const puzzleGame = {
       if (puzzleComplete) {
         console.log('Puzzle COMPLETE');
         puzzleGame.showLastTile();
-        puzzleGame.clearTileBorders();
-        puzzleGame.stopTileMoves();
+        // puzzleGame.clearTileBorders();
+        // puzzleGame.stopTileMoves();
+        puzzleGame.tidyCompletedPuzzle();
       }
     }
   },

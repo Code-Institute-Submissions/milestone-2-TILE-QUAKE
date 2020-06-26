@@ -28,8 +28,6 @@ const puzzleGame = {
     puzzleGame.initPuzzle();
     puzzleGame.shuffleTileGrid();
     let test = puzzleGame.blankTileDetails();
-    console.log('Tile Details: ', test);
-    console.log('DiffLevel', puzzleGame.difficultyLevel);
   },
 
   initPuzzle: () => {
@@ -120,7 +118,6 @@ const puzzleGame = {
         for (y = 0; y < puzzleGame.puzzleSize; y++) {
           if ( puzzleGame.tileGrid[x][y].tileCode != 0 ) {
             isTileNextToBlank = puzzleGame.nextToBlankTile(puzzleGame.tileGrid[x][y]);
-            console.log(`IF next-to-Blank ${isTileNextToBlank} AND tileGrid: "${("gridpos-" + x + y)}" != previousTile: "${previousTile}"`);
             // if tile is next to the blank and it's not the tile which was shuffled before then consider it for next shuffle
             if ((isTileNextToBlank) && ((`gridpos-${x}${y}`) != previousTile)) {
               tilesNextToBlank.push((`gridpos-${x}${y}`));
@@ -131,7 +128,6 @@ const puzzleGame = {
       // randomly select next tile to shuffle
       do {
           puzzleGame.shuffle(tilesNextToBlank);
-          console.log(`Comparing ${tilesNextToBlank[0]} with ${previousTile} they should not be equal`);
       }
       while (tilesNextToBlank[0] === previousTile);
 
@@ -164,7 +160,6 @@ const puzzleGame = {
     // check if the right puzzle piece is in the correct grid space
     for (let x = 0; x < puzzleSize; x++) {
       for (let y = 0; y < puzzleSize; y++) {
-        console.log(`Check TILE: ${tileToCheck}  Tiles Correct = ${tilesCorrect}`);
         if ( puzzleGame.tileGrid[x][y].tileCode === tileToCheck ) { tilesCorrect++; }
         tileToCheck++;
         if (tileToCheck === (puzzleSize * puzzleSize)) { tileToCheck = 0; }
@@ -189,11 +184,6 @@ const puzzleGame = {
     });
   },
 
-  // stopTileMoves: () => {
-  //   const gridTiles = document.querySelectorAll('[id^=gridpos]');
-  //   gridTiles.forEach(tile => { tile.removeAttribute('onclick'); });
-  // },
-
   canTileMove: (clickedTile) => {
     const gridFrom = puzzleGame.getGridXY(clickedTile);
     const canIMove = puzzleGame.nextToBlankTile(puzzleGame.tileGrid[gridFrom.x][gridFrom.y]);
@@ -202,10 +192,7 @@ const puzzleGame = {
       puzzleGame.moveTile(clickedTile);
       puzzleComplete = puzzleGame.puzzleComplete();
       if (puzzleComplete) {
-        console.log('Puzzle COMPLETE');
         puzzleGame.showLastTile();
-        // puzzleGame.clearTileBorders();
-        // puzzleGame.stopTileMoves();
         puzzleGame.tidyCompletedPuzzle();
       }
     }
@@ -275,7 +262,6 @@ const gameSetupOptions = {
   updatePuzzleImage: (imageIndex) => {
     const root = document.documentElement;
     const image = `url('../images/puzzles/img${imageIndex}.jpg')`;
-    console.log("Image is: ", image);
     root.style.setProperty('--chosenImage', image);
   },
 

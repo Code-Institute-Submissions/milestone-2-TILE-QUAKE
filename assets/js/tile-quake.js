@@ -190,6 +190,12 @@ const puzzleGame = {
     });
   },
 
+  showScore: () => {
+    const fireworkShow = document.querySelector('.puzzle-complete');
+    fireworkShow.classList.add('pyro');
+    fireworkShow.classList.add('d-block');
+  },
+
   canTileMove: (clickedTile) => {
     const gridFrom = puzzleGame.getGridXY(clickedTile);
     const canIMove = puzzleGame.nextToBlankTile(puzzleGame.tileGrid[gridFrom.x][gridFrom.y]);
@@ -200,9 +206,7 @@ const puzzleGame = {
       if (puzzleComplete) {
         puzzleGame.showLastTile();
         puzzleGame.tidyCompletedPuzzle();
-        const fireworkShow = document.querySelector('.puzzle-complete');
-        fireworkShow.classList.add('pyro');
-        fireworkShow.classList.add('d-block');
+        puzzleGame.showScore();
       }
     }
   },

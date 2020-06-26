@@ -36,6 +36,10 @@ body {
   float: right;
 }
 
+.cursor__not-allowed {
+  cursor: not-allowed;
+}
+
 /* Welcome screen */
 .welcome {
   position: absolute;

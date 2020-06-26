@@ -71,6 +71,11 @@ const puzzleGame = {
             tileClass = "tile__p" + puzzleGame.tileGrid[x][y].tileCode;
             gridElement.classList.add(tileClass, 'tile__border');
         }
+
+        if (puzzleGame.tiles[nextTile] === 0) {
+          gridElement.classList.add("cursor__not-allowed");
+        }
+
         nextTile++;
       }
     }

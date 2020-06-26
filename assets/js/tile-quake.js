@@ -275,6 +275,9 @@ const gameSetupOptions = {
   updatePuzzleImage: (imageIndex) => {
     const root = document.documentElement;
     const image = `url('../images/puzzles/img${imageIndex}.jpg')`;
+    const gameLogo = document.querySelector('.info__photo');
+    gameLogo.innerHTML = `<img class="info__photo-size" src="assets/images/puzzles/img${imageIndex}.jpg" 
+    alt="Puzzle image" title="Puzzle image"/>`;
     root.style.setProperty('--chosenImage', image);
   },
 

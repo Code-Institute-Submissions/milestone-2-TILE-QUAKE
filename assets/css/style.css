@@ -317,11 +317,44 @@ body {
 }
 
 .game-area__info {
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: repeat(1, minmax(80px, 150px));
+  align-items: center;
+  overflow: hidden;
   background: var(--gameBlue);
   color: white;
   padding: 20px 10px 20px 10px;
   text-align: center;
-  font-size: 20px;
+  font-size: 0.9em;
+}
+
+.info__logo-size {
+  width: 148px;
+}
+
+.info__photo {
+  background: red;
+  border: 1px solid white;
+}
+
+.info__photo-size {
+  width: 148px;
+}
+
+.info__difficulty {
+  background: green;
+  border: 1px solid white;
+}
+
+.info__timer {
+  background: blue;
+  border: 1px solid white;
+}
+
+.info__moves {
+  background: orangered;
+  border: 1px solid white;
 }
 
 .game-area__border {

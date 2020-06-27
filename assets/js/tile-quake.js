@@ -183,7 +183,7 @@ const puzzleGame = {
     return allowedToMove;
   },
 
-  puzzleComplete: () => {
+  isPuzzleComplete: () => {
     let tilesCorrect = 0;  // number of tiles in correct position
     let tileToCheck = 1;
     const puzzleSize = puzzleGame.puzzleSize;
@@ -224,11 +224,9 @@ const puzzleGame = {
   canTileMove: (clickedTile) => {
     const gridFrom = puzzleGame.getGridXY(clickedTile);
     const canIMove = puzzleGame.nextToBlankTile(puzzleGame.tileGrid[gridFrom.x][gridFrom.y]);
-    let puzzleComplete = false;
     if (canIMove) {
       puzzleGame.moveTile(clickedTile, false);
-      puzzleComplete = puzzleGame.puzzleComplete();
-      if (puzzleComplete) {
+      if (puzzleGame.isPuzzleComplete()) {
         clearInterval(puzzleGame.gameTime);
         puzzleGame.showLastTile();
         puzzleGame.tidyCompletedPuzzle();

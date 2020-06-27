@@ -23,9 +23,10 @@ const puzzleGame = {
   tiles: [],
   image: '',
   difficultyLevel: 1,
+  difficultyTime: [30, 60, 120, 240, 300, 420, 600, 720, 960, 1260],
   moves: 0,
   gameTime: 0,
-  timer: 75,
+  timer: 0,
 
   showGameArea: () => {
     const setupScreen = document.querySelector('.game-setup');
@@ -37,6 +38,7 @@ const puzzleGame = {
     puzzleGame.initPuzzle();
     puzzleGame.shuffleTileGrid();
     puzzleGame.updateGameInfo(['difficulty', 'moves']);
+    puzzleGame.timer = puzzleGame.difficultyTime[puzzleGame.difficultyLevel - 1];
     puzzleGame.gameTime = setInterval(gameTimer, 1000);
   },
 

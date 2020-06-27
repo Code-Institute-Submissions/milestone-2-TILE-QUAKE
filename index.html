@@ -107,9 +107,28 @@
       <div class="puzzle-complete">
         <div class="before"></div>
         <div class="puzzle-complete__message">
-          <p>CONGRATULATIONS</p>
-          <p>PUZZLE COMPLETE</p>
-          <p>SCORE: 00000</p>
+          <div>
+            <h1>CONGRATULATIONS</h1>
+            <h2>PUZZLE COMPLETE</h2>
+          </div>
+          <table class="puzzle-complete__score">
+            <tr>
+              <td class="score__bonus">BASE SCORE:</td>
+              <td id="score--base" class="score__bonus"></td>
+            </tr>
+            <tr>
+              <td class="score__bonus">MOVE BONUS:</td>
+              <td id="score--move" class="score__bonus"></td>
+            </tr>
+            <tr>
+              <td class="score__bonus">TIME BONUS:</td>
+              <td id="score--time" class="score__bonus"></td>
+            </tr>
+            <tr>
+              <td class="score__total">TOTAL SCORE:</td>
+              <td id="score--total" class="score__total"></td>
+            </tr>
+          </table>
         </div>
         <div class="after"></div>
       </div>

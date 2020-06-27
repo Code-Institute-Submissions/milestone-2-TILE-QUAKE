@@ -217,8 +217,20 @@ const puzzleGame = {
 
   showScore: () => {
     const fireworkShow = document.querySelector('.puzzle-complete');
+    const baseScoreElement = document.querySelector('#score--base');
+    const moveBonusElement = document.querySelector('#score--move');
+    const timeBonusElement = document.querySelector('#score--time');
+    const totalScoreElement = document.querySelector('#score--total');
     fireworkShow.classList.add('pyro');
     fireworkShow.classList.add('d-block');
+    baseScore = puzzleGame.difficultyLevel * 1000;
+    minimumMoves = ((puzzleGame.difficultyLevel * 2) + 1);
+    moveBonus = ((minimumMoves * 3) - puzzleGame.moves) * 500;
+    timeBonus = puzzleGame.timer * 250;
+    baseScoreElement.textContent = baseScore;
+    moveBonusElement.textContent = moveBonus;
+    timeBonusElement.textContent = timeBonus;
+    totalScoreElement.textContent = baseScore + moveBonus + timeBonus;
   },
 
   canTileMove: (clickedTile) => {

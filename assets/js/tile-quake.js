@@ -9,7 +9,6 @@ class TileData {
 }
 
 function gameTimer() {
-  console.log(puzzleGame.timer);
   puzzleGame.updateGameInfo(['timer']);
   puzzleGame.timer--;
   if (puzzleGame.timer < 0) { clearInterval(puzzleGame.gameTime); }
@@ -26,7 +25,7 @@ const puzzleGame = {
   difficultyLevel: 1,
   moves: 0,
   gameTime: 0,
-  timer: 30,
+  timer: 75,
 
   showGameArea: () => {
     const setupScreen = document.querySelector('.game-setup');
@@ -46,7 +45,11 @@ const puzzleGame = {
       const infoDataElement = document.querySelector(`#info--data-${info}`);
       if (info === 'difficulty') { infoDataElement.textContent = puzzleGame.difficultyLevel; }
       if (info === 'moves') { infoDataElement.textContent = puzzleGame.moves; }
-      if (info === 'timer') { infoDataElement.textContent = puzzleGame.timer; }
+      if (info === 'timer') {
+        timerMins = Math.floor(puzzleGame.timer / 60);
+        timerSecs = puzzleGame.timer % 60;
+        timerDisplay = `${timerMins < 10 ? '0' : ''}${timerMins}:${timerSecs < 10 ? '0' : ''}${timerSecs}`;
+        infoDataElement.textContent = timerDisplay; }
     });
   },
 

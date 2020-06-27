@@ -44,9 +44,9 @@ const puzzleGame = {
   updateGameInfo: (gameInfo) => {
     gameInfo.forEach(info => {
       const infoDataElement = document.querySelector(`#info--data-${info}`);
-      if (info === 'difficulty') { infoDataElement.innerHTML = puzzleGame.difficultyLevel; }
-      if (info === 'moves') { infoDataElement.innerHTML = puzzleGame.moves; }
-      if (info === 'timer') { infoDataElement.innerHTML = puzzleGame.timer; }
+      if (info === 'difficulty') { infoDataElement.textContent = puzzleGame.difficultyLevel; }
+      if (info === 'moves') { infoDataElement.textContent = puzzleGame.moves; }
+      if (info === 'timer') { infoDataElement.textContent = puzzleGame.timer; }
     });
   },
 

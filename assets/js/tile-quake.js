@@ -37,6 +37,7 @@ const puzzleGame = {
     puzzleGame.tileGrid = Array.from(Array(puzzleGame.puzzleSize), () => new Array(puzzleGame.puzzleSize));
     puzzleGame.initPuzzle();
     puzzleGame.shuffleTileGrid();
+    puzzleGame.moves = 0;
     puzzleGame.updateGameInfo(['difficulty', 'moves']);
     puzzleGame.timer = puzzleGame.difficultyTime[puzzleGame.difficultyLevel - 1];
     puzzleGame.gameTime = setInterval(gameTimer, 1000);

@@ -203,16 +203,8 @@ const puzzleGame = {
     const puzzleSize = puzzleGame.puzzleSize;
     const lastTileGirdID = `#gridpos-${puzzleSize-1}${puzzleSize-1}`;
     const lastTile = document.querySelector(lastTileGirdID);
-    let removeTile, addTile;
-    if (puzzleGame.moves > 0) {
-      removeTile = `tile__p${(puzzleSize * puzzleSize)}`;
-      addTile = 'tile__p0';
-    } else {
-      addTile = `tile__p${(puzzleSize * puzzleSize)}`;
-      removeTile = 'tile__p0';
-    }
-    lastTile.classList.remove(removeTile);
-    lastTile.classList.add(addTile);
+    lastTile.classList.toggle('tile__p0');
+    lastTile.classList.toggle(`tile__p${(puzzleSize * puzzleSize)}`);
   },
 
   tidyCompletedPuzzle: () => {
@@ -278,6 +270,7 @@ const puzzleGame = {
 
   createHTMLGrid: () => {
     const pageGrid = document.querySelector('.game-area__grid');
+    pageGrid.innerHTML = '';
     let gridDiv;
     for (let x = 0; x < puzzleGame.puzzleSize; x++) {
       for (let y = 0; y < puzzleGame.puzzleSize; y++) {

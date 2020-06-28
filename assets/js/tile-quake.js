@@ -198,12 +198,20 @@ const puzzleGame = {
     if (tilesCorrect === (puzzleSize * puzzleSize)) { return true; } else { return false; }
   },
 
-  showLastTile: () => {
+  toggleLastTile: () => {
     const puzzleSize = puzzleGame.puzzleSize;
     const lastTileGirdID = `#gridpos-${puzzleSize-1}${puzzleSize-1}`;
     const lastTile = document.querySelector(lastTileGirdID);
-    lastTile.classList.remove('tile__p0');
-    lastTile.classList.add(`tile__p${(puzzleSize * puzzleSize)}`);
+    let removeTile, addTile;
+    if (puzzleGame.moves > 0) {
+      removeTile = `tile__p${(puzzleSize * puzzleSize)}`;
+      addTile = 'tile__p0';
+    } else {
+      addTile = `tile__p${(puzzleSize * puzzleSize)}`;
+      removeTile = 'tile__p0';
+    }
+    lastTile.classList.remove(removeTile);
+    lastTile.classList.add(addTile);
   },
 
   tidyCompletedPuzzle: () => {
@@ -240,7 +248,7 @@ const puzzleGame = {
       puzzleGame.moveTile(clickedTile, false);
       if (puzzleGame.isPuzzleComplete()) {
         clearInterval(puzzleGame.gameTime);
-        puzzleGame.showLastTile();
+        puzzleGame.toggleLastTile();
         puzzleGame.tidyCompletedPuzzle();
         puzzleGame.showScore();
       }
@@ -371,6 +379,7 @@ const setup = {
     welcomeScreen.classList.remove('welcome__move-right');
     const gameScreen = document.querySelector('.game-area');
     gameScreen.classList.remove('game-area__move-left');
+    puzzleGame.toggleLastTile();
     setTimeout(() => {
       welcomeScreen.classList.add('welcome__scale-up');
     }, 1000);

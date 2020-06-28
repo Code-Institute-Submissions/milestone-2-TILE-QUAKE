@@ -373,7 +373,7 @@ const setup = {
     gameScreen.classList.remove('game-area__move-left');
     setTimeout(() => {
       welcomeScreen.classList.add('welcome__scale-up');
-    }, 800);
+    }, 1000);
   },
 
   eventListeners: () => {

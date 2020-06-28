@@ -38,8 +38,8 @@ const puzzleGame = {
     puzzleGame.initPuzzle();
     puzzleGame.shuffleTileGrid();
     puzzleGame.moves = 0;
-    puzzleGame.updateGameInfo(['difficulty', 'moves']);
     puzzleGame.timer = puzzleGame.difficultyTime[puzzleGame.difficultyLevel - 1];
+    puzzleGame.updateGameInfo(['difficulty', 'moves', 'timer']);
     puzzleGame.gameTime = setInterval(gameTimer, 1000);
   },
 
@@ -365,6 +365,7 @@ const setup = {
   },
   
   displayWelcomeScreen: () => {
+    clearInterval(puzzleGame.gameTime);
     const fireworkShow = document.querySelector('.puzzle-complete');
     const welcomeScreen = document.querySelector('.welcome');
     fireworkShow.classList.remove('d-block');
@@ -381,14 +382,16 @@ const setup = {
 
   eventListeners: () => {
     const newGameButton = document.querySelector('#new--game');
-    const scoreOKButton = document.querySelector('#score--ok');
     const startGameButton = document.querySelector('#start--game');
     const difficultyInput = document.querySelector('#difficulty--input');
     const gridOptions = document.querySelectorAll('.js-grid-option');
+    const scoreOKButton = document.querySelector('#score--ok');
+    const gameQuitButton = document.querySelector('#quit--game');
 
     newGameButton.addEventListener('click', gameSetupOptions.displayGameSetup);
     startGameButton.addEventListener('click', puzzleGame.showGameArea);
     scoreOKButton.addEventListener('click', setup.displayWelcomeScreen);
+    gameQuitButton.addEventListener('click', setup.displayWelcomeScreen);
     
     difficultyInput.addEventListener('change', (e) => {
       gameSetupOptions.displayDifficultLevel(e);

@@ -362,14 +362,30 @@ const setup = {
     }, 400);
   },
   
+  displayWelcomeScreen: () => {
+    const fireworkShow = document.querySelector('.puzzle-complete');
+    const welcomeScreen = document.querySelector('.welcome');
+    fireworkShow.classList.remove('d-block');
+    fireworkShow.classList.remove('pyro');
+    welcomeScreen.classList.remove('welcome__scale-up');
+    welcomeScreen.classList.remove('welcome__move-right');
+    const gameScreen = document.querySelector('.game-area');
+    gameScreen.classList.remove('game-area__move-left');
+    setTimeout(() => {
+      welcomeScreen.classList.add('welcome__scale-up');
+    }, 800);
+  },
+
   eventListeners: () => {
     const newGameButton = document.querySelector('#new--game');
+    const scoreOKButton = document.querySelector('#score--ok');
     const startGameButton = document.querySelector('#start--game');
     const difficultyInput = document.querySelector('#difficulty--input');
     const gridOptions = document.querySelectorAll('.js-grid-option');
 
     newGameButton.addEventListener('click', gameSetupOptions.displayGameSetup);
     startGameButton.addEventListener('click', puzzleGame.showGameArea);
+    scoreOKButton.addEventListener('click', setup.displayWelcomeScreen);
     
     difficultyInput.addEventListener('change', (e) => {
       gameSetupOptions.displayDifficultLevel(e);

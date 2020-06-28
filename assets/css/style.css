@@ -535,6 +535,7 @@ body {
 
 .puzzle-complete__score {
   margin: 0 auto;
+  margin-bottom: 46px;
 }
 
 .score__bonus {

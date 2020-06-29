@@ -358,26 +358,23 @@ const gameSetupOptions = {
 // Object to handle the welcome logo screen and setup any eventListeners
 const setup = {
   welcomeScreen: () => {
+    console.log('New welcome');
     const welcomeScreen = document.querySelector('.welcome');
-    setTimeout(() => {
-      welcomeScreen.classList.add('welcome__scale-up');
-    }, 400);
-  },
-  
-  displayWelcomeScreen: () => {
-    clearInterval(puzzleGame.gameTime);
     const fireworkShow = document.querySelector('.puzzle-complete');
-    const welcomeScreen = document.querySelector('.welcome');
-    fireworkShow.classList.remove('d-block');
-    fireworkShow.classList.remove('pyro');
-    welcomeScreen.classList.remove('welcome__scale-up');
-    welcomeScreen.classList.remove('welcome__move-right');
-    const gameScreen = document.querySelector('.game-area');
-    gameScreen.classList.remove('game-area__move-left');
-    puzzleGame.toggleLastTile();
+    let welcomeTimeout = 400;
+    if (puzzleGame.moves > 0 || puzzleGame.timer > 0) {
+      console.log('In game quit / score ok');
+      clearInterval(puzzleGame.gameTime);
+      fireworkShow.classList.remove('d-block', 'pyro');
+      welcomeScreen.classList.remove('welcome__scale-up', 'welcome__move-right');
+      const gameScreen = document.querySelector('.game-area');
+      gameScreen.classList.remove('game-area__move-left');
+      puzzleGame.toggleLastTile();
+      welcomeTimeout = 1000;
+    }
     setTimeout(() => {
       welcomeScreen.classList.add('welcome__scale-up');
-    }, 1000);
+    }, welcomeTimeout);
   },
 
   eventListeners: () => {
@@ -390,8 +387,8 @@ const setup = {
 
     newGameButton.addEventListener('click', gameSetupOptions.displayGameSetup);
     startGameButton.addEventListener('click', puzzleGame.showGameArea);
-    scoreOKButton.addEventListener('click', setup.displayWelcomeScreen);
-    gameQuitButton.addEventListener('click', setup.displayWelcomeScreen);
+    scoreOKButton.addEventListener('click', setup.welcomeScreen);
+    gameQuitButton.addEventListener('click', setup.welcomeScreen);
     
     difficultyInput.addEventListener('change', (e) => {
       gameSetupOptions.displayDifficultLevel(e);

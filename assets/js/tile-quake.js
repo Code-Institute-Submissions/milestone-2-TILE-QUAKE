@@ -343,13 +343,11 @@ const gameSetupOptions = {
   displayGameSetup: () => {
     const welcomeScreen = document.querySelector('.welcome');
     const setupScreen = document.querySelector('.game-setup');
-    const gridSize3x3 = document.querySelector('.grid-size__3x3');
-    const gridSize4x4 = document.querySelector('.grid-size__4x4');
-    const gridSize5x5 = document.querySelector('.grid-size__5x5');
+    for (let n = 3; n < 6; n++) {
+      const gridSize = document.querySelector(`.grid-size__${n}x${n}`);
+      gridSize.innerHTML = gameSetupOptions.displayGridSize(n);
+    }
     welcomeScreen.classList.add('welcome__move-right');
-    gridSize3x3.innerHTML = gameSetupOptions.displayGridSize(3);
-    gridSize4x4.innerHTML = gameSetupOptions.displayGridSize(4);
-    gridSize5x5.innerHTML = gameSetupOptions.displayGridSize(5);
     gameSetupOptions.showPuzzleImage(puzzleGame.puzzleImageIndex);
     setupScreen.classList.add('game-setup__move-right');
   }

@@ -357,13 +357,11 @@ const gameSetupOptions = {
 
 // Object to handle the welcome logo screen and setup any eventListeners
 const setup = {
-  welcomeScreen: () => {
-    console.log('New welcome');
+  welcomeScreen: (inGame) => {
     const welcomeScreen = document.querySelector('.welcome');
     const fireworkShow = document.querySelector('.puzzle-complete');
     let welcomeTimeout = 400;
-    if (puzzleGame.moves > 0 || puzzleGame.timer > 0) {
-      console.log('In game quit / score ok');
+    if (inGame === true) {
       clearInterval(puzzleGame.gameTime);
       fireworkShow.classList.remove('d-block', 'pyro');
       welcomeScreen.classList.remove('welcome__scale-up', 'welcome__move-right');
@@ -387,8 +385,8 @@ const setup = {
 
     newGameButton.addEventListener('click', gameSetupOptions.displayGameSetup);
     startGameButton.addEventListener('click', puzzleGame.showGameArea);
-    scoreOKButton.addEventListener('click', setup.welcomeScreen);
-    gameQuitButton.addEventListener('click', setup.welcomeScreen);
+    scoreOKButton.addEventListener('click', () => { setup.welcomeScreen(true); });
+    gameQuitButton.addEventListener('click', () => { setup.welcomeScreen(true); });
     
     difficultyInput.addEventListener('change', (e) => {
       gameSetupOptions.displayDifficultLevel(e);
@@ -402,6 +400,6 @@ const setup = {
   }
 }
 
-setup.welcomeScreen();
+setup.welcomeScreen(false);
 
 setup.eventListeners();

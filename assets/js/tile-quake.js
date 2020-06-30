@@ -212,32 +212,49 @@ const puzzleGame = {
 
   showScore: () => {
     const fireworkShow = document.querySelector('.puzzle-complete');
+    fireworkShow.classList.add('pyro');
+    fireworkShow.classList.add('d-block');
     const baseScoreElement = document.querySelector('#score--base');
     const moveBonusElement = document.querySelector('#score--move');
     const timeBonusElement = document.querySelector('#score--time');
     const totalScoreElement = document.querySelector('#score--total');
-    fireworkShow.classList.add('pyro');
-    fireworkShow.classList.add('d-block');
-    baseScore = puzzleGame.difficultyLevel * 1000;
-    minimumMoves = ((puzzleGame.difficultyLevel * 2) + 1);
-    moveBonus = ((minimumMoves * 3) - puzzleGame.moves) * 500;
-    timeBonus = puzzleGame.timer * 250;
+    const baseScore = puzzleGame.difficultyLevel * 1000;
+    const minimumMoves = ((puzzleGame.difficultyLevel * 2) + 1);
+    const moveBonus = ((minimumMoves * 3) - puzzleGame.moves) * 500;
+    const timeBonus = puzzleGame.timer * 250;
+    const totalScore = baseScore + moveBonus + timeBonus;
     baseScoreElement.textContent = baseScore;
     moveBonusElement.textContent = moveBonus;
     timeBonusElement.textContent = timeBonus;
     totalScoreElement.textContent = baseScore + moveBonus + timeBonus;
+    return totalScore;
   },
 
   canTileMove: (clickedTile) => {
     const gridFrom = puzzleGame.getGridXY(clickedTile);
     const canIMove = puzzleGame.nextToBlankTile(puzzleGame.tileGrid[gridFrom.x][gridFrom.y]);
+    let score;
+    let scoreboardIndex;
+    let newEntry = {};
     if (canIMove) {
       puzzleGame.moveTile(clickedTile, false);
       if (puzzleGame.isPuzzleComplete()) {
         clearInterval(puzzleGame.gameTime);
         puzzleGame.toggleLastTile();
         puzzleGame.tidyCompletedPuzzle();
-        puzzleGame.showScore();
+        score = puzzleGame.showScore();
+        scoreboardIndex = scoreboard.isAHighScore(score)
+        if ( scoreboardIndex != 6) {
+          console.log('On high score table at ', {scoreboardIndex});
+          newEntry = {
+            user: 'TST',
+            score: score,
+            level: puzzleGame.difficultyLevel
+          }
+          scoreboard.data.splice(scoreboardIndex, 0, newEntry);
+          scoreboard.data.pop();
+          localStorage.setItem('tileQuakeScoreboard', JSON.stringify(scoreboard.data));
+        }
       }
     }
   },
@@ -291,6 +308,45 @@ const puzzleGame = {
   }
 
 }
+
+/* Object to handle the scoreboard */
+const scoreboard = {
+  data: [],
+
+  checkExists: () => {
+    let newScoreboard = [];
+    if (localStorage.getItem("tileQuakeScoreboard") === null) {
+      newScoreboard.push({ user: 'TQA', score: 9000, level: 1 });
+      newScoreboard.push({ user: 'TQA', score: 7000, level: 1 });
+      newScoreboard.push({ user: 'TQA', score: 5000, level: 1 });
+      newScoreboard.push({ user: 'BOB', score: 3000, level: 1 });
+      newScoreboard.push({ user: 'RIC', score: 1000, level: 1 });
+      localStorage.setItem('tileQuakeScoreboard', JSON.stringify(newScoreboard));
+    }
+    return true;
+  },
+
+  readScores: () => {
+    scoreboard.checkExists();
+    let scoreList = localStorage.getItem("tileQuakeScoreboard");
+    scoreboard.data = JSON.parse(scoreList);
+    return scoreboard.data.length;
+  },
+
+  isAHighScore: (gameScore) => {
+    scoreboard.readScores();
+    let scoreboardPosition = scoreboard.data.length + 1;
+    scoreboard.data.forEach((scoreEntry, index) => {
+      if ((gameScore > scoreEntry.score && scoreboardPosition > scoreboard.data.length) ||
+          (gameScore === scoreEntry.score && scoreEntry.user === 'TQA')) {
+        console.log(`MyScore = ${gameScore} | User: ${scoreEntry.user}  Score: ${scoreEntry.score}  Index: ${index}`);
+        scoreboardPosition = index;
+      }
+    });
+    return scoreboardPosition;
+  }
+}
+
 
 // Object to handle all game setup options
 const gameSetupOptions = {

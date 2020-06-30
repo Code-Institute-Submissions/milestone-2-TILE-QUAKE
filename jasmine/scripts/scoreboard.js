@@ -19,6 +19,10 @@ const scoreboard = {
     data = JSON.parse(scoreList);
     console.log(data);
     return data.length;
+  },
+
+  gotHighScore: () => {
+    return true;
   }
 
 }

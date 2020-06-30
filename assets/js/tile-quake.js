@@ -243,8 +243,8 @@ const puzzleGame = {
         puzzleGame.toggleLastTile();
         puzzleGame.tidyCompletedPuzzle();
         score = puzzleGame.showScore();
-        scoreboardIndex = scoreboard.isAHighScore(score)
-        if ( scoreboardIndex != 6) {
+        scoreboardIndex = scoreboard.isAHighScore(score);
+        if ( scoreboardIndex != (scoreboard.data.length + 1)) {
           console.log('On high score table at ', {scoreboardIndex});
           newEntry = {
             user: 'TST',

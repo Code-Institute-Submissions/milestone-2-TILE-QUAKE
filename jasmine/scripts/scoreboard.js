@@ -7,7 +7,7 @@ const scoreboard = {
       newScoreboard.push({ user: 'TQA', score: 9000, level: 1 });
       newScoreboard.push({ user: 'TQA', score: 7000, level: 1 });
       newScoreboard.push({ user: 'TQA', score: 5000, level: 1 });
-      newScoreboard.push({ user: 'TQA', score: 3000, level: 1 });
+      newScoreboard.push({ user: 'BOB', score: 3000, level: 1 });
       newScoreboard.push({ user: 'RIC', score: 1000, level: 1 });
       localStorage.setItem('tileQuakeScoreboard', JSON.stringify(newScoreboard));
     }

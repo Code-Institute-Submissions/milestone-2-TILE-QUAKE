@@ -249,7 +249,7 @@ const puzzleGame = {
           newEntry = {
             user: 'TST',
             score: score,
-            level: puzzleGame.difficultyLevel
+            level: parseInt(puzzleGame.difficultyLevel)
           }
           scoreboard.data.splice(scoreboardIndex, 0, newEntry);
           scoreboard.data.pop();

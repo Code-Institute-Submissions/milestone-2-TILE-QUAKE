@@ -526,28 +526,42 @@ body {
 
 .puzzle-complete__message h1 {
   font-size: 2.4em;
+  text-shadow: 1px 1px var(--gameRed);
 }
 
 .puzzle-complete__message h2 {
-  font-size: 2.2em;
   padding-bottom: 25px;
+  font-size: 2.2em;
+  text-shadow: 1px 1px var(--gameRed);
 }
 
 .puzzle-complete__score {
   margin: 0 auto;
-  margin-bottom: 46px;
+  margin-bottom: 31px;
 }
 
-.score__bonus {
-  text-align: right;
+[class^=score__] {
   padding-bottom: 15px;
+  text-align: right;
   font-size: 2em;
+  text-shadow: 1px 1px #fff;
+}
+
+.score__base {
+  color: var(--gameGreen);
+}
+
+.score__move {
+  color: rgb(252, 252, 0);
+}
+
+.score__time {
+  color: rgb(255, 129, 0);
 }
 
 .score__total {
-  text-align: right;
   padding-top: 15px;
-  font-size: 2em;
+  color: var(--gameRed);
 }
 
 .d-block {

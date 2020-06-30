@@ -16,13 +16,18 @@ const scoreboard = {
 
   readScores: () => {
     let scoreList = localStorage.getItem("tileQuakeScoreboard");
-    data = JSON.parse(scoreList);
-    console.log(data);
-    return data.length;
+    scoreboard.data = JSON.parse(scoreList);
+    return scoreboard.data.length;
   },
 
-  gotHighScore: () => {
-    return true;
+  isAHighScore: (gameScore) => {
+    scoreboard.readScores();
+    let scoreboardPosition = scoreboard.data.length + 1;
+    scoreboard.data.forEach((scoreEntry, index) => {
+      if (gameScore > scoreEntry.score && scoreboardPosition > scoreboard.data.length) {
+        scoreboardPosition = index;
+      }
+    });
+    return scoreboardPosition;
   }
-
 }

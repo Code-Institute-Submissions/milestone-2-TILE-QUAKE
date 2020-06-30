@@ -34,15 +34,7 @@ const puzzleGame = {
     const gameScreen = document.querySelector('.game-area');
     setupScreen.classList.remove('game-setup__move-right');
     gameScreen.classList.add('game-area__move-left');
-    puzzleGame.createHTMLGrid();
-    puzzleGame.tileGrid = Array.from(Array(puzzleGame.puzzleSize), () => new Array(puzzleGame.puzzleSize));
-    puzzleGame.initPuzzle();
-    puzzleGame.shuffleTileGrid();
-    puzzleGame.moves = 0;
-    puzzleGame.timer = puzzleGame.difficultyTime[puzzleGame.difficultyLevel - 1];
-    gameSetupOptions.updatePuzzleImage(puzzleGame.puzzleImageIndex);
-    puzzleGame.updateGameInfo(['difficulty', 'moves', 'timer']);
-    puzzleGame.gameTime = setInterval(gameTimer, 1000);
+    puzzleGame.resetPuzzle();
   },
 
   updateGameInfo: (gameInfo) => {
@@ -282,7 +274,22 @@ const puzzleGame = {
         pageGrid.appendChild(gridDiv);
       }
     }
+  },
+
+  resetPuzzle: () => {
+    console.log('Reset game');
+    puzzleGame.tileGrid = Array.from(Array(puzzleGame.puzzleSize), () => new Array(puzzleGame.puzzleSize));
+    puzzleGame.createHTMLGrid();
+    puzzleGame.initPuzzle();
+    puzzleGame.shuffleTileGrid();
+    puzzleGame.moves = 0;
+    puzzleGame.timer = puzzleGame.difficultyTime[puzzleGame.difficultyLevel - 1];
+    gameSetupOptions.updatePuzzleImage(puzzleGame.puzzleImageIndex);
+    puzzleGame.updateGameInfo(['difficulty', 'moves', 'timer']);
+    clearInterval(puzzleGame.gameTime);
+    puzzleGame.gameTime = setInterval(gameTimer, 1000);
   }
+
 }
 
 // Object to handle all game setup options
@@ -351,6 +358,7 @@ const gameSetupOptions = {
     gameSetupOptions.showPuzzleImage(puzzleGame.puzzleImageIndex);
     setupScreen.classList.add('game-setup__move-right');
   }
+
 }
 
 // Object to handle the welcome logo screen and setup any eventListeners
@@ -380,11 +388,13 @@ const setup = {
     const gridOptions = document.querySelectorAll('.js-grid-option');
     const scoreOKButton = document.querySelector('#score--ok');
     const gameQuitButton = document.querySelector('#quit--game');
+    const gameResetButton = document.querySelector('#reset--game');
 
     newGameButton.addEventListener('click', gameSetupOptions.displayGameSetup);
     startGameButton.addEventListener('click', puzzleGame.showGameArea);
     scoreOKButton.addEventListener('click', () => { setup.welcomeScreen(true); });
     gameQuitButton.addEventListener('click', () => { setup.welcomeScreen(true); });
+    gameResetButton.addEventListener('click', puzzleGame.resetPuzzle);
     
     difficultyInput.addEventListener('change', (e) => {
       gameSetupOptions.displayDifficultLevel(e);

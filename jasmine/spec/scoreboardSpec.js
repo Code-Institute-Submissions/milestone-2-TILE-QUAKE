@@ -35,4 +35,10 @@ describe("Scoreboard", function() {
         });
     });
 
+    describe("I should easily get onto the scoreboard with a score of 11000", function() {
+        it("should return scoreboard position of 0 as this is a top score", function() {
+            expect(scoreboard.isAHighScore(11000)).toBe(0);
+        });
+    });
+
   });

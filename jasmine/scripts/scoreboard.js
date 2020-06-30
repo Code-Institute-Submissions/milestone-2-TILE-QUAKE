@@ -9,6 +9,10 @@ const scoreboard = {
     } else {
       return true;
     }
+  },
+
+  readScores: () => {
+    return 5;
   }
-  
+
 }

@@ -2,18 +2,20 @@ const scoreboard = {
   data: [],
 
   checkExists: () => {
-    let myScoreboard = [];
-    if (localStorage.getItem("scoreboard") === null) {
-      for (let n = 0; n < 5; n++) {
-        myScoreboard.push({ user: 'AAA', score: 1000, level: 1 });
-      }
-      localStorage.setItem('scoreboard', JSON.stringify(myScoreboard));
+    let newScoreboard = [];
+    if (localStorage.getItem("tileQuakeScoreboard") === null) {
+      newScoreboard.push({ user: 'TOP', score: 9000, level: 1 });
+      newScoreboard.push({ user: 'BBB', score: 7000, level: 1 });
+      newScoreboard.push({ user: 'CCC', score: 5000, level: 1 });
+      newScoreboard.push({ user: 'DDD', score: 3000, level: 1 });
+      newScoreboard.push({ user: 'BOT', score: 1000, level: 1 });
+      localStorage.setItem('tileQuakeScoreboard', JSON.stringify(newScoreboard));
     }
     return true;
   },
 
   readScores: () => {
-    let scoreList = localStorage.getItem("scoreboard");
+    let scoreList = localStorage.getItem("tileQuakeScoreboard");
     data = JSON.parse(scoreList);
     console.log(data);
     return data.length;

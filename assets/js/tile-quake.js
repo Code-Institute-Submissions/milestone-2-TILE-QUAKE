@@ -344,7 +344,13 @@ const scoreboard = {
       }
     });
     return scoreboardPosition;
+  },
+
+  display: ()=> {
+    const scoreboardScreen = document.querySelector('.game-scores');
+    scoreboardScreen.classList.add('d-block');
   }
+  
 }
 
 
@@ -439,6 +445,7 @@ const setup = {
 
   eventListeners: () => {
     const newGameButton = document.querySelector('#new--game');
+    const hiScoresButton = document.querySelector('#hi--scores');
     const startGameButton = document.querySelector('#start--game');
     const difficultyInput = document.querySelector('#difficulty--input');
     const gridOptions = document.querySelectorAll('.js-grid-option');
@@ -447,6 +454,7 @@ const setup = {
     const gameResetButton = document.querySelector('#reset--game');
 
     newGameButton.addEventListener('click', gameSetupOptions.displayGameSetup);
+    hiScoresButton.addEventListener('click', scoreboard.display);
     startGameButton.addEventListener('click', puzzleGame.showGameArea);
     scoreOKButton.addEventListener('click', () => { setup.welcomeScreen(true); });
     gameQuitButton.addEventListener('click', () => { setup.welcomeScreen(true); });

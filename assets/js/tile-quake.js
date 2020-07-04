@@ -347,13 +347,12 @@ const scoreboard = {
   display: ()=> {
     const scoreboardScreen = document.querySelector('.game-scores');
     const hiScoreTable = document.querySelector('.game-scores__content');
-    let scoreColor = 0;
     scoreboard.readScores();
     const hiScoreHTML = scoreboard.data.map((scoreEntry, index) => {
       return `
-        <div class='game-scores__user' style='color: hsl(${scoreColor + (index * 25)}, 100%, 50%);'>${scoreEntry.user}</div>
-        <div class='game-scores__level' style='color: hsl(${scoreColor + (index * 25)}, 100%, 50%);'>${scoreEntry.level}</div>
-        <div class='game-scores__score' style='color: hsl(${scoreColor + (index * 25)}, 100%, 50%);'>${scoreEntry.score}</div>
+        <div class='game-scores__user' style='color: hsl(${(index * 25)}, 100%, 50%);'>${scoreEntry.user}</div>
+        <div class='game-scores__level' style='color: hsl(${(index * 25)}, 100%, 50%);'>${scoreEntry.level}</div>
+        <div class='game-scores__score' style='color: hsl(${(index * 25)}, 100%, 50%);'>${scoreEntry.score}</div>
       `
     }).join('');
     hiScoreTable.innerHTML = hiScoreHTML;

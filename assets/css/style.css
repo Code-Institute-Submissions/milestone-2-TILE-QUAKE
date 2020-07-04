@@ -302,53 +302,62 @@ body {
 
 .game-scores {
   position: absolute;
+  display: none;
   height: 100vh;
   width: 100%;
   background: #000;
-  color: #fff;
-  display: none;
+  color:#fff;
+  text-align: center;
 }
 
-.game-scores__content {
+.game-scores h1 {
+  color: rgb(243, 76, 218);
+  font-size: 2.6em;
+}
+
+.game-scores__logo {
+  width: 50%;
+  height: auto;
+}
+
+.game-scores__headers {
   display: grid;
   justify-items: center;
   margin: 50px 100px 0 100px;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
+  font-size: 1.6em;
 }
 
-.game-scores__heading-name {
+.game-scores__content {
+  display: grid;
+  justify-items: center;
+  margin: 25px 100px 0 100px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  font-size: 2em;
+}
+
+.game-scores__heading-user {
   justify-self: start;
-  background: orangered;
-  border: 2px solid white;
 }
 
 .game-scores__heading-level {
-  background: orangered;
-  border: 2px solid white;
 }
 
 .game-scores__heading-score {
   justify-self: end;
-  background: orangered;
-  border: 2px solid white;
 }
 
-.game-scores__name {
+.game-scores__user {
   justify-self: start;
-  background: purple;
-  border: 2px solid white;
 }
 
 .game-scores__level {
-  background: goldenrod;
-  border: 2px solid white;
 }
 
 .game-scores__score {
   justify-self: end;
-  background: deeppink;
-  border: 2px solid white;
 }
 
 /* Game area */

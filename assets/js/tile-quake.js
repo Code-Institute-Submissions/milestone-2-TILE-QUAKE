@@ -316,11 +316,9 @@ const scoreboard = {
   checkExists: () => {
     let newScoreboard = [];
     if (localStorage.getItem("tileQuakeScoreboard") === null) {
-      newScoreboard.push({ user: 'TQA', score: 9000, level: 1 });
-      newScoreboard.push({ user: 'TQA', score: 7000, level: 1 });
-      newScoreboard.push({ user: 'TQA', score: 5000, level: 1 });
-      newScoreboard.push({ user: 'BOB', score: 3000, level: 1 });
-      newScoreboard.push({ user: 'RIC', score: 1000, level: 1 });
+      for (let n = 10; n > 0; n--) {
+        newScoreboard.push({ user: 'TQA', score: n * 1000, level: 1 });
+      }
       localStorage.setItem('tileQuakeScoreboard', JSON.stringify(newScoreboard));
     }
     return true;
@@ -348,11 +346,20 @@ const scoreboard = {
 
   display: ()=> {
     const scoreboardScreen = document.querySelector('.game-scores');
+    const hiScoreTable = document.querySelector('.game-scores__content');
+    let scoreColor = 0;
+    scoreboard.readScores();
+    const hiScoreHTML = scoreboard.data.map((scoreEntry, index) => {
+      return `
+        <div class='game-scores__user' style='color: hsl(${scoreColor + (index * 25)}, 100%, 50%);'>${scoreEntry.user}</div>
+        <div class='game-scores__level' style='color: hsl(${scoreColor + (index * 25)}, 100%, 50%);'>${scoreEntry.level}</div>
+        <div class='game-scores__score' style='color: hsl(${scoreColor + (index * 25)}, 100%, 50%);'>${scoreEntry.score}</div>
+      `
+    }).join('');
+    hiScoreTable.innerHTML = hiScoreHTML;
     scoreboardScreen.classList.add('d-block');
   }
-  
 }
-
 
 // Object to handle all game setup options
 const gameSetupOptions = {

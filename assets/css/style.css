@@ -302,12 +302,18 @@ body {
 
 .game-scores {
   position: absolute;
-  display: none;
+  /* display: none; */
   height: 100vh;
   width: 100%;
   background: #000;
   color:#fff;
   text-align: center;
+  transform: scale(0);
+  transition: all 0.8s;
+}
+
+.game-scores__scale-up {
+  transform: scale(1);
 }
 
 .game-scores h1 {
@@ -316,8 +322,8 @@ body {
 }
 
 .game-scores__logo {
-  width: 50%;
-  height: auto;
+  height: 168px;
+  width: auto;
 }
 
 .game-scores__headers {
@@ -332,7 +338,7 @@ body {
 .game-scores__content {
   display: grid;
   justify-items: center;
-  margin: 25px 100px 0 100px;
+  margin: 25px 100px 50px 100px;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
   font-size: 2em;

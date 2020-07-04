@@ -312,6 +312,7 @@ const puzzleGame = {
 /* Object to handle the scoreboard */
 const scoreboard = {
   data: [],
+  scoreboardTimeout: 0,
 
   checkExists: () => {
     let newScoreboard = [];
@@ -347,6 +348,7 @@ const scoreboard = {
   display: ()=> {
     const scoreboardScreen = document.querySelector('.game-scores');
     const hiScoreTable = document.querySelector('.game-scores__content');
+    
     scoreboard.readScores();
     const hiScoreHTML = scoreboard.data.map((scoreEntry, index) => {
       return `
@@ -356,7 +358,14 @@ const scoreboard = {
       `
     }).join('');
     hiScoreTable.innerHTML = hiScoreHTML;
-    scoreboardScreen.classList.add('d-block');
+    scoreboardScreen.classList.add('game-scores__scale-up');
+    scoreboardTimeout = setTimeout(scoreboard.hide, 6000);
+  },
+  
+  hide: () => {
+    const scoreboardScreen = document.querySelector('.game-scores');
+    scoreboardScreen.classList.remove('game-scores__scale-up');
+    clearTimeout(scoreboardTimeout);
   }
 }
 
@@ -452,6 +461,7 @@ const setup = {
   eventListeners: () => {
     const newGameButton = document.querySelector('#new--game');
     const hiScoresButton = document.querySelector('#hi--scores');
+    const closeHiScores = document.querySelector('#close--table');
     const startGameButton = document.querySelector('#start--game');
     const difficultyInput = document.querySelector('#difficulty--input');
     const gridOptions = document.querySelectorAll('.js-grid-option');
@@ -461,6 +471,7 @@ const setup = {
 
     newGameButton.addEventListener('click', gameSetupOptions.displayGameSetup);
     hiScoresButton.addEventListener('click', scoreboard.display);
+    closeHiScores.addEventListener('click', scoreboard.hide);
     startGameButton.addEventListener('click', puzzleGame.showGameArea);
     scoreOKButton.addEventListener('click', () => { setup.welcomeScreen(true); });
     gameQuitButton.addEventListener('click', () => { setup.welcomeScreen(true); });

@@ -246,14 +246,20 @@ const puzzleGame = {
         scoreboardIndex = scoreboard.isAHighScore(score);
         if ( scoreboardIndex != (scoreboard.data.length + 1)) {
           console.log('On high score table at ', {scoreboardIndex});
-          newEntry = {
-            user: 'TST',
-            score: score,
-            level: parseInt(puzzleGame.difficultyLevel)
-          }
-          scoreboard.data.splice(scoreboardIndex, 0, newEntry);
-          scoreboard.data.pop();
-          localStorage.setItem('tileQuakeScoreboard', JSON.stringify(scoreboard.data));
+          // newEntry = {
+          //   user: 'TST',
+          //   score: score,
+          //   level: parseInt(puzzleGame.difficultyLevel)
+          // }
+          // scoreboard.data.splice(scoreboardIndex, 0, newEntry);
+          // scoreboard.data.pop();
+          // localStorage.setItem('tileQuakeScoreboard', JSON.stringify(scoreboard.data));
+          const hiScoreMsg = document.querySelector('.score--high');
+          hiScoreMsg.classList.add('d-block');
+          setTimeout(scoreboard.addNewScore.bind(null, scoreboardIndex, score), 2000);
+        } else {
+          const scoreOkButton = document.querySelector('.score--ok');
+          scoreOkButton.classList.add('d-block');
         }
       }
     }
@@ -366,7 +372,37 @@ const scoreboard = {
     const scoreboardScreen = document.querySelector('.game-scores');
     scoreboardScreen.classList.remove('game-scores__scale-up');
     clearTimeout(scoreboardTimeout);
-  }
+  },
+
+  addNewScore: (tablePosition, score) => {
+    const scoreboardScreen = document.querySelector('.game-scores');
+    const hiScoreTable = document.querySelector('.game-scores__content');
+    // const userInitials = document.querySelector('.game-scores__entry-input');
+    let hiScoreHTML = '';
+    scoreboard.readScores();
+    let initialInput = `<input id="initials--input" class="game-scores__entry-input" type="text" maxlength="3" pattern="[A-Za-z]{3}">`;
+    scoreboard.data.forEach((scoreEntry, index) => {
+      if (index != tablePosition) {
+        hiScoreHTML += `
+        <div class='game-scores__user' style='color: hsl(${(index * 25)}, 100%, 50%);'>${scoreEntry.user}</div>
+        <div class='game-scores__level' style='color: hsl(${(index * 25)}, 100%, 50%);'>${scoreEntry.level}</div>
+        <div class='game-scores__score' style='color: hsl(${(index * 25)}, 100%, 50%);'>${scoreEntry.score}</div>
+        `;
+      } else {
+        hiScoreHTML += `
+        <div class='game-scores__user game-scores__entry-line'>${initialInput}</div>
+        <div class='game-scores__level game-scores__entry-line'><span class=''>${scoreEntry.level}</span></div>
+        <div class='game-scores__score game-scores__entry-line'><span class=''>${score}</span></div>
+        `;
+      }
+    });
+    hiScoreTable.innerHTML = hiScoreHTML;
+    scoreboardScreen.classList.add('game-scores__scale-up');
+    document.getElementById("initials--input").focus();
+    if (score < 1) { 
+      scoreboardTimeout = setTimeout(scoreboard.hide, 6000);
+    }
+  },
 }
 
 // Object to handle all game setup options
@@ -465,7 +501,7 @@ const setup = {
     const startGameButton = document.querySelector('#start--game');
     const difficultyInput = document.querySelector('#difficulty--input');
     const gridOptions = document.querySelectorAll('.js-grid-option');
-    const scoreOKButton = document.querySelector('#score--ok');
+    const scoreOKButton = document.querySelector('.score--ok');
     const gameQuitButton = document.querySelector('#quit--game');
     const gameResetButton = document.querySelector('#reset--game');
 

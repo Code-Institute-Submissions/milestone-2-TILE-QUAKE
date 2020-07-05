@@ -374,13 +374,35 @@ const scoreboard = {
     clearTimeout(scoreboardTimeout);
   },
 
+  saveScore: (tablePosition, score) => {
+    const userInitials = document.querySelector('#initials--input').value.toUpperCase();
+    const hiScoreTable = document.querySelector('.game-scores__content');
+    const saveScoreDiv = document.querySelector('.game-scores__save');
+    console.log(`${userInitials} scored ${score} on level ${puzzleGame.difficultyLevel} add at pos: ${tablePosition}`);
+    newEntry = {
+      user: userInitials,
+      score: score,
+      level: parseInt(puzzleGame.difficultyLevel)
+    }
+    scoreboard.data.splice(tablePosition, 0, newEntry);
+    scoreboard.data.pop();
+    localStorage.setItem('tileQuakeScoreboard', JSON.stringify(scoreboard.data));
+    saveScoreDiv.classList.remove('d-block');
+    hiScoreTable.innerHTML = '';
+    scoreboard.display();
+  },
+
   addNewScore: (tablePosition, score) => {
     const scoreboardScreen = document.querySelector('.game-scores');
     const hiScoreTable = document.querySelector('.game-scores__content');
-    // const userInitials = document.querySelector('.game-scores__entry-input');
+    const saveScoreDiv = document.querySelector('.game-scores__save');
+    const saveScoreButton = document.querySelector('#save--score');
+    saveScoreButton.addEventListener('click', () => { scoreboard.saveScore(tablePosition, score); });
     let hiScoreHTML = '';
     scoreboard.readScores();
-    let initialInput = `<input id="initials--input" class="game-scores__entry-input" type="text" maxlength="3" pattern="[A-Za-z]{3}">`;
+    let initialInput = `<form>
+                        <input id="initials--input" class="game-scores__entry-input" type="text" maxlength="3" pattern="[A-Za-z]{3}">
+                        </form>`;
     scoreboard.data.forEach((scoreEntry, index) => {
       if (index != tablePosition) {
         hiScoreHTML += `
@@ -391,13 +413,14 @@ const scoreboard = {
       } else {
         hiScoreHTML += `
         <div class='game-scores__user game-scores__entry-line'>${initialInput}</div>
-        <div class='game-scores__level game-scores__entry-line'><span class=''>${scoreEntry.level}</span></div>
+        <div class='game-scores__level game-scores__entry-line'><span class=''>${puzzleGame.difficultyLevel}</span></div>
         <div class='game-scores__score game-scores__entry-line'><span class=''>${score}</span></div>
         `;
       }
     });
     hiScoreTable.innerHTML = hiScoreHTML;
     scoreboardScreen.classList.add('game-scores__scale-up');
+    saveScoreDiv.classList.add('d-block');
     document.getElementById("initials--input").focus();
     if (score < 1) { 
       scoreboardTimeout = setTimeout(scoreboard.hide, 6000);
@@ -504,7 +527,7 @@ const setup = {
     const scoreOKButton = document.querySelector('.score--ok');
     const gameQuitButton = document.querySelector('#quit--game');
     const gameResetButton = document.querySelector('#reset--game');
-
+    
     newGameButton.addEventListener('click', gameSetupOptions.displayGameSetup);
     hiScoresButton.addEventListener('click', scoreboard.display);
     closeHiScores.addEventListener('click', scoreboard.hide);

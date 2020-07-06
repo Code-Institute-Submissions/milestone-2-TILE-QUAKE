@@ -397,21 +397,21 @@ const scoreboard = {
     let initialInput = `<form id="score--form">
                         <input id="initials--input" class="game-scores__entry-input" type="text" maxlength="3" pattern="[A-Za-z]{3}">
                         </form>`;
-    scoreboard.data.forEach((scoreEntry, index) => {
-      if (index != tablePosition) {
-        hiScoreHTML += `
-        <div class='game-scores__user' style='color: hsl(${(index * 25)}, 100%, 50%);'>${scoreEntry.user}</div>
-        <div class='game-scores__level' style='color: hsl(${(index * 25)}, 100%, 50%);'>${scoreEntry.level}</div>
-        <div class='game-scores__score' style='color: hsl(${(index * 25)}, 100%, 50%);'>${scoreEntry.score}</div>
-        `;
-      } else {
+    for (let index = 0; index < scoreboard.data.length - 1; index++) {
+      let scoreEntry = scoreboard.data[index];
+      if (index === tablePosition) {
         hiScoreHTML += `
         <div class='game-scores__user game-scores__entry-line'>${initialInput}</div>
         <div class='game-scores__level game-scores__entry-line'><span class=''>${puzzleGame.difficultyLevel}</span></div>
         <div class='game-scores__score game-scores__entry-line'><span class=''>${score}</span></div>
         `;
       }
-    });
+      hiScoreHTML += `
+        <div class='game-scores__user' style='color: hsl(${(index * 25)}, 100%, 50%);'>${scoreEntry.user}</div>
+        <div class='game-scores__level' style='color: hsl(${(index * 25)}, 100%, 50%);'>${scoreEntry.level}</div>
+        <div class='game-scores__score' style='color: hsl(${(index * 25)}, 100%, 50%);'>${scoreEntry.score}</div>
+        `;
+    }
     hiScoreTable.innerHTML = hiScoreHTML;
     const userInitialsForm = document.querySelector('#score--form');
     userInitialsForm.addEventListener('submit', (e) => {

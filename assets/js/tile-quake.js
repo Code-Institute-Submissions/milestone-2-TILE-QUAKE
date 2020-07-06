@@ -335,7 +335,6 @@ const scoreboard = {
     scoreboard.data.forEach((scoreEntry, index) => {
       if ((gameScore > scoreEntry.score && scoreboardPosition > scoreboard.data.length) ||
           (gameScore === scoreEntry.score && scoreEntry.user === 'TQA')) {
-        console.log(`MyScore = ${gameScore} | User: ${scoreEntry.user}  Score: ${scoreEntry.score}  Index: ${index}`);
         scoreboardPosition = index;
       }
     });
@@ -373,7 +372,6 @@ const scoreboard = {
     const userInitials = document.querySelector('#initials--input').value.toUpperCase();
     const hiScoreTable = document.querySelector('.game-scores__content');
     const saveScoreDiv = document.querySelector('.game-scores__save');
-    console.log(`${userInitials} scored ${score} on level ${puzzleGame.difficultyLevel} add at pos: ${tablePosition}`);
     newEntry = {
       user: userInitials,
       score: score,

@@ -245,18 +245,9 @@ const puzzleGame = {
         score = puzzleGame.showScore();
         scoreboardIndex = scoreboard.isAHighScore(score);
         if ( scoreboardIndex != (scoreboard.data.length + 1)) {
-          console.log('On high score table at ', {scoreboardIndex});
-          // newEntry = {
-          //   user: 'TST',
-          //   score: score,
-          //   level: parseInt(puzzleGame.difficultyLevel)
-          // }
-          // scoreboard.data.splice(scoreboardIndex, 0, newEntry);
-          // scoreboard.data.pop();
-          // localStorage.setItem('tileQuakeScoreboard', JSON.stringify(scoreboard.data));
           const hiScoreMsg = document.querySelector('.score--high');
           hiScoreMsg.classList.add('d-block');
-          setTimeout(scoreboard.addNewScore.bind(null, scoreboardIndex, score), 2000);
+          setTimeout(scoreboard.addNewScore.bind(null, scoreboardIndex, score), 8000);
         } else {
           const scoreOkButton = document.querySelector('.score--ok');
           scoreOkButton.classList.add('d-block');

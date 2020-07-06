@@ -72,9 +72,9 @@ body {
 }
 
 .welcome__button {
-  width: 240px;
+  /* width: 240px; */
   margin-bottom: 20px;
-  padding: 15px;
+  padding: 10px 25px;
   color: #282828;
   background: #fff;
   border-radius: 10px;

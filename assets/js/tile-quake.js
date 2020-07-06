@@ -15,7 +15,8 @@ function gameTimer() {
 }
 
 const sounds = {
-  tileMove: ( document.querySelector('#sound__tileClick') )
+  insertCoin: ( document.querySelector('#sound--insert-coin') ),
+  tileMove: ( document.querySelector('#sound--tile-click') )
 }
 
 // Object to handle all in game functions
@@ -499,6 +500,7 @@ const gameSetupOptions = {
   displayGameSetup: () => {
     const welcomeScreen = document.querySelector('.welcome');
     const setupScreen = document.querySelector('.game-setup');
+    sounds.insertCoin.play();
     for (let n = 3; n < 6; n++) {
       const gridSize = document.querySelector(`.grid-size__${n}x${n}`);
       gridSize.innerHTML = gameSetupOptions.displayGridSize(n);

@@ -309,12 +309,17 @@ body {
   background: #000;
   color:#fff;
   text-align: center;
-  transform: scale(0);
+  /* transform: scale(0); */
+  transform: translateX(-100%);
   transition: all 0.8s;
 }
 
 .game-scores__scale-up {
   transform: scale(1);
+}
+
+.game-scores__move-right {
+  transform: translateX(0);
 }
 
 .game-scores h1 {
@@ -394,15 +399,17 @@ body {
   display: none;
 }
 
-.games-scores__save p {
+.game-scores__save  p  {
   color: var(--gamePink);
+  font-size: 1.2em;
 }
 
 .button__save-score {
   /* width: 280px; */
   margin: 0 auto;
   /* margin-bottom: 20px; */
-  padding: 10px;
+  margin-top: 25px;
+  padding: 10px 25px;
   color: #282828;
   background: #fff;
   border-radius: 10px;
@@ -410,11 +417,12 @@ body {
   font-size: 22px;
 }
 
-.button__go-back {
+.button__exit-scores {
   display: none;
-  width: 240px;
-  margin-bottom: 20px;
-  padding: 15px;
+  margin: 0 auto;
+  /* width: 240px; */
+  margin-top: 50px;
+  padding: 10px 25px;
   color: #282828;
   background: #fff;
   border-radius: 10px;

@@ -324,7 +324,7 @@ const scoreboard = {
     let newScoreboard = [];
     if (localStorage.getItem("tileQuakeScoreboard") === null) {
       for (let n = 10; n > 0; n--) {
-        newScoreboard.push({ user: 'TQA', score: n * 1000, level: 1 });
+        newScoreboard.push({ user: 'GQT', score: n * 1000, level: 1 });
       }
       localStorage.setItem('tileQuakeScoreboard', JSON.stringify(newScoreboard));
     }
@@ -354,6 +354,7 @@ const scoreboard = {
   display: ()=> {
     const scoreboardScreen = document.querySelector('.game-scores');
     const hiScoreTable = document.querySelector('.game-scores__content');
+    const exitScoresButton = document.querySelector('.button__exit-scores');
     
     scoreboard.readScores();
     const hiScoreHTML = scoreboard.data.map((scoreEntry, index) => {
@@ -364,13 +365,16 @@ const scoreboard = {
       `
     }).join('');
     hiScoreTable.innerHTML = hiScoreHTML;
-    scoreboardScreen.classList.add('game-scores__scale-up');
+    exitScoresButton.classList.add('d-block');
+    scoreboardScreen.classList.add('game-scores__move-right');
     scoreboardTimeout = setTimeout(scoreboard.hide, 6000);
   },
   
   hide: () => {
     const scoreboardScreen = document.querySelector('.game-scores');
-    scoreboardScreen.classList.remove('game-scores__scale-up');
+    const exitScoresButton = document.querySelector('.button__exit-scores');
+    scoreboardScreen.classList.remove('game-scores__move-right');
+    exitScoresButton.classList.remove('d-block');
     clearTimeout(scoreboardTimeout);
   },
 
@@ -397,7 +401,7 @@ const scoreboard = {
     const hiScoreTable = document.querySelector('.game-scores__content');
     const saveScoreDiv = document.querySelector('.game-scores__save');
     const saveScoreButton = document.querySelector('#save--score');
-    saveScoreButton.addEventListener('click', () => { scoreboard.saveScore(tablePosition, score); });
+    saveScoreButton.addEventListener('click', () => { scoreboard.saveScore(tablePosition, score); }, {once : true});
     let hiScoreHTML = '';
     scoreboard.readScores();
     let initialInput = `<form>
@@ -419,7 +423,17 @@ const scoreboard = {
       }
     });
     hiScoreTable.innerHTML = hiScoreHTML;
-    scoreboardScreen.classList.add('game-scores__scale-up');
+
+    const welcomeScreen = document.querySelector('.welcome');
+    const fireworkShow = document.querySelector('.puzzle-complete');
+    fireworkShow.classList.remove('d-block', 'pyro');
+    welcomeScreen.classList.remove('welcome__move-right');
+    const gameScreen = document.querySelector('.game-area');
+    gameScreen.classList.remove('game-area__move-left');
+    puzzleGame.toggleLastTile();
+    // welcomeTimeout = 1000;
+
+    scoreboardScreen.classList.add('game-scores__move-right');
     saveScoreDiv.classList.add('d-block');
     document.getElementById("initials--input").focus();
     if (score < 1) { 

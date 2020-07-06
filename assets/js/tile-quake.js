@@ -268,7 +268,6 @@ const puzzleGame = {
     const fromClass = fromTile.getAttribute('class');
     const toTile = document.querySelector(`#${blankTile.gridPos}`);
     const toClass = toTile.getAttribute('class');
-    sounds.tileMove.play();
 
     // swap the two tiles over - class and tile code
     toTile.setAttribute('class', fromClass);
@@ -276,6 +275,7 @@ const puzzleGame = {
     puzzleGame.tileGrid[gridTo.x][gridTo.y].tileCode = puzzleGame.tileGrid[gridFrom.x][gridFrom.y].tileCode;
     puzzleGame.tileGrid[gridFrom.x][gridFrom.y].tileCode = 0;
     if (!startShuffle) {
+      sounds.tileMove.play();
       puzzleGame.moves++;
       puzzleGame.updateGameInfo(['moves']);
     }

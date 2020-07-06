@@ -15,6 +15,8 @@ function gameTimer() {
 }
 
 const sounds = {
+  button: ( document.querySelector('#sound--button') ),
+  gotHiscore: ( document.querySelector('#sound--got-hiscore') ),
   insertCoin: ( document.querySelector('#sound--insert-coin') ),
   tileMove: ( document.querySelector('#sound--tile-click') )
 }
@@ -252,7 +254,9 @@ const puzzleGame = {
         if ( scoreboardIndex != (scoreboard.data.length + 1)) {
           const hiScoreMsg = document.querySelector('.score--high');
           hiScoreMsg.classList.add('d-block');
-          setTimeout(scoreboard.addNewScore.bind(null, scoreboardIndex, score), 4000);
+          sounds.gotHiscore.muted = false;
+          sounds.gotHiscore.play();
+          setTimeout(scoreboard.addNewScore.bind(null, scoreboardIndex, score), 5000);
         } else {
           const scoreOkButton = document.querySelector('.score--ok');
           scoreOkButton.classList.add('d-block');
@@ -364,12 +368,13 @@ const scoreboard = {
     hiScoreTable.innerHTML = hiScoreHTML;
     exitScoresButton.classList.add('d-block');
     scoreboardScreen.classList.add('game-scores__move-right');
-    scoreboardTimeout = setTimeout(scoreboard.hide, 6000);
+    scoreboardTimeout = setTimeout(scoreboard.hide, 7000);
   },
   
   hide: () => {
     const scoreboardScreen = document.querySelector('.game-scores');
     const exitScoresButton = document.querySelector('.button__exit-scores');
+    sounds.gotHiscore.muted = true;
     scoreboardScreen.classList.remove('game-scores__move-right');
     exitScoresButton.classList.remove('d-block');
     clearTimeout(scoreboardTimeout);
@@ -544,9 +549,21 @@ const setup = {
     const gameResetButton = document.querySelector('#reset--game');
     
     newGameButton.addEventListener('click', gameSetupOptions.displayGameSetup);
-    hiScoresButton.addEventListener('click', scoreboard.display);
-    closeHiScores.addEventListener('click', scoreboard.hide);
-    startGameButton.addEventListener('click', puzzleGame.showGameArea);
+    hiScoresButton.addEventListener('click', () => {
+      sounds.button.play();
+      scoreboard.display();
+    });
+
+    closeHiScores.addEventListener('click', () => {
+      sounds.button.play();
+      scoreboard.hide();
+    });
+
+    startGameButton.addEventListener('click', () => {
+      sounds.button.play();
+      puzzleGame.showGameArea();
+    });
+    
     scoreOKButton.addEventListener('click', () => { setup.welcomeScreen(true); });
     gameQuitButton.addEventListener('click', () => { setup.welcomeScreen(true); });
     gameResetButton.addEventListener('click', puzzleGame.resetPuzzle);

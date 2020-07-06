@@ -10,8 +10,14 @@
     <title>TILE QUAKE - puzzle slide game</title>
   </head>
   <body>
+    <audio id="sound--button">
+        <source src="assets/sounds/button.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="sound--got-hiscore">
+        <source src="assets/sounds/got_a_hiscore.mp3" type="audio/mpeg">
+    </audio>
     <audio id="sound--tile-click">
-        <source src="assets/sounds/tileclick.mp3" type="audio/mpeg">
+        <source src="assets/sounds/tile_click.mp3" type="audio/mpeg">
     </audio>
     <audio id="sound--insert-coin">
         <source src="assets/sounds/insert_coin.mp3" type="audio/mpeg">
@@ -20,7 +26,7 @@
       <div class="welcome">
         <img class="welcome__logo" src="assets/images/logo.png" alt="Tile Quake" title="Tile Quake"/>
         <button id="new--game" class="welcome__button">INSERT COIN</button>
-        <button id="hi--scores" class="welcome__button">HIGH SCORES</button>
+        <button id="hi--scores" class="welcome__button">HI SCORES</button>
       </div>
       <div class="game-setup">
         <h1 class="screen-title">GAME OPTIONS</h1>

@@ -356,6 +356,7 @@ const scoreboard = {
     const scoreboardScreen = document.querySelector('.game-scores');
     const hiScoreTable = document.querySelector('.game-scores__content');
     const exitScoresButton = document.querySelector('.button__exit-scores');
+    let displayTimeout;
     
     scoreboard.readScores();
     const hiScoreHTML = scoreboard.data.map((scoreEntry, index) => {
@@ -368,13 +369,18 @@ const scoreboard = {
     hiScoreTable.innerHTML = hiScoreHTML;
     exitScoresButton.classList.add('d-block');
     scoreboardScreen.classList.add('game-scores__move-right');
-    scoreboardTimeout = setTimeout(scoreboard.hide, 7000);
+    if (sounds.gotHiscore.duration - sounds.gotHiscore.currentTime < 8) {
+      displayTimeout = 7000;
+    } else {
+      displayTimeout = ((sounds.gotHiscore.duration - 3 - sounds.gotHiscore.currentTime) * 1000);
+    }
+    scoreboardTimeout = setTimeout(scoreboard.hide, displayTimeout);
   },
   
   hide: () => {
     const scoreboardScreen = document.querySelector('.game-scores');
     const exitScoresButton = document.querySelector('.button__exit-scores');
-    sounds.gotHiscore.muted = true;
+    // sounds.gotHiscore.muted = true;
     scoreboardScreen.classList.remove('game-scores__move-right');
     exitScoresButton.classList.remove('d-block');
     clearTimeout(scoreboardTimeout);
@@ -563,7 +569,7 @@ const setup = {
       sounds.button.play();
       puzzleGame.showGameArea();
     });
-    
+
     scoreOKButton.addEventListener('click', () => { setup.welcomeScreen(true); });
     gameQuitButton.addEventListener('click', () => { setup.welcomeScreen(true); });
     gameResetButton.addEventListener('click', puzzleGame.resetPuzzle);

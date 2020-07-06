@@ -14,6 +14,10 @@ function gameTimer() {
   if (puzzleGame.timer < 0) { clearInterval(puzzleGame.gameTime); }
 }
 
+const sounds = {
+  tileMove: ( document.querySelector('#sound__tileClick') )
+}
+
 // Object to handle all in game functions
 const puzzleGame = {
   puzzleSize: 3,  //force value for now
@@ -264,6 +268,7 @@ const puzzleGame = {
     const fromClass = fromTile.getAttribute('class');
     const toTile = document.querySelector(`#${blankTile.gridPos}`);
     const toClass = toTile.getAttribute('class');
+    sounds.tileMove.play();
 
     // swap the two tiles over - class and tile code
     toTile.setAttribute('class', fromClass);

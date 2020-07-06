@@ -313,9 +313,10 @@ const scoreboard = {
 
   checkExists: () => {
     let newScoreboard = [];
+    let nextChar;
     if (localStorage.getItem("tileQuakeScoreboard") === null) {
       for (let n = 10; n > 0; n--) {
-        newScoreboard.push({ user: 'GQT', score: n * 1000, level: 1 });
+        newScoreboard.push({ user: ('GQ' + String.fromCharCode(75 - n)), score: n * 1000, level: 1 });
       }
       localStorage.setItem('tileQuakeScoreboard', JSON.stringify(newScoreboard));
     }

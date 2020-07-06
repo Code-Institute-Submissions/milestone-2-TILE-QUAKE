@@ -247,7 +247,7 @@ const puzzleGame = {
         if ( scoreboardIndex != (scoreboard.data.length + 1)) {
           const hiScoreMsg = document.querySelector('.score--high');
           hiScoreMsg.classList.add('d-block');
-          setTimeout(scoreboard.addNewScore.bind(null, scoreboardIndex, score), 8000);
+          setTimeout(scoreboard.addNewScore.bind(null, scoreboardIndex, score), 4000);
         } else {
           const scoreOkButton = document.querySelector('.score--ok');
           scoreOkButton.classList.add('d-block');
@@ -393,7 +393,7 @@ const scoreboard = {
     saveScoreButton.addEventListener('click', () => { scoreboard.saveScore(tablePosition, score); }, {once : true});
     let hiScoreHTML = '';
     scoreboard.readScores();
-    let initialInput = `<form>
+    let initialInput = `<form id="score--form">
                         <input id="initials--input" class="game-scores__entry-input" type="text" maxlength="3" pattern="[A-Za-z]{3}">
                         </form>`;
     scoreboard.data.forEach((scoreEntry, index) => {
@@ -412,7 +412,11 @@ const scoreboard = {
       }
     });
     hiScoreTable.innerHTML = hiScoreHTML;
-
+    const userInitialsForm = document.querySelector('#score--form');
+    userInitialsForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      scoreboard.saveScore(tablePosition, score);
+    });
     const welcomeScreen = document.querySelector('.welcome');
     const fireworkShow = document.querySelector('.puzzle-complete');
     fireworkShow.classList.remove('d-block', 'pyro');

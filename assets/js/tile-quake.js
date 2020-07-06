@@ -312,6 +312,26 @@ const puzzleGame = {
     puzzleGame.updateGameInfo(['difficulty', 'moves', 'timer']);
     clearInterval(puzzleGame.gameTime);
     puzzleGame.gameTime = setInterval(gameTimer, 1000);
+  },
+
+  startTileRumble: () => {
+    let nextRumble = "right";
+    for (let x = 0; x < puzzleGame.puzzleSize; x++) {
+      for (let y = 0; y < puzzleGame.puzzleSize; y++) {
+        if ((x === 0 || x === 2 || x === 4) && y === 0) { nextRumble = "right"; }
+        if ((x === 1 || x === 3) && y === 0) { nextRumble = "left"; }
+        let gridTile = document.querySelector(`#gridpos-${x}${y}`);
+        gridTile.classList.add(`rumble__${nextRumble}`);
+        if (nextRumble === "right") { nextRumble = "left"; } else { nextRumble = "right"; }
+      }
+    }
+  },
+
+  stopTileRumble: () => {
+    const gridTiles = document.querySelectorAll('[id^=gridpos]');
+    gridTiles.forEach(tile => {
+      tile.classList.remove('rumble__right','rumble__left');
+    });
   }
 
 }

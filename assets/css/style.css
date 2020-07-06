@@ -503,7 +503,7 @@ body {
   width: 12em;
   height: 12em;
   margin: 0 auto;
-  background: slategray;
+  background: var(--gameGreen);
   font-size: 50px; /* used to increase grid square size via ems*/
   cursor: pointer;
 }
@@ -630,6 +630,31 @@ body {
 .tile__border {
   border: 2px ridge;
 }
+
+/* Tile Rumble */
+
+@keyframes rumbleRight
+  {
+    0% {transform: rotateZ(2deg);}
+    50% {transform: rotateZ(-2deg);}
+    100% {transform: rotateZ(2deg);}
+  }
+
+@keyframes rumbleLeft
+  {
+    0% {transform: rotateZ(-2deg);}
+    50% {transform: rotateZ(2deg);}
+    100% {transform: rotateZ(-2deg);}
+  }
+
+.rumble__right {
+    animation: rumbleRight 0.25s ease infinite;
+}
+
+.rumble__left {
+    animation: rumbleLeft 0.25s ease infinite;
+}
+
 
 /* Puzzle complete */
 

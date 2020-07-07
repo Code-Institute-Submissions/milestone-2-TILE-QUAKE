@@ -145,10 +145,11 @@ const puzzleGame = {
   shuffleTileGrid: async () => {
     let isTileNextToBlank;
     let previousTile = "";
-
+    const diffLevel = (puzzleGame.difficultyLevel * 2) + 1;
+    const tileDelay = (diffLevel > 6) ? (2000 / diffLevel) : (1000 / diffLevel);
     // shuffle the grid depending on the difficulty level
     // find all the tiles next to the blank tile
-    for (let n = 0; n < ((puzzleGame.difficultyLevel * 2) + 1); n++) {
+    for (let n = 0; n < diffLevel; n++) {
       let tilesNextToBlank = [];
       let blankTileGridID = puzzleGame.blankTileDetails();
       for (x = 0; x < puzzleGame.puzzleSize; x++) {
@@ -168,7 +169,7 @@ const puzzleGame = {
       }
       while (tilesNextToBlank[0] === previousTile);
       
-      await puzzleGame.sleep(750);
+      await puzzleGame.sleep(tileDelay);
       puzzleGame.moveTile(tilesNextToBlank[0], true);
       previousTile = blankTileGridID.gridPos;
     }

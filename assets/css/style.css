@@ -20,6 +20,7 @@ body {
   position: relative;
   overflow-x: hidden;
   height: 100vh;
+  width: 100%;
 }
 
 /* Helpers */
@@ -785,7 +786,7 @@ body {
 
 /* end Arcade button */
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .game-setup__content {
     margin: 25px;
     display: grid;
@@ -802,10 +803,6 @@ body {
   .game-area {
       grid-template-columns: 1fr;
       grid-template-rows: auto auto 1fr auto auto;
-  }
-
-  .game-area__grid {
-    font-size: 50px; /* used to increase grid square size via ems*/
   }
 
   .game-area__border {
@@ -835,6 +832,13 @@ body {
   .info__photo-size {
     height: 80px;
     width: auto;
+  }
+
+}
+
+@media (max-width: 640px) {
+  .game-area__grid {
+    font-size: 25px; /* used to increase grid square size via ems*/
   }
 
 }

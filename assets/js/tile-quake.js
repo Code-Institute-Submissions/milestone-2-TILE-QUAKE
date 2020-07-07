@@ -516,11 +516,15 @@ const gameSetupOptions = {
 
   updatePuzzleImage: (imageIndex) => {
     const root = document.documentElement;
-    const image = `url('/assets/images/puzzles/img${imageIndex}.jpg')`;
+    const screenWidth = document.querySelector(".wrapper").offsetWidth;
+    let imageSize = '';
+    if (screenWidth < 640) { imageSize = '_300x300'; }
+    const image = `url('/assets/images/puzzles/img${imageIndex}${imageSize}.jpg')`;
     const miniPhoto = document.querySelector('.info__photo');
     miniPhoto.innerHTML = `<img class="info__photo-size" src="assets/images/puzzles/img${imageIndex}.jpg" 
     alt="Puzzle image" title="Puzzle image"/>`;
     root.style.setProperty('--chosenImage', image);
+    console.log({image});
   },
 
   selectPuzzleImage: (n) => {
@@ -550,6 +554,12 @@ const gameSetupOptions = {
     welcomeScreen.classList.add('welcome__move-right');
     gameSetupOptions.showPuzzleImage(puzzleGame.puzzleImageIndex);
     setupScreen.classList.add('game-setup__move-right');
+  },
+
+  resize: () => {
+    console.log("height: ", window.innerHeight, "px");
+    console.log("width: ", window.innerWidth, "px");
+    gameSetupOptions.updatePuzzleImage(puzzleGame.puzzleImageIndex);
   }
 
 }
@@ -584,6 +594,8 @@ const setup = {
     const scoreOKButton = document.querySelector('.score--ok');
     const gameQuitButton = document.querySelector('#quit--game');
     const gameResetButton = document.querySelector('#reset--game');
+
+    window.onresize = gameSetupOptions.resize;
     
     newGameButton.addEventListener('click', gameSetupOptions.displayGameSetup);
     hiScoresButton.addEventListener('click', () => {

@@ -15,6 +15,7 @@ function gameTimer() {
 }
 
 const sounds = {
+  tileRumble: ( document.querySelector('#sound--tile-rumble') ),
   button: ( document.querySelector('#sound--button') ),
   gotHiscore: ( document.querySelector('#sound--got-hiscore') ),
   insertCoin: ( document.querySelector('#sound--insert-coin') ),
@@ -310,7 +311,11 @@ const puzzleGame = {
     puzzleGame.tileGrid = Array.from(Array(puzzleGame.puzzleSize), () => new Array(puzzleGame.puzzleSize));
     puzzleGame.createHTMLGrid();
     puzzleGame.initPuzzle();
-    puzzleGame.shuffleTileGrid();
+    sounds.tileRumble.play();
+    puzzleGame.startTileRumble();
+    const rumbleON = setTimeout(puzzleGame.shuffleTileGrid, 500);
+    const rumbleOFF = setTimeout(puzzleGame.stopTileRumble, 2500);
+    // puzzleGame.shuffleTileGrid();
     puzzleGame.moves = 0;
     puzzleGame.timer = puzzleGame.difficultyTime[puzzleGame.difficultyLevel - 1];
     gameSetupOptions.updatePuzzleImage(puzzleGame.puzzleImageIndex);

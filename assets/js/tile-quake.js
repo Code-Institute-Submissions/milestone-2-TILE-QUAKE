@@ -137,7 +137,11 @@ const puzzleGame = {
     return array;
   },
 
-  shuffleTileGrid: () => {
+  sleep: (ms) => {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  },
+
+  shuffleTileGrid: async () => {
     let isTileNextToBlank;
     let previousTile = "";
 
@@ -162,7 +166,8 @@ const puzzleGame = {
           puzzleGame.shuffle(tilesNextToBlank);
       }
       while (tilesNextToBlank[0] === previousTile);
-
+      
+      await puzzleGame.sleep(750);
       puzzleGame.moveTile(tilesNextToBlank[0], true);
       previousTile = blankTileGridID.gridPos;
     }

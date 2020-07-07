@@ -516,7 +516,7 @@ const gameSetupOptions = {
 
   updatePuzzleImage: (imageIndex) => {
     const root = document.documentElement;
-    const image = `url('../images/puzzles/img${imageIndex}.jpg')`;
+    const image = `url('/assets/images/puzzles/img${imageIndex}.jpg')`;
     const miniPhoto = document.querySelector('.info__photo');
     miniPhoto.innerHTML = `<img class="info__photo-size" src="assets/images/puzzles/img${imageIndex}.jpg" 
     alt="Puzzle image" title="Puzzle image"/>`;

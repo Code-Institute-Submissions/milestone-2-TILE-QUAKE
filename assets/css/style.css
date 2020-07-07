@@ -5,7 +5,7 @@
   --gameRed: rgb(245, 10, 10);
   --gameGreen: rgb(11, 206, 4);
   --gamePink: rgb(243, 76, 218);
-  --chosenImage: url('../images/puzzles/img1.jpg');
+  --chosenImage: url('/assets/images/puzzles/img1.jpg');
 }
 
 body {
@@ -802,6 +802,10 @@ body {
   .game-area {
       grid-template-columns: 1fr;
       grid-template-rows: auto auto 1fr auto auto;
+  }
+
+  .game-area__grid {
+    font-size: 50px; /* used to increase grid square size via ems*/
   }
 
   .game-area__border {

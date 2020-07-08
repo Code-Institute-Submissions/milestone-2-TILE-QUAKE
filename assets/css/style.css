@@ -806,6 +806,19 @@ body {
     font-size: 14px;
   }
 
+  .game-scores__logo {
+    height: 84px;
+  }
+
+  .game-scores__headers {
+    margin: 20px 20px 0 20px;
+  }
+
+  .game-scores__content {
+    row-gap: 14px;
+    margin: 15px 20px 20px 20px;
+  }
+
   .game-area {
       grid-template-columns: 1fr;
       grid-template-rows: auto auto 1fr auto auto;

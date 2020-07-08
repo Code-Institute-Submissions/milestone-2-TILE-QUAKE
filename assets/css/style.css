@@ -458,7 +458,7 @@ body {
   color: white;
   padding: 20px 10px 20px 10px;
   text-align: center;
-  font-size: 0.9em;
+  font-size: 1.2em;
   text-shadow: 1px 1px #000;
 }
 
@@ -519,7 +519,7 @@ body {
   color: white;
   padding: 20px 10px 20px 10px;
   text-align: center;
-  font-size: 20px;
+  /* font-size: 20px; */
 }
 
 /* Puzzle grid */
@@ -752,7 +752,7 @@ body {
   color: white;
   outline: none;
   font-family: "Press Start 2P", cursive;
-  font-size: 16px;
+  font-size: 1.2em;
   cursor: pointer;
 }
 
@@ -786,7 +786,13 @@ body {
 
 /* end Arcade button */
 
-@media (max-width: 1024px) {
+/* Media queries */
+
+@media (max-width: 768px) {
+  body {
+    font-size: 8px;
+  }
+
   .game-setup__content {
     margin: 25px;
     display: grid;
@@ -814,31 +820,35 @@ body {
   .game-area__info {
     /* grid-template-columns: repeat(5, 1fr); */
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 120px;
-    align-items: center;
-    padding: 20px 10px 20px 10px;
-    text-align: center;
-    font-size: 0.9em;
+    grid-template-rows: 70px;
+    padding: 0;
+    /* font-size: 0.7em; */
+  }
+
+  .info__logo-size {
+    width: 74px;
   }
 
   .game-area__buttons {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 120px;
-    align-items: center;
-    text-align: center;
-    font-size: 0.9em;
+    padding: 0;
+    /* font-size: 0.9em; */
+  }
+
+  [class^=arcade__button] {
+    width: 70px;
+    height: 70px;
+    /* font-size: 0.6em; */
+  }
+
+  .game-area__grid {
+    font-size: 25px; /* used to increase grid square size via ems*/
   }
 
   .info__photo-size {
-    height: 80px;
+    height: 54px;
     width: auto;
-  }
-
-}
-
-@media (max-width: 640px) {
-  .game-area__grid {
-    font-size: 25px; /* used to increase grid square size via ems*/
   }
 
 }

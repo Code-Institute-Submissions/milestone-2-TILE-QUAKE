@@ -518,7 +518,7 @@ const gameSetupOptions = {
     const root = document.documentElement;
     const screenWidth = document.querySelector(".wrapper").offsetWidth;
     let imageSize = '';
-    if (screenWidth < 640) { imageSize = '_300x300'; }
+    if (screenWidth < 768) { imageSize = '_300x300'; }
     const image = `url('/assets/images/puzzles/img${imageIndex}${imageSize}.jpg')`;
     const miniPhoto = document.querySelector('.info__photo');
     miniPhoto.innerHTML = `<img class="info__photo-size" src="assets/images/puzzles/img${imageIndex}.jpg" 

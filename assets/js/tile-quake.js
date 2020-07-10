@@ -343,6 +343,11 @@ const puzzleGame = {
     gridTiles.forEach(tile => {
       tile.classList.remove('rumble__right','rumble__left');
     });
+  },
+
+  checkSafari: () => {
+    return isSafari = !!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/);
+    // const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
   }
 
 }
@@ -517,9 +522,14 @@ const gameSetupOptions = {
   updatePuzzleImage: (imageIndex) => {
     const root = document.documentElement;
     const screenWidth = document.querySelector(".wrapper").offsetWidth;
+
+    // Safari appears to look for CSS background images from the root rather than css folder
+    let imagePathStart = '..';
+    if (puzzleGame.checkSafari()) { imagePathStart = 'assets'; } 
+
     let imageSize = '';
     if (screenWidth < 768) { imageSize = '_300x300'; }
-    const image = `url('/assets/images/puzzles/img${imageIndex}${imageSize}.jpg')`;
+    const image = `url('${imagePathStart}/images/puzzles/img${imageIndex}${imageSize}.jpg')`;
     const miniPhoto = document.querySelector('.info__photo');
     miniPhoto.innerHTML = `<img class="info__photo-size" src="assets/images/puzzles/img${imageIndex}.jpg" 
     alt="Puzzle image" title="Puzzle image"/>`;

@@ -234,8 +234,10 @@ const puzzleGame = {
     const totalScoreElement = document.querySelector('#score--total');
     const baseScore = puzzleGame.difficultyLevel * 1000;
     const minimumMoves = ((puzzleGame.difficultyLevel * 2) + 1);
-    const moveBonus = ((minimumMoves * 3) - puzzleGame.moves) * 500;
-    const timeBonus = puzzleGame.timer * 250;
+    let moveBonus = ((minimumMoves * 3) - puzzleGame.moves) <= 0 ? 0 : ((minimumMoves * 3) - puzzleGame.moves) * 500;
+    let timeBonus = puzzleGame.timer <= 0 ? 0 : puzzleGame.timer * 250;
+    // if (moveBonus <= 0) { moveBonus = 0; }
+    // if (timeBonus <= 0) { timeBonus = 0; }
     const totalScore = baseScore + moveBonus + timeBonus;
     baseScoreElement.textContent = baseScore;
     moveBonusElement.textContent = moveBonus;

@@ -686,13 +686,13 @@ body {
 }
 
 .puzzle-complete__message h1 {
-  font-size: 2.4em;
+  font-size: 2em;
   text-shadow: 1px 1px var(--gameRed);
 }
 
 .puzzle-complete__message h2 {
   padding-bottom: 25px;
-  font-size: 2.2em;
+  font-size: 1.9em;
   text-shadow: 1px 1px var(--gameRed);
 }
 
@@ -701,8 +701,9 @@ body {
   font-size: 1.2em;
 }
 
-.score--ok {
+.score-ok__button {
   display: none;
+  margin: 0 auto;
 }
 
 .score--high {
@@ -717,7 +718,7 @@ body {
 [class^=score__] {
   padding-bottom: 15px;
   text-align: right;
-  font-size: 2em;
+  font-size: 1.6em;
   text-shadow: 1px 1px #fff;
 }
 

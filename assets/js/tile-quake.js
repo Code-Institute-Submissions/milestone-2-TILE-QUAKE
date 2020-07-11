@@ -265,7 +265,7 @@ const puzzleGame = {
           sounds.gotHiscore.play();
           setTimeout(scoreboard.addNewScore.bind(null, scoreboardIndex, score), 5000);
         } else {
-          const scoreOkButton = document.querySelector('.score--ok');
+          const scoreOkButton = document.querySelector('.score-ok__button');
           scoreOkButton.classList.add('d-block');
         }
       }
@@ -601,7 +601,7 @@ const setup = {
     const startGameButton = document.querySelector('#start--game');
     const difficultyInput = document.querySelector('#difficulty--input');
     const gridOptions = document.querySelectorAll('.js-grid-option');
-    const scoreOKButton = document.querySelector('.score--ok');
+    const scoreOKButton = document.querySelector('.score-ok__button');
     const gameQuitButton = document.querySelector('#quit--game');
     const gameResetButton = document.querySelector('#reset--game');
 

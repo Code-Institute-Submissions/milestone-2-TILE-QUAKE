@@ -23,6 +23,25 @@ body {
   width: 100%;
 }
 
+.ie-error {
+  color: #fff;
+  text-align: center;
+}
+
+.ie-error__logo {
+  height: 200px;
+  width: auto;
+}
+
+.ie-error__list {
+  display: inline-block;
+}
+
+.ie-error__browsers {
+  text-align: left;
+  line-height: 3;
+}
+
 /* Helpers */
 
 .screen-title {
@@ -743,6 +762,10 @@ body {
 
 .d-block {
   display: block;
+}
+
+.d-none {
+  display: none;
 }
 
 /* Arcade push button */

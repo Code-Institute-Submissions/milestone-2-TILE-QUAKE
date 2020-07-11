@@ -33,6 +33,23 @@
         <source src="assets/sounds/insert_coin.mp3" type="audio/mpeg">
     </audio>
     <div class="wrapper">
+      <!-- the error message div below will only display for Internet Explorer -->
+      <div class="ie-error">
+        <p>ERROR: MS-8008 - BROWSER NOT SUPPORTED</p>
+        <img class="ie-error__logo" src="assets/images/logo.png" alt="Tile Quake" title="Tile Quake"/>
+        <br>
+        <p>Sorry, Tile Quake does not support Microsoft Internet Explorer.</p>
+        <br>
+        <p>Please use one of the following web browsers...</p>
+        <div class="ie-error__list">
+          <ul class="ie-error__browsers">
+            <li>Chrome</li>
+            <li>Firefox</li>
+            <li>Safari</li>
+            <li>Edge</li>
+          </ul>
+        </div>
+      </div>
       <div class="welcome">
         <img class="welcome__logo" src="assets/images/logo.png" alt="Tile Quake" title="Tile Quake"/>
         <button id="new--game" class="welcome__button">INSERT COIN</button>

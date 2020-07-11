@@ -579,6 +579,8 @@ const gameSetupOptions = {
 // Object to handle the welcome logo screen and setup any eventListeners
 const setup = {
   welcomeScreen: (inGame) => {
+    const errorIE = document.querySelector('.ie-error');
+    errorIE.classList.add('d-none');
     const welcomeScreen = document.querySelector('.welcome');
     const fireworkShow = document.querySelector('.puzzle-complete');
     let welcomeTimeout = 400;

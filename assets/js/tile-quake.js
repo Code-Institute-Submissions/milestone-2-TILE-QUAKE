@@ -312,7 +312,6 @@ const puzzleGame = {
   },
 
   resetPuzzle: () => {
-    console.log('Reset game');
     puzzleGame.tileGrid = Array.from(Array(puzzleGame.puzzleSize), () => new Array(puzzleGame.puzzleSize));
     puzzleGame.createHTMLGrid();
     puzzleGame.initPuzzle();
@@ -542,7 +541,6 @@ const gameSetupOptions = {
     miniPhoto.innerHTML = `<img class="info__photo-size" src="assets/images/puzzles/img${imageIndex}.jpg" 
     alt="Puzzle image" title="Puzzle image"/>`;
     root.style.setProperty('--chosenImage', image);
-    console.log({image});
   },
 
   selectPuzzleImage: (n) => {
@@ -575,8 +573,6 @@ const gameSetupOptions = {
   },
 
   resize: () => {
-    console.log("height: ", window.innerHeight, "px");
-    console.log("width: ", window.innerWidth, "px");
     gameSetupOptions.updatePuzzleImage(puzzleGame.puzzleImageIndex);
   }
 

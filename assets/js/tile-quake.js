@@ -369,7 +369,8 @@ const scoreboard = {
     let nextChar;
     if (localStorage.getItem("tileQuakeScoreboard") === null) {
       for (let n = 10; n > 0; n--) {
-        newScoreboard.push({ user: ('GQ' + String.fromCharCode(75 - n)), score: n * 1000, level: 1 });
+        newScoreboard.push({ user: 'QTG', score: n * 1000, level: 1 });
+        // newScoreboard.push({ user: ('GQ' + String.fromCharCode(75 - n)), score: n * 1000, level: 1 });
       }
       localStorage.setItem('tileQuakeScoreboard', JSON.stringify(newScoreboard));
     }
@@ -387,11 +388,14 @@ const scoreboard = {
     scoreboard.readScores();
     let scoreboardPosition = scoreboard.data.length + 1;
     scoreboard.data.forEach((scoreEntry, index) => {
+      let tableScore = scoreEntry.score;
+      console.log({index}, {tableScore});
       if ((gameScore > scoreEntry.score && scoreboardPosition > scoreboard.data.length) ||
-          (gameScore === scoreEntry.score && scoreEntry.user === 'TQA')) {
+          (gameScore === scoreEntry.score && scoreEntry.user === 'QTG')) {
         scoreboardPosition = index;
       }
     });
+    console.log({gameScore}, {scoreboardPosition});
     return scoreboardPosition;
   },
 
@@ -447,17 +451,19 @@ const scoreboard = {
   },
 
   addNewScore: (tablePosition, score) => {
+    console.log(`Add new score of ${score} at position ${tablePosition}`);
     const scoreboardScreen = document.querySelector('.game-scores');
     const hiScoreTable = document.querySelector('.game-scores__content');
     const saveScoreDiv = document.querySelector('.game-scores__save');
-    const saveScoreButton = document.querySelector('#save--score');
-    saveScoreButton.addEventListener('click', () => { scoreboard.saveScore(tablePosition, score); }, {once : true});
+    // const saveScoreButton = document.querySelector('#save--score');
+    // saveScoreButton.addEventListener('click', () => { scoreboard.saveScore(tablePosition, score); }, {once : true});
     let hiScoreHTML = '';
     scoreboard.readScores();
     let initialInput = `<form id="score--form">
                         <input id="initials--input" class="game-scores__entry-input" type="text" maxlength="3" pattern="[A-Za-z]{3}">
                         </form>`;
-    for (let index = 0; index < scoreboard.data.length - 1; index++) {
+    console.log(`Scoreboard length : ${scoreboard.data.length}`);
+    for (let index = 0; index < scoreboard.data.length; index++) {
       let scoreEntry = scoreboard.data[index];
       if (index === tablePosition) {
         hiScoreHTML += `
@@ -466,11 +472,13 @@ const scoreboard = {
         <div class='game-scores__score game-scores__entry-line'><span class=''>${score}</span></div>
         `;
       }
-      hiScoreHTML += `
-        <div class='game-scores__user' style='color: hsl(${(index * 25)}, 100%, 50%);'>${scoreEntry.user}</div>
-        <div class='game-scores__level' style='color: hsl(${(index * 25)}, 100%, 50%);'>${scoreEntry.level}</div>
-        <div class='game-scores__score' style='color: hsl(${(index * 25)}, 100%, 50%);'>${scoreEntry.score}</div>
-        `;
+      if (index < scoreboard.data.length - 1) {
+        hiScoreHTML += `
+          <div class='game-scores__user' style='color: hsl(${(index * 25)}, 100%, 50%);'>${scoreEntry.user}</div>
+          <div class='game-scores__level' style='color: hsl(${(index * 25)}, 100%, 50%);'>${scoreEntry.level}</div>
+          <div class='game-scores__score' style='color: hsl(${(index * 25)}, 100%, 50%);'>${scoreEntry.score}</div>
+          `;
+      }
     }
     hiScoreTable.innerHTML = hiScoreHTML;
     const userInitialsForm = document.querySelector('#score--form');
@@ -621,6 +629,8 @@ const setup = {
 
     closeHiScores.addEventListener('click', () => {
       sounds.button.play();
+      sounds.gotHiscore.pause();
+      sounds.gotHiscore.currentTime = 0;
       scoreboard.hide();
     });
 

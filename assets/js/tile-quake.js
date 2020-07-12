@@ -316,6 +316,10 @@ const puzzleGame = {
     puzzleGame.tileGrid = Array.from(Array(puzzleGame.puzzleSize), () => new Array(puzzleGame.puzzleSize));
     puzzleGame.createHTMLGrid();
     puzzleGame.initPuzzle();
+    const hiScoreMsg = document.querySelector('.score--high');
+    hiScoreMsg.classList.remove('d-block');
+    const scoreOkButton = document.querySelector('.score-ok__button');
+    scoreOkButton.classList.remove('d-block');
     sounds.tileRumble.play();
     puzzleGame.startTileRumble();
     const rumbleON = setTimeout(puzzleGame.shuffleTileGrid, 500);

@@ -226,7 +226,7 @@ const puzzleGame = {
 
   showScore: () => {
     const fireworkShow = document.querySelector('.puzzle-complete');
-    fireworkShow.classList.add('pyro');
+    // fireworkShow.classList.add('pyro');
     fireworkShow.classList.add('d-block');
     const baseScoreElement = document.querySelector('#score--base');
     const moveBonusElement = document.querySelector('#score--move');
@@ -262,6 +262,8 @@ const puzzleGame = {
         scoreboardIndex = scoreboard.isAHighScore(score);
         if ( scoreboardIndex != (scoreboard.data.length + 1)) {
           const hiScoreMsg = document.querySelector('.score--high');
+          const fireworkShow = document.querySelector('.puzzle-complete');
+          fireworkShow.classList.add('pyro');
           hiScoreMsg.classList.add('d-block');
           sounds.gotHiscore.muted = false;
           sounds.gotHiscore.play();

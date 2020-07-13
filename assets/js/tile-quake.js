@@ -220,6 +220,7 @@ const puzzleGame = {
     gridTiles.forEach(tile => {
       tile.classList.remove('tile__border');
       tile.removeAttribute('onclick');
+      tile.removeAttribute('ontouchend');
       tile.classList.add('cursor__default');
     });
   },
@@ -306,6 +307,7 @@ const puzzleGame = {
         gridDiv = document.createElement("div");
         gridDiv.id = `gridpos-${x}${y}`;
         gridDiv.setAttribute('onclick', 'puzzleGame.canTileMove(this.id)');
+        gridDiv.setAttribute('ontouchend', 'puzzleGame.canTileMove(this.id)');
         pageGrid.appendChild(gridDiv);
       }
     }
@@ -608,6 +610,10 @@ const setup = {
     }, welcomeTimeout);
   },
 
+  preventBehavior: (e) => {
+    e.preventDefault();
+  },
+
   eventListeners: () => {
     const newGameButton = document.querySelector('#new--game');
     const hiScoresButton = document.querySelector('#hi--scores');
@@ -618,8 +624,10 @@ const setup = {
     const scoreOKButton = document.querySelector('.score-ok__button');
     const gameQuitButton = document.querySelector('#quit--game');
     const gameResetButton = document.querySelector('#reset--game');
+    const gameArea = document.querySelector('.game-area__content');
 
     window.onresize = gameSetupOptions.resize;
+    gameArea.addEventListener("touchmove", setup.preventBehavior, {passive: false});
     
     newGameButton.addEventListener('click', gameSetupOptions.displayGameSetup);
     hiScoresButton.addEventListener('click', () => {

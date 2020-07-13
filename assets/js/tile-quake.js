@@ -624,10 +624,10 @@ const setup = {
     const scoreOKButton = document.querySelector('.score-ok__button');
     const gameQuitButton = document.querySelector('#quit--game');
     const gameResetButton = document.querySelector('#reset--game');
-    const gameArea = document.querySelector('.game-area__content');
+    const gameAreaGrid = document.querySelector('.game-area__grid');
 
     window.onresize = gameSetupOptions.resize;
-    gameArea.addEventListener("touchmove", setup.preventBehavior, {passive: false});
+    gameAreaGrid.addEventListener("touchmove", setup.preventBehavior, {passive: false});
     
     newGameButton.addEventListener('click', gameSetupOptions.displayGameSetup);
     hiScoresButton.addEventListener('click', () => {

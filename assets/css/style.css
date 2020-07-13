@@ -16,6 +16,10 @@ body {
   font-size: 14px;
 }
 
+div {
+  -webkit-tap-highlight-color: rgba(0,0,0,0); /* mobile image click */
+}
+
 .wrapper {
   position: relative;
   overflow-x: hidden;

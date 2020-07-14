@@ -499,11 +499,15 @@ const scoreboard = {
 
     scoreboardScreen.classList.add('game-scores__move-right');
     saveScoreDiv.classList.add('d-block');
-    document.getElementById("initials--input").focus();
+    let inputTimeout = setTimeout(scoreboard.inputFocus, 1000);
     if (score < 1) { 
       scoreboardTimeout = setTimeout(scoreboard.hide, 6000);
     }
   },
+
+  inputFocus: () => {
+    document.getElementById("initials--input").focus();
+  }
 }
 
 // Object to handle all game setup options

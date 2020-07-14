@@ -404,7 +404,7 @@ const scoreboard = {
   display: ()=> {
     const scoreboardScreen = document.querySelector('.game-scores');
     const hiScoreTable = document.querySelector('.game-scores__content');
-    const exitScoresButton = document.querySelector('.button__exit-scores');
+    const exitScoreDiv = document.querySelector('.game-scores__exit');
     let displayTimeout;
     
     scoreboard.readScores();
@@ -416,7 +416,7 @@ const scoreboard = {
       `
     }).join('');
     hiScoreTable.innerHTML = hiScoreHTML;
-    exitScoresButton.classList.add('d-block');
+    exitScoreDiv.classList.add('d-block');
     scoreboardScreen.classList.add('game-scores__move-right');
     if (sounds.gotHiscore.duration - sounds.gotHiscore.currentTime < 8) {
       displayTimeout = 7000;
@@ -428,10 +428,10 @@ const scoreboard = {
   
   hide: () => {
     const scoreboardScreen = document.querySelector('.game-scores');
-    const exitScoresButton = document.querySelector('.button__exit-scores');
+    const exitScoreDiv = document.querySelector('.game-scores__exit');
     // sounds.gotHiscore.muted = true;
     scoreboardScreen.classList.remove('game-scores__move-right');
-    exitScoresButton.classList.remove('d-block');
+    exitScoreDiv.classList.remove('d-block');
     clearTimeout(scoreboardTimeout);
   },
 

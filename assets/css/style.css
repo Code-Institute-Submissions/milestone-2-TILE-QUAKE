@@ -447,9 +447,14 @@ div {
   font-size: 1.5em;
 }
 
-.button__exit-scores {
+.game-scores__exit {
   display: none;
+}
+
+.button__exit-scores {
+  /* display: none; */
   margin: 0 auto;
+  
   /* width: 240px; */
   margin-top: 50px;
   padding: 10px 25px;

@@ -457,11 +457,9 @@ const scoreboard = {
     const scoreboardScreen = document.querySelector('.game-scores');
     const hiScoreTable = document.querySelector('.game-scores__content');
     const saveScoreDiv = document.querySelector('.game-scores__save');
-    // const saveScoreButton = document.querySelector('#save--score');
-    // saveScoreButton.addEventListener('click', () => { scoreboard.saveScore(tablePosition, score); }, {once : true});
     let hiScoreHTML = '';
     scoreboard.readScores();
-    let initialInput = `<form id="score--form">
+    let initialsInput = `<form id="score--form">
                         <input id="initials--input" class="game-scores__entry-input" type="text" maxlength="3" pattern="[A-Za-z]{3}">
                         </form>`;
     console.log(`Scoreboard length : ${scoreboard.data.length}`);
@@ -469,7 +467,7 @@ const scoreboard = {
       let scoreEntry = scoreboard.data[index];
       if (index === tablePosition) {
         hiScoreHTML += `
-        <div class='game-scores__user game-scores__entry-line'>${initialInput}</div>
+        <div class='game-scores__user game-scores__entry-line'>${initialsInput}</div>
         <div class='game-scores__level game-scores__entry-line'><span class=''>${puzzleGame.difficultyLevel}</span></div>
         <div class='game-scores__score game-scores__entry-line'><span class=''>${score}</span></div>
         `;
@@ -482,6 +480,12 @@ const scoreboard = {
           `;
       }
     }
+    let gameScoreSaveHTML = `
+      <p class="game-scores__message">Well Done! Enter your initials above.</p>
+      <button id="save--score" class="button__save-score" onclick="scoreboard.saveScore(${tablePosition}, ${score});">
+      SAVE SCORE</button>
+      `;
+    saveScoreDiv.innerHTML = gameScoreSaveHTML;
     hiScoreTable.innerHTML = hiScoreHTML;
     const userInitialsForm = document.querySelector('#score--form');
     userInitialsForm.addEventListener('submit', (e) => {
@@ -508,6 +512,7 @@ const scoreboard = {
   inputFocus: () => {
     document.getElementById("initials--input").focus();
   }
+
 }
 
 // Object to handle all game setup options
@@ -629,11 +634,12 @@ const setup = {
     const gameQuitButton = document.querySelector('#quit--game');
     const gameResetButton = document.querySelector('#reset--game');
     const gameAreaGrid = document.querySelector('.game-area__grid');
-
+    
     window.onresize = gameSetupOptions.resize;
     gameAreaGrid.addEventListener("touchmove", setup.preventBehavior, {passive: false});
     
     newGameButton.addEventListener('click', gameSetupOptions.displayGameSetup);
+
     hiScoresButton.addEventListener('click', () => {
       sounds.button.play();
       scoreboard.display();

@@ -444,7 +444,7 @@ div {
   background: #fff;
   border-radius: 10px;
   font-family: "Press Start 2P", cursive;
-  font-size: 22px;
+  font-size: 1.5em;
 }
 
 .button__exit-scores {
@@ -457,7 +457,7 @@ div {
   background: #fff;
   border-radius: 10px;
   font-family: "Press Start 2P", cursive;
-  font-size: 22px;
+  font-size: 1.5em;
 }
 
 /* Game area */

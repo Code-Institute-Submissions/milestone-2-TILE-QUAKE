@@ -18,6 +18,7 @@ const sounds = {
   tileRumble: ( document.querySelector('#sound--tile-rumble') ),
   button: ( document.querySelector('#sound--button') ),
   gotHiscore: ( document.querySelector('#sound--got-hiscore') ),
+  notGotHiscore: ( document.querySelector('#sound--not-got-hiscore') ),
   insertCoin: ( document.querySelector('#sound--insert-coin') ),
   tileMove: ( document.querySelector('#sound--tile-click') )
 }
@@ -272,6 +273,7 @@ const puzzleGame = {
         } else {
           const scoreOkButton = document.querySelector('.score-ok__button');
           scoreOkButton.classList.add('d-block');
+          sounds.notGotHiscore.play();
         }
       }
     }
@@ -444,6 +446,7 @@ const scoreboard = {
       score: score,
       level: parseInt(puzzleGame.difficultyLevel)
     }
+    sounds.button.play();
     scoreboard.data.splice(tablePosition, 0, newEntry);
     scoreboard.data.pop();
     localStorage.setItem('tileQuakeScoreboard', JSON.stringify(scoreboard.data));
@@ -658,9 +661,20 @@ const setup = {
       puzzleGame.showGameArea();
     });
 
-    scoreOKButton.addEventListener('click', () => { setup.welcomeScreen(true); });
-    gameQuitButton.addEventListener('click', () => { setup.welcomeScreen(true); });
-    gameResetButton.addEventListener('click', puzzleGame.resetPuzzle);
+    scoreOKButton.addEventListener('click', () => {
+      sounds.button.play();
+      setup.welcomeScreen(true);
+    });
+
+    gameQuitButton.addEventListener('click', () => {
+      sounds.button.play();
+      setup.welcomeScreen(true);
+    });
+    
+    gameResetButton.addEventListener('click', () => {
+      sounds.button.play();
+      puzzleGame.resetPuzzle();
+    });
     
     difficultyInput.addEventListener('change', (e) => {
       gameSetupOptions.displayDifficultLevel(e);

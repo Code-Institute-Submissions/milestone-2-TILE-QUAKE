@@ -448,6 +448,7 @@ const scoreboard = {
     scoreboard.data.pop();
     localStorage.setItem('tileQuakeScoreboard', JSON.stringify(scoreboard.data));
     saveScoreDiv.classList.remove('d-block');
+    saveScoreDiv.innerHTML = '';
     hiScoreTable.innerHTML = '';
     scoreboard.display();
   },

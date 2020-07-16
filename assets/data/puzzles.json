@@ -14,4 +14,28 @@
   "id": 4,
   "title": "Buzz Aldrin",
   "file_name": "apollo11.jpg"
+}, {
+  "id": 5,
+  "title": "Kitten",
+  "file_name": "kitten.jpg"
+  }, {
+  "id": 6,
+  "title": "Pug",
+  "file_name": "pug.jpg"
+}, {
+  "id": 7,
+  "title": "Giraffes",
+  "file_name": "giraffe.jpg"
+}, {
+  "id": 8,
+  "title": "Sports Car",
+  "file_name": "sports_car.jpg"
+  }, {
+  "id": 9,
+  "title": "Moto GP",
+  "file_name": "motogp.jpg"
+}, {
+  "id": 10,
+  "title": "Aurora",
+  "file_name": "aurora.jpg"
 }]

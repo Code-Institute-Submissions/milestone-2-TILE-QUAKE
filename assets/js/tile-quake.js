@@ -32,6 +32,7 @@ const puzzleGame = {
   tiles: [],
   image: '',
   puzzleImageIndex: 1,
+  puzzleChoiceData: [],
   difficultyLevel: 1,
   difficultyTime: [30, 60, 120, 240, 300, 420, 600, 720, 960, 1260],
   moves: 0,
@@ -558,10 +559,12 @@ const gameSetupOptions = {
     if (puzzleGame.checkSafari()) { imagePathStart = 'assets'; } 
 
     let imageSize = '';
+    console.log({imageIndex});
+    let fileName = puzzleGame.puzzleChoiceData[imageIndex-1].file_name.slice(0, -4);
     if (screenWidth < 768) { imageSize = '_300x300'; }
-    const image = `url('${imagePathStart}/images/puzzles/img${imageIndex}${imageSize}.jpg')`;
+    const image = `url('${imagePathStart}/images/puzzles/${fileName}${imageSize}.jpg')`;
     const miniPhoto = document.querySelector('.info__photo');
-    miniPhoto.innerHTML = `<img class="info__photo-size" src="assets/images/puzzles/img${imageIndex}.jpg" 
+    miniPhoto.innerHTML = `<img class="info__photo-size" src="assets/images/puzzles/${fileName}.jpg" 
     alt="Puzzle image" title="Puzzle image"/>`;
     root.style.setProperty('--chosenImage', image);
   },
@@ -582,16 +585,51 @@ const gameSetupOptions = {
     puzzleImages[puzzleGame.puzzleImageIndex - 1].style.display = "block";
   },
 
+  setupPuzzleSlideshow: async () => {
+    const puzzleChoice = document.querySelector('.puzzle-image__slideshow');
+    fetch('./assets/data/puzzles.json')
+      .then((response) => {
+        return response.json();
+      })
+      .then((puzzleImages) => {  //puzzleImages
+        puzzleGame.puzzleChoiceData = puzzleImages;
+        puzzleGame.puzzleChoiceData.forEach((obj) => { console.log(obj.title); });
+
+        const puzzleChoicesHTML = puzzleImages.map((image) => {
+          return `<div class="puzzle-image__container puzzle-image__fade">
+                    <div class="puzzle-image__number">${image.id} / ${puzzleImages.length}</div>
+                    <img class="puzzle-image__image" src="assets/images/puzzles/${image.file_name}">
+                    <div class="puzzle-image__text">${image.title}</div>
+                  </div>`;
+        }).join('');
+
+        let puzzleSlideshowControls = 
+          `<a class="puzzle-image__prev" onclick="gameSetupOptions.selectPuzzleImage(-1)">&#10094;</a>
+           <a class="puzzle-image__next" onclick="gameSetupOptions.selectPuzzleImage(1)">&#10095;</a>
+          `;
+        puzzleChoice.innerHTML = puzzleChoicesHTML + puzzleSlideshowControls;
+
+        gameSetupOptions.showPuzzleImage(puzzleGame.puzzleImageIndex);
+      })
+      .catch((err) => {
+        console.log('jSON ERROR!');
+      });
+  },
+
   displayGameSetup: () => {
     const welcomeScreen = document.querySelector('.welcome');
     const setupScreen = document.querySelector('.game-setup');
     sounds.insertCoin.play();
+
+    // generate puzzle image choices here
+    gameSetupOptions.setupPuzzleSlideshow();
+   
     for (let n = 3; n < 6; n++) {
       const gridSize = document.querySelector(`.grid-size__${n}x${n}`);
       gridSize.innerHTML = gameSetupOptions.displayGridSize(n);
     }
     welcomeScreen.classList.add('welcome__move-right');
-    gameSetupOptions.showPuzzleImage(puzzleGame.puzzleImageIndex);
+    //gameSetupOptions.showPuzzleImage(puzzleGame.puzzleImageIndex);
     setupScreen.classList.add('game-setup__move-right');
   },
 

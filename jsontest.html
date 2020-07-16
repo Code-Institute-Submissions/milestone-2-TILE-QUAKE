@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TILE QUAKE - Game setup</title>
+</head>
+<body>
+  <div class="puzzle-image__slideshow"></div>
+</body>
+<script>
+
+  const puzzleChoice = document.querySelector('.puzzle-image__slideshow');
+  fetch('./assets/data/puzzles.json')
+    .then((response) => {
+      return response.json();
+    })
+    .then((puzzleImages) => {
+      puzzleImages.forEach((obj) => { console.log(obj.file_name); });
+
+      const puzzleImageHTML = puzzleImages.map((image) => {
+        return `<div class="puzzle-image__container puzzle-image__fade">
+                  <div class="puzzle-image__number">${image.id} / ${puzzleImages.length}</div>
+                  <img class="puzzle-image__image" src="assets/images/puzzles/${image.file_name}">
+                  <div class="puzzle-image__text">${image.title}</div>
+                </div>`;
+      }).join('');
+
+      puzzleChoice.innerHTML = puzzleImageHTML;
+
+    })
+    .catch((err) => {
+      console.log('jSON ERROR!');
+    });
+
+</script>
+</html>

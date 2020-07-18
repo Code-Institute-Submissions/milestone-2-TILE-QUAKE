@@ -1,4 +1,8 @@
 [{
+  "id": 0,
+  "title": "T-Rex",
+  "file_name": "t_rex.jpg"  
+},{
   "id": 1,
   "title": "Billy Casper",
   "file_name": "kes.jpg"
@@ -38,4 +42,12 @@
   "id": 10,
   "title": "Aurora",
   "file_name": "aurora.jpg"
+}, {
+  "id": 11,
+  "title": "Lego Trooper",
+  "file_name": "trooper.jpg"
+}, {
+  "id": 12,
+  "title": "Device Photo",
+  "file_name": "device.jpg"
 }]

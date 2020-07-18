@@ -33,6 +33,8 @@ const puzzleGame = {
   image: '',
   puzzleImageIndex: 1,
   puzzleChoiceData: [],
+  deviceImageChosen: false,
+  devicePuzzleImage : '',
   difficultyLevel: 1,
   difficultyTime: [30, 60, 120, 240, 300, 420, 600, 720, 960, 1260],
   moves: 0,
@@ -553,25 +555,34 @@ const gameSetupOptions = {
   updatePuzzleImage: (imageIndex) => {
     const root = document.documentElement;
     const screenWidth = document.querySelector(".wrapper").offsetWidth;
-
-    // Safari appears to look for CSS background images from the root rather than css folder
-    let imagePathStart = '..';
-    if (puzzleGame.checkSafari()) { imagePathStart = 'assets'; } 
-
-    let imageSize = '';
-    console.log({imageIndex});
-    let fileName = puzzleGame.puzzleChoiceData[imageIndex-1].file_name.slice(0, -4);
-    if (screenWidth < 768) { imageSize = '_300x300'; }
-    const image = `url('${imagePathStart}/images/puzzles/${fileName}${imageSize}.jpg')`;
     const miniPhoto = document.querySelector('.info__photo');
-    miniPhoto.innerHTML = `<img class="info__photo-size" src="assets/images/puzzles/${fileName}.jpg" 
-    alt="Puzzle image" title="Puzzle image"/>`;
-    root.style.setProperty('--chosenImage', image);
+
+    if (imageIndex < puzzleGame.puzzleChoiceData.length) {
+    
+      // Safari appears to look for CSS background images from the root rather than css folder
+      let imagePathStart = '..';
+      if (puzzleGame.checkSafari()) { imagePathStart = 'assets'; } 
+
+      let imageSize = '';
+      let fileName = puzzleGame.puzzleChoiceData[imageIndex-1].file_name.slice(0, -4);
+      if (screenWidth < 768) { imageSize = '_300x300'; }
+      const image = `url('${imagePathStart}/images/puzzles/${fileName}${imageSize}.jpg')`;
+      miniPhoto.innerHTML = `<img class="info__photo-size" src="assets/images/puzzles/${fileName}.jpg" 
+      alt="Puzzle image" title="Puzzle image"/>`;
+      root.style.setProperty('--chosenImage', image);
+    } else {
+      const chosenDeviceImage = document.querySelector('.puzzle-image__device');
+      miniPhoto.innerHTML = `<img class="info__photo-size" src="${chosenDeviceImage.src}" 
+      alt="Puzzle image" title="Puzzle image"/>`;
+      root.style.setProperty('--chosenImage', puzzleGame.devicePuzzleImage);
+    }
   },
 
   selectPuzzleImage: (n) => {
     const puzzleImage = document.querySelector('.puzzle-image__value');
     gameSetupOptions.showPuzzleImage(puzzleGame.puzzleImageIndex += n);
+    // puzzleGame.deviceImageChosen = false;
+    // console.log('Puzzle Image Index: ', puzzleGame.puzzleImageIndex);
     puzzleImage.innerHTML = puzzleGame.puzzleImageIndex;
   },
 
@@ -593,12 +604,18 @@ const gameSetupOptions = {
       })
       .then((puzzleImages) => {  //puzzleImages
         puzzleGame.puzzleChoiceData = puzzleImages;
-        puzzleGame.puzzleChoiceData.forEach((obj) => { console.log(obj.title); });
+        // puzzleGame.puzzleChoiceData.forEach((obj) => { console.log(obj.title); });
 
-        const puzzleChoicesHTML = puzzleImages.map((image) => {
+        const puzzleChoicesHTML = puzzleImages.map((image, index) => {
+          let imageClass = 'puzzle-image__image';
+          let imageSource = `assets/images/puzzles/${image.file_name}`;
+          if (index === puzzleGame.puzzleChoiceData.length -1) { 
+            imageClass += ' puzzle-image__device';
+            if (puzzleGame.deviceImageChosen) { imageSource = puzzleGame.devicePuzzleImage; }
+          }
           return `<div class="puzzle-image__container puzzle-image__fade">
-                    <div class="puzzle-image__number">${image.id} / ${puzzleImages.length}</div>
-                    <img class="puzzle-image__image" src="assets/images/puzzles/${image.file_name}">
+                    <div class="puzzle-image__number">${image.id + 1} / ${puzzleImages.length}</div>
+                    <img class="${imageClass}" src="${imageSource}" width="324">
                     <div class="puzzle-image__text">${image.title}</div>
                   </div>`;
         }).join('');
@@ -612,7 +629,7 @@ const gameSetupOptions = {
         gameSetupOptions.showPuzzleImage(puzzleGame.puzzleImageIndex);
       })
       .catch((err) => {
-        console.log('jSON ERROR!');
+        console.log('JSON ERROR!', err);
       });
   },
 
@@ -621,13 +638,15 @@ const gameSetupOptions = {
     const setupScreen = document.querySelector('.game-setup');
     sounds.insertCoin.play();
 
-    // generate puzzle image choices here
-    gameSetupOptions.setupPuzzleSlideshow();
-   
-    for (let n = 3; n < 6; n++) {
-      const gridSize = document.querySelector(`.grid-size__${n}x${n}`);
-      gridSize.innerHTML = gameSetupOptions.displayGridSize(n);
+    if (puzzleGame.puzzleChoiceData.length === 0 ) {
+      gameSetupOptions.setupPuzzleSlideshow();
     }
+   
+    // for (let n = 3; n < 6; n++) {
+    //   const gridSize = document.querySelector(`.grid-size__${n}x${n}`);
+    //   gridSize.innerHTML = gameSetupOptions.displayGridSize(n);
+    // }
+
     welcomeScreen.classList.add('welcome__move-right');
     //gameSetupOptions.showPuzzleImage(puzzleGame.puzzleImageIndex);
     setupScreen.classList.add('game-setup__move-right');
@@ -635,8 +654,69 @@ const gameSetupOptions = {
 
   resize: () => {
     gameSetupOptions.updatePuzzleImage(puzzleGame.puzzleImageIndex);
-  }
+  },
 
+  processDeviceImage: () => {
+    const uploadCanvas = document.getElementById("upload--canvas");
+    const finalCanvas = document.getElementById("final--canvas");
+    let uploadCtx = uploadCanvas.getContext("2d");
+    let finalCtx = finalCanvas.getContext("2d");
+    const screenWidth = document.querySelector(".wrapper").offsetWidth;
+    if (screenWidth < 768) { puzzleImageSize = 300; } else { puzzleImageSize = 600; }
+    const item = document.querySelector('#uploader').files[0];  //get the image selected
+    let reader = new FileReader();  //create a FileReader
+    //image turned to base64-encoded Data URI.
+    reader.readAsDataURL(item);
+    reader.name = item.name;//get the image's name
+    reader.size = item.size; //get the image's size
+    reader.onload = function(event) {
+      let img = new Image(); //create a image
+      img.src = event.target.result; //result is base64-encoded Data URI
+      img.name = event.target.name; //set name (optional)
+      fileName = event.target.name;
+      img.size = event.target.size; //set size (optional)
+      img.onload = function(el) {
+        let offsetX = 0;
+        if (el.target.width < puzzleImageSize || el.target.height < puzzleImageSize) {
+          alert('Image too small...');
+          return;
+        }
+
+        finalCanvas.height = puzzleImageSize;
+        finalCanvas.width = puzzleImageSize;
+
+        if (el.target.width > el.target.height) {
+          const scaleFactor = puzzleImageSize / el.target.height;
+          uploadCanvas.height = puzzleImageSize;
+          uploadCanvas.width = el.target.width * scaleFactor;
+          offsetX = (uploadCanvas.width - puzzleImageSize) / 2;
+        } else {
+          const scaleFactor = puzzleImageSize / el.target.width;
+          uploadCanvas.width = puzzleImageSize;
+          uploadCanvas.height = el.target.height * scaleFactor;
+        }
+
+        uploadCtx.drawImage(el.target, 0, 0, uploadCanvas.width, uploadCanvas.height);
+        finalCtx.drawImage(uploadCanvas, offsetX, 0, puzzleImageSize, puzzleImageSize, 0, 0, puzzleImageSize, puzzleImageSize);
+
+        //get the base64-encoded Data URI from the final resize/crop image
+        const srcEncoded = finalCtx.canvas.toDataURL(el.target, 'image/jpeg', 0);
+        const root = document.documentElement;
+        const url = srcEncoded.replace(/(\r\n|\n|\r)/gm, "");
+        const imgUpload = "url('" + url.replace(/(\r\n|\n|\r)/gm, "") + "')";
+        
+        puzzleGame.deviceImageChosen = true;
+        puzzleGame.devicePuzzleImage = imgUpload;
+
+        root.style.setProperty('--chosenImage', imgUpload);
+        const slideshowDeviceImage = document.querySelector('.puzzle-image__device');
+        slideshowDeviceImage.src = url;
+        // set the device image chosen to the active puzzle image
+        puzzleGame.puzzleImageIndex = puzzleGame.puzzleChoiceData.length;
+        gameSetupOptions.selectPuzzleImage(0);
+      }
+    }
+  }
 }
 
 // Object to handle the welcome logo screen and setup any eventListeners
@@ -671,7 +751,7 @@ const setup = {
     const closeHiScores = document.querySelector('#close--table');
     const startGameButton = document.querySelector('#start--game');
     const difficultyInput = document.querySelector('#difficulty--input');
-    const gridOptions = document.querySelectorAll('.js-grid-option');
+    // const gridOptions = document.querySelectorAll('.js-grid-option');
     const scoreOKButton = document.querySelector('.score-ok__button');
     const gameQuitButton = document.querySelector('#quit--game');
     const gameResetButton = document.querySelector('#reset--game');
@@ -718,11 +798,11 @@ const setup = {
       gameSetupOptions.displayDifficultLevel(e);
     });
     
-    gridOptions.forEach(option => { 
-      option.addEventListener('click', (e) => {
-        gameSetupOptions.displaySelectedGrid(e);
-      });
-    });
+    // gridOptions.forEach(option => { 
+    //   option.addEventListener('click', (e) => {
+    //     gameSetupOptions.displaySelectedGrid(e);
+    //   });
+    // });
   }
 }
 

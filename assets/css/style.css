@@ -20,6 +20,14 @@ div {
   -webkit-tap-highlight-color: rgba(0,0,0,0); /* mobile image click */
 }
 
+#upload--canvas {
+	display: none;
+}
+
+#final--canvas {
+	display: none;
+}
+
 .wrapper {
   position: relative;
   overflow-x: hidden;
@@ -320,6 +328,25 @@ div {
   to {
     opacity: 1;
   }
+}
+
+/* .device-image__choice {
+  height: 272px;
+  width: 272px;
+  background: mediumslateblue;
+  background-image: var(--chosenImage);
+  background-repeat: no-repeat;
+} */
+
+.device-image__button {
+  width: 12.6em;
+  margin-bottom: 20px;
+  padding: 10px 25px;
+  color: #282828;
+  background: #fff;
+  border-radius: 10px;
+  font-family: "Press Start 2P", cursive;
+  font-size: 1.5em;
 }
 
 .game-start {

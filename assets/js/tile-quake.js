@@ -609,14 +609,20 @@ const gameSetupOptions = {
         const puzzleChoicesHTML = puzzleImages.map((image, index) => {
           let imageClass = 'puzzle-image__image';
           let imageSource = `assets/images/puzzles/${image.file_name}`;
+          let imageLabel = `<label class="puzzle-image__text">${image.title}</label>`;
           if (index === puzzleGame.puzzleChoiceData.length -1) { 
             imageClass += ' puzzle-image__device';
-            if (puzzleGame.deviceImageChosen) { imageSource = puzzleGame.devicePuzzleImage; }
+            if (puzzleGame.deviceImageChosen) {
+              imageSource = puzzleGame.devicePuzzleImage;
+            }
+            imageLabel = `<label for="puzzle-upload" class="puzzle-image__add">${image.title}</label>
+                          <input id="puzzle-upload" type="file" onchange="gameSetupOptions.processDeviceImage();">
+                         `;
           }
           return `<div class="puzzle-image__container puzzle-image__fade">
                     <div class="puzzle-image__number">${image.id + 1} / ${puzzleImages.length}</div>
                     <img class="${imageClass}" src="${imageSource}" width="324">
-                    <div class="puzzle-image__text">${image.title}</div>
+                    ${imageLabel}
                   </div>`;
         }).join('');
 
@@ -663,7 +669,7 @@ const gameSetupOptions = {
     let finalCtx = finalCanvas.getContext("2d");
     const screenWidth = document.querySelector(".wrapper").offsetWidth;
     if (screenWidth < 768) { puzzleImageSize = 300; } else { puzzleImageSize = 600; }
-    const item = document.querySelector('#uploader').files[0];  //get the image selected
+    const item = document.querySelector('#puzzle-upload').files[0];  //get the image selected
     let reader = new FileReader();  //create a FileReader
     //image turned to base64-encoded Data URI.
     reader.readAsDataURL(item);
@@ -711,6 +717,10 @@ const gameSetupOptions = {
         root.style.setProperty('--chosenImage', imgUpload);
         const slideshowDeviceImage = document.querySelector('.puzzle-image__device');
         slideshowDeviceImage.src = url;
+
+        const deviceImageLabel = document.querySelector('.puzzle-image__add');
+        deviceImageLabel.textContent = 'Click to Change';
+        
         // set the device image chosen to the active puzzle image
         puzzleGame.puzzleImageIndex = puzzleGame.puzzleChoiceData.length;
         gameSetupOptions.selectPuzzleImage(0);

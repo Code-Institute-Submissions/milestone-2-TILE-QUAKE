@@ -297,6 +297,21 @@ div {
   border-radius: 5px;
 }
 
+.puzzle-image__add {
+  position: absolute;
+  bottom: -12px;
+  width: 70%;
+  left: 50%;
+  margin-left: -35%;
+  padding: 6px 0;
+  color: var(--gameRed);
+  background: yellow;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 .puzzle-image__number {
   position: absolute;
   top: 0;
@@ -337,6 +352,17 @@ div {
   background-image: var(--chosenImage);
   background-repeat: no-repeat;
 } */
+
+input[type="file"] {
+  display: none;
+}
+
+.puzzle-image__upload {
+  display: inline-block;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
 
 .device-image__button {
   width: 12.6em;

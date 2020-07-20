@@ -73,8 +73,6 @@ const puzzleGame = {
     }
     puzzleGame.tiles.push(0);
 
-    // puzzleGame.tiles = puzzleGame.shuffle(puzzleGame.tiles);
-
     for (let x = 0; x < puzzleSize; x++) {
       for (let y = 0; y < puzzleSize; y++) {
         // calculate side codes for the current tile
@@ -131,10 +129,8 @@ const puzzleGame = {
   shuffle: (array) => {
     let currentIndex = array.length, temporaryValue, randomIndex;
     while (0 !== currentIndex) {
-
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex -= 1;
-
       temporaryValue = array[currentIndex];
       array[currentIndex] = array[randomIndex];
       array[randomIndex] = temporaryValue;
@@ -231,7 +227,6 @@ const puzzleGame = {
 
   showScore: () => {
     const fireworkShow = document.querySelector('.puzzle-complete');
-    // fireworkShow.classList.add('pyro');
     fireworkShow.classList.add('d-block');
     const baseScoreElement = document.querySelector('#score--base');
     const moveBonusElement = document.querySelector('#score--move');
@@ -241,8 +236,6 @@ const puzzleGame = {
     const minimumMoves = ((puzzleGame.difficultyLevel * 2) + 1);
     let moveBonus = ((minimumMoves * 3) - puzzleGame.moves) <= 0 ? 0 : ((minimumMoves * 3) - puzzleGame.moves) * 500;
     let timeBonus = puzzleGame.timer <= 0 ? 0 : puzzleGame.timer * 250;
-    // if (moveBonus <= 0) { moveBonus = 0; }
-    // if (timeBonus <= 0) { timeBonus = 0; }
     const totalScore = baseScore + moveBonus + timeBonus;
     baseScoreElement.textContent = baseScore;
     moveBonusElement.textContent = moveBonus;
@@ -330,7 +323,6 @@ const puzzleGame = {
     puzzleGame.startTileRumble();
     const rumbleON = setTimeout(puzzleGame.shuffleTileGrid, 500);
     const rumbleOFF = setTimeout(puzzleGame.stopTileRumble, 2500);
-    // puzzleGame.shuffleTileGrid();
     puzzleGame.moves = 0;
     puzzleGame.timer = puzzleGame.difficultyTime[puzzleGame.difficultyLevel - 1];
     gameSetupOptions.updatePuzzleImage(puzzleGame.puzzleImageIndex);
@@ -361,7 +353,6 @@ const puzzleGame = {
 
   checkSafari: () => {
     return isSafari = !!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/);
-    // const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
   }
 
 }
@@ -377,7 +368,6 @@ const scoreboard = {
     if (localStorage.getItem("tileQuakeScoreboard") === null) {
       for (let n = 10; n > 0; n--) {
         newScoreboard.push({ user: 'QTG', score: n * 1000, level: 1 });
-        // newScoreboard.push({ user: ('GQ' + String.fromCharCode(75 - n)), score: n * 1000, level: 1 });
       }
       localStorage.setItem('tileQuakeScoreboard', JSON.stringify(newScoreboard));
     }
@@ -396,13 +386,11 @@ const scoreboard = {
     let scoreboardPosition = scoreboard.data.length + 1;
     scoreboard.data.forEach((scoreEntry, index) => {
       let tableScore = scoreEntry.score;
-      console.log({index}, {tableScore});
       if ((gameScore > scoreEntry.score && scoreboardPosition > scoreboard.data.length) ||
           (gameScore === scoreEntry.score && scoreEntry.user === 'QTG')) {
         scoreboardPosition = index;
       }
     });
-    console.log({gameScore}, {scoreboardPosition});
     return scoreboardPosition;
   },
 
@@ -434,7 +422,6 @@ const scoreboard = {
   hide: () => {
     const scoreboardScreen = document.querySelector('.game-scores');
     const exitScoreDiv = document.querySelector('.game-scores__exit');
-    // sounds.gotHiscore.muted = true;
     scoreboardScreen.classList.remove('game-scores__move-right');
     exitScoreDiv.classList.remove('d-block');
     clearTimeout(scoreboardTimeout);
@@ -460,7 +447,6 @@ const scoreboard = {
   },
 
   addNewScore: (tablePosition, score) => {
-    console.log(`Add new score of ${score} at position ${tablePosition}`);
     const scoreboardScreen = document.querySelector('.game-scores');
     const hiScoreTable = document.querySelector('.game-scores__content');
     const saveScoreDiv = document.querySelector('.game-scores__save');
@@ -469,7 +455,6 @@ const scoreboard = {
     let initialsInput = `<form id="score--form">
                         <input id="initials--input" class="game-scores__entry-input" type="text" maxlength="3" pattern="[A-Za-z]{3}">
                         </form>`;
-    console.log(`Scoreboard length : ${scoreboard.data.length}`);
     for (let index = 0; index < scoreboard.data.length; index++) {
       let scoreEntry = scoreboard.data[index];
       if (index === tablePosition) {
@@ -506,7 +491,6 @@ const scoreboard = {
     const gameScreen = document.querySelector('.game-area');
     gameScreen.classList.remove('game-area__move-left');
     puzzleGame.toggleLastTile();
-    // welcomeTimeout = 1000;
 
     scoreboardScreen.classList.add('game-scores__move-right');
     saveScoreDiv.classList.add('d-block');
@@ -581,8 +565,6 @@ const gameSetupOptions = {
   selectPuzzleImage: (n) => {
     const puzzleImage = document.querySelector('.puzzle-image__value');
     gameSetupOptions.showPuzzleImage(puzzleGame.puzzleImageIndex += n);
-    // puzzleGame.deviceImageChosen = false;
-    // console.log('Puzzle Image Index: ', puzzleGame.puzzleImageIndex);
     puzzleImage.innerHTML = puzzleGame.puzzleImageIndex;
   },
 
@@ -602,10 +584,8 @@ const gameSetupOptions = {
       .then((response) => {
         return response.json();
       })
-      .then((puzzleImages) => {  //puzzleImages
+      .then((puzzleImages) => {
         puzzleGame.puzzleChoiceData = puzzleImages;
-        // puzzleGame.puzzleChoiceData.forEach((obj) => { console.log(obj.title); });
-
         const puzzleChoicesHTML = puzzleImages.map((image, index) => {
           let imageClass = 'puzzle-image__image';
           let imageSource = `assets/images/puzzles/${image.file_name}`;
@@ -656,7 +636,6 @@ const gameSetupOptions = {
     // }
 
     welcomeScreen.classList.add('welcome__move-right');
-    //gameSetupOptions.showPuzzleImage(puzzleGame.puzzleImageIndex);
     setupScreen.classList.add('game-setup__move-right');
   },
 

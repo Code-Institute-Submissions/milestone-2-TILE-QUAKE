@@ -610,6 +610,7 @@ const gameSetupOptions = {
           let imageClass = 'puzzle-image__image';
           let imageSource = `assets/images/puzzles/${image.file_name}`;
           let imageLabel = `<label class="puzzle-image__text">${image.title}</label>`;
+          let imageOnClick = '';
           if (index === puzzleGame.puzzleChoiceData.length -1) { 
             imageClass += ' puzzle-image__device';
             if (puzzleGame.deviceImageChosen) {
@@ -618,10 +619,11 @@ const gameSetupOptions = {
             imageLabel = `<label for="puzzle-upload" class="puzzle-image__add">${image.title}</label>
                           <input id="puzzle-upload" type="file" onchange="gameSetupOptions.processDeviceImage();">
                          `;
+            imageOnClick = `onclick="gameSetupOptions.fileInputClick();"`;
           }
           return `<div class="puzzle-image__container puzzle-image__fade">
                     <div class="puzzle-image__number">${image.id + 1} / ${puzzleImages.length}</div>
-                    <img class="${imageClass}" src="${imageSource}" width="324">
+                    <img class="${imageClass}" src="${imageSource}" width="324" ${imageOnClick}>
                     ${imageLabel}
                   </div>`;
         }).join('');
@@ -720,12 +722,17 @@ const gameSetupOptions = {
 
         const deviceImageLabel = document.querySelector('.puzzle-image__add');
         deviceImageLabel.textContent = 'Click to Change';
-        
+
         // set the device image chosen to the active puzzle image
         puzzleGame.puzzleImageIndex = puzzleGame.puzzleChoiceData.length;
         gameSetupOptions.selectPuzzleImage(0);
       }
     }
+  },
+
+  fileInputClick: () => {
+    const imageFileInput = document.querySelector('#puzzle-upload');
+    imageFileInput.click();
   }
 }
 

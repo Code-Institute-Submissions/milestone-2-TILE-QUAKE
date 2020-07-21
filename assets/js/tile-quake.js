@@ -630,11 +630,6 @@ const gameSetupOptions = {
       gameSetupOptions.setupPuzzleSlideshow();
     }
    
-    // for (let n = 3; n < 6; n++) {
-    //   const gridSize = document.querySelector(`.grid-size__${n}x${n}`);
-    //   gridSize.innerHTML = gameSetupOptions.displayGridSize(n);
-    // }
-
     welcomeScreen.classList.add('welcome__move-right');
     setupScreen.classList.add('game-setup__move-right');
   },
@@ -747,7 +742,6 @@ const setup = {
     const closeHiScores = document.querySelector('#close--table');
     const startGameButton = document.querySelector('#start--game');
     const difficultyInput = document.querySelector('#difficulty--input');
-    // const gridOptions = document.querySelectorAll('.js-grid-option');
     const scoreOKButton = document.querySelector('.score-ok__button');
     const gameQuitButton = document.querySelector('#quit--game');
     const gameResetButton = document.querySelector('#reset--game');
@@ -794,14 +788,8 @@ const setup = {
       gameSetupOptions.displayDifficultLevel(e);
     });
     
-    // gridOptions.forEach(option => { 
-    //   option.addEventListener('click', (e) => {
-    //     gameSetupOptions.displaySelectedGrid(e);
-    //   });
-    // });
   }
 }
 
 setup.welcomeScreen(false);
-
 setup.eventListeners();

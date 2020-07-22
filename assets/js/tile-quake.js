@@ -509,31 +509,10 @@ const scoreboard = {
 // Object to handle all game setup options
 const gameSetupOptions = {
 
-  displayGridSize: (gridSize) => {
-    let html = '';
-    const totalSquares = gridSize * gridSize;
-    for (let n = 0; n < totalSquares; n++) {
-      html += `<div class="grid-size__square"></div>`;
-    }
-    return html;
-  },
-
   displayDifficultLevel: (e) => {
     const difficultyLevel = document.querySelector('.difficulty__value');
     difficultyLevel.innerHTML = e.target.value;
     puzzleGame.difficultyLevel = e.target.value;
-  },
-
-  displaySelectedGrid: (e) => {
-    const clickedGrid = e.target.parentElement;
-    const gridSizeValue = document.querySelector('.grid-size__value');
-    const gridOptions = document.querySelectorAll('.js-grid-option');
-
-    if (!clickedGrid.dataset['grid']) return;
-    
-    gridOptions.forEach(option => { option.classList.remove('grid-size__chosen'); });
-    clickedGrid.classList.add('grid-size__chosen');
-    gridSizeValue.innerHTML = clickedGrid.dataset['grid'];
   },
 
   updatePuzzleImage: (imageIndex) => {

@@ -41,9 +41,9 @@
     <canvas id="upload--canvas"></canvas>
     <canvas id="final--canvas"></canvas>
 
-    <div class="wrapper">
+    <main class="wrapper">
       <!-- the error message div below will only display for Internet Explorer -->
-      <div class="ie-error">
+      <section class="ie-error">
         <p>ERROR: MS-8008 - BROWSER NOT SUPPORTED</p>
         <img class="ie-error__logo" src="assets/images/logo.png" alt="Tile Quake" title="Tile Quake"/>
         <br>
@@ -58,13 +58,15 @@
             <li>Edge</li>
           </ul>
         </div>
-      </div>
-      <div class="welcome">
+      </section>
+      <section class="welcome">
         <img class="welcome__logo" src="assets/images/logo.png" alt="Tile Quake" title="Tile Quake"/>
-        <button id="new--game" class="welcome__button">INSERT COIN</button>
-        <button id="hi--scores" class="welcome__button">HI SCORES</button>
-      </div>
-      <div class="game-setup">
+        <nav>
+          <button id="new--game" class="welcome__button">INSERT COIN</button>
+          <button id="hi--scores" class="welcome__button">HI SCORES</button>
+        </nav>
+      </section>
+      <section class="game-setup">
         <h1 class="screen-title">GAME OPTIONS</h1>
         <div class="game-setup__content">
           <div class="difficulty">
@@ -107,13 +109,13 @@
             <div class="puzzle-image__slideshow">
             </div>
           </div>
-          <div class="game-start">
+          <nav class="game-start">
             <button id="start--game" class="welcome__button game-setup__button">PLAY GAME</button>
-          </div>
+          </nav>
         </div>
-      </div>
-      <div class="game-area">
-          <div class="game-area__info">
+      </section>
+      <section class="game-area">
+          <header class="game-area__info">
               <div class="info__logo">
                 <img class="info__logo-size" src="assets/images/logo.png" alt="Tile Quake" title="Tile Quake">
               </div>
@@ -131,26 +133,26 @@
                 <p>MOVES</p>
                 <p id="info--data-moves">###</p>
               </div>
-          </div>
+          </header>
           <div class="game-area__border"></div>
           <div class="game-area__content">
               <div class="game-area__grid">
               </div>
           </div>
           <div class="game-area__border"></div>
-          <div class="game-area__buttons">
-            <div></div>
+          <nav class="game-area__buttons">
+            <div></div>  <!-- empty grid element -->
             <div class="button__reset">
               <button id="reset--game" class="arcade__button-green">RESET</button>
             </div>
-            <div></div>
+            <div></div>  <!-- empty grid element -->
             <div class="button__exit">
               <button id="quit--game" class="arcade__button">QUIT</button>
             </div>
-            <div></div>
-          </div>
-      </div>
-      <div class="puzzle-complete">
+            <div></div>  <!-- empty grid element -->
+          </nav>
+      </section>
+      <section class="puzzle-complete">
         <div class="before"></div>
         <div class="puzzle-complete__message">
           <div>
@@ -179,8 +181,8 @@
           <p class="score--high">YOU GOT A HIGH SCORE!!</p>
         </div>
         <div class="after"></div>
-      </div>
-      <div class="game-scores">
+      </section>
+      <section class="game-scores">
         <div>
           <img class="game-scores__logo" src="assets/images/logo.png" alt="Tile Quake" title="Tile Quake"/>
         </div>
@@ -195,8 +197,8 @@
         <div class="game-scores__exit">
           <button id="close--table" class="button__exit-scores">BACK</button>
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   <script src="assets/js/tile-quake.js"></script>
   </body>
 </html>

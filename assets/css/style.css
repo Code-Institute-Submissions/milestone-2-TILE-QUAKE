@@ -105,7 +105,9 @@ div {
 }
 
 .welcome__button {
+  display: block;
   width: 16em;
+  margin: 0 auto;
   margin-bottom: 20px;
   padding: 10px 25px;
   color: #282828;

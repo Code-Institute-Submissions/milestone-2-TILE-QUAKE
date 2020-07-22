@@ -16,17 +16,16 @@ body {
   font-size: 14px;
 }
 
-
 div {
   -webkit-tap-highlight-color: rgba(0,0,0,0); /* mobile image click */
 }
 
 #upload--canvas {
-	display: none;
+  display: none;
 }
 
 #final--canvas {
-	display: none;
+  display: none;
 }
 
 .wrapper {
@@ -503,20 +502,8 @@ input[type="file"] {
   width: 148px;
 }
 
-.info__photo {
-}
-
 .info__photo-size {
   width: 148px;
-}
-
-.info__difficulty {
-}
-
-.info__timer {
-}
-
-.info__moves {
 }
 
 .game-area__border {
@@ -684,13 +671,12 @@ input[type="file"] {
   }
 
 .rumble__right {
-    animation: rumbleRight 0.25s ease infinite;
+  animation: rumbleRight 0.25s ease infinite;
 }
 
 .rumble__left {
-    animation: rumbleLeft 0.25s ease infinite;
+  animation: rumbleLeft 0.25s ease infinite;
 }
-
 
 /* Puzzle complete */
 
@@ -821,8 +807,7 @@ input[type="file"] {
   background-image: linear-gradient(273deg, #19a133 50%, #33a848 60%);
   box-shadow: inset 3px 4px 3px 2px rgba(10, 92, 24, 0.55), inset 0px 0px 1px 1px rgba(12, 112, 29, 0.9), inset -1px -1px 2px 3px rgba(20, 180, 47, 0.9), inset -2px -2px 1px 3px rgba(255, 255, 255, 0.8), inset 0px 0px 2px 7px rgba(52, 175, 73, 0.8), inset 0px 0px 3px 10px rgba(17, 155, 40, 0.9), 0px 0px 3px 2px rgba(20, 184, 48, 0.9), 0px 0px 2px 6px rgba(26, 230, 60, 0.9), -1px -1px 1px 6px rgba(255, 255, 255, 0.9), 0px 0px 2px 11px rgba(26, 230, 60, 0.9), 0px 0px 1px 12px rgba(20, 184, 48, 0.9), 1px 3px 14px 14px rgba(0, 0, 0, 0.4);
 }
-
-/* end Arcade button */
+/* end Arcade push button */
 
 /* Media queries */
 
@@ -855,14 +840,14 @@ input[type="file"] {
   }
 
   .game-area {
-      grid-template-columns: 1fr;
-      grid-template-rows: auto auto 1fr auto auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr auto auto;
   }
 
   .game-area__border {
-      height: 20px;
-      width: 100%;
-      background: linear-gradient(rgb(252, 72, 8), rgb(250, 250, 54), rgb(252, 72, 8));
+    height: 20px;
+    width: 100%;
+    background: linear-gradient(rgb(252, 72, 8), rgb(250, 250, 54), rgb(252, 72, 8));
   }
 
   .game-area__info {

@@ -17,24 +17,26 @@
     <title>TILE QUAKE - Retro puzzle slide game</title>
   </head>
   <body>
-    <audio id="sound--tile-rumble">
-        <source src="assets/sounds/tile_rumble.mp3" type="audio/mpeg">
-    </audio>
-    <audio id="sound--button">
-        <source src="assets/sounds/button.mp3" type="audio/mpeg">
-    </audio>
-    <audio id="sound--got-hiscore">
-        <source src="assets/sounds/got_a_hiscore.mp3" type="audio/mpeg">
-    </audio>
-    <audio id="sound--not-got-hiscore">
-        <source src="assets/sounds/not_a_hiscore.mp3" type="audio/mpeg">
-    </audio>
-    <audio id="sound--tile-click">
-        <source src="assets/sounds/tile_click.mp3" type="audio/mpeg">
-    </audio>
-    <audio id="sound--insert-coin">
-        <source src="assets/sounds/insert_coin.mp3" type="audio/mpeg">
-    </audio>
+    <div> <!-- game audio files -->
+      <audio id="sound--tile-rumble">
+          <source src="assets/sounds/tile_rumble.mp3" type="audio/mpeg">
+      </audio>
+      <audio id="sound--button">
+          <source src="assets/sounds/button.mp3" type="audio/mpeg">
+      </audio>
+      <audio id="sound--got-hiscore">
+          <source src="assets/sounds/got_a_hiscore.mp3" type="audio/mpeg">
+      </audio>
+      <audio id="sound--not-got-hiscore">
+          <source src="assets/sounds/not_a_hiscore.mp3" type="audio/mpeg">
+      </audio>
+      <audio id="sound--tile-click">
+          <source src="assets/sounds/tile_click.mp3" type="audio/mpeg">
+      </audio>
+      <audio id="sound--insert-coin">
+          <source src="assets/sounds/insert_coin.mp3" type="audio/mpeg">
+      </audio>
+    </div>
 
     <canvas id="upload--canvas"></canvas>
     <canvas id="final--canvas"></canvas>
@@ -71,45 +73,38 @@
             <span class="float-right">Beyond Yoda</span>
             <input id="difficulty--input" class="difficulty__slider" type="range" min="1" max="10" step="1" value="1">
           </div>
-          <!-- <div class="grid-size">
-            <p>GRID SIZE: <span class="grid-size__value">3x3</span></p>
-            <div class="grid-size__options">
-              <div>
-                <div data-grid="3x3" class="grid-size__3x3 js-grid-option grid-size__chosen"></div>
-              </div>
-              <div>
-                <div data-grid="4x4" class="grid-size__4x4 js-grid-option"></div>
-              </div>
-              <div>
-                <div data-grid="5x5" class="grid-size__5x5 js-grid-option"></div>
-              </div>
-            </div>
-          </div> -->
-          <div class="device-image">
+          <div class="how-to-play">
             <p>HOW TO PLAY</p>
-            <!-- <label for="uploader" class="puzzle-image__upload">CUSTOM IMAGE</label> -->
-            <!-- <input id="uploader" type="file" onchange="gameSetupOptions.processDeviceImage();"> -->
+            <ol class="how-to-play__list">
+              <li class="how-to-play__list-item">
+                Select your difficulty level.
+              </li>
+              <li class="how-to-play__list-item">
+                Choose the puzzle image.
+              </li>
+              <li class="how-to-play__list-item">
+                Click [Play Game].
+              </li>
+              <li class="how-to-play__list-item">
+                You can only move tiles which are next to the blank tile.
+              </li>
+              <li class="how-to-play__list-item">
+                Move a tile by clicking or swiping.
+              </li>
+              <li class="how-to-play__list-item">
+                The puzzle is complete when all the tiles are in the correct position.
+              </li>
+              <li class="how-to-play__list-item">
+                Score bonus points by completing the puzzle in fewer moves and also before the timer runs out.
+              </li>
+              <li class="how-to-play__list-item">
+                If your score is high enough you will get to enter your initials on the hi-score table!
+              </li>
+            </ol>
           </div>
           <div class="puzzle-image">
             <p>SELECT IMAGE: <span class="puzzle-image__value">1</span></p>
             <div class="puzzle-image__slideshow">
-              <!-- <div class="puzzle-image__container puzzle-image__fade">
-                <div class="puzzle-image__number">1 / 3</div>
-                <img class="puzzle-image__image" src="assets/images/puzzles/img1.jpg">
-                <div class="puzzle-image__text">Billy Casper</div>
-              </div>
-              <div class="puzzle-image__container puzzle-image__fade">
-                <div class="puzzle-image__number">2 / 3</div>
-                <img class="puzzle-image__image" src="assets/images/puzzles/img2.jpg">
-                <div class="puzzle-image__text">Harry Potter</div>
-              </div>
-              <div class="puzzle-image__container puzzle-image__fade">
-                <div class="puzzle-image__number">3 / 3</div>
-                <img class="puzzle-image__image" src="assets/images/puzzles/img3.jpg">
-                <div class="puzzle-image__text">The Martian</div>
-              </div> -->
-              <!-- <a class="puzzle-image__prev" onclick="gameSetupOptions.selectPuzzleImage(-1)">&#10094;</a>
-              <a class="puzzle-image__next" onclick="gameSetupOptions.selectPuzzleImage(1)">&#10095;</a> -->
             </div>
           </div>
           <div class="game-start">

@@ -649,14 +649,9 @@ const gameSetupOptions = {
     let reader = new FileReader();  //create a FileReader
     //image turned to base64-encoded Data URI.
     reader.readAsDataURL(item);
-    reader.name = item.name;//get the image's name
-    reader.size = item.size; //get the image's size
     reader.onload = function(event) {
       let img = new Image(); //create a image
       img.src = event.target.result; //result is base64-encoded Data URI
-      img.name = event.target.name; //set name (optional)
-      fileName = event.target.name;
-      img.size = event.target.size; //set size (optional)
       img.onload = function(el) {
         let offsetX = 0;
         if (el.target.width < puzzleImageSize || el.target.height < puzzleImageSize) {

@@ -453,7 +453,7 @@ const scoreboard = {
     let hiScoreHTML = '';
     scoreboard.readScores();
     let initialsInput = `<form id="score--form">
-                        <input id="initials--input" class="game-scores__entry-input" type="text" maxlength="3" pattern="[A-Za-z]{3}">
+                        <input id="initials--input" class="game-scores__entry-input" type="text" autocomplete="off" maxlength="3" pattern="[A-Za-z]{3}">
                         </form>`;
     for (let index = 0; index < scoreboard.data.length; index++) {
       let scoreEntry = scoreboard.data[index];

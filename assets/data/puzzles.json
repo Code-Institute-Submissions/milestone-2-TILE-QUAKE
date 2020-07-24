@@ -6,48 +6,60 @@
   "id": 1,
   "title": "Billy Casper",
   "file_name": "kes.jpg"
-}, {
+},{
   "id": 2,
+  "title": "Panda",
+  "file_name": "panda.jpg"
+}, {
+  "id": 3,
   "title": "Harry Potter",
   "file_name": "potter.jpg"
-  }, {
-  "id": 3,
+}, {
+  "id": 4,
   "title": "The Martian",
   "file_name": "martian.jpg"
 }, {
-  "id": 4,
+  "id": 5,
   "title": "Buzz Aldrin",
   "file_name": "apollo11.jpg"
+},{
+  "id": 6,
+  "title": "Earth",
+  "file_name": "earth.jpg"
 }, {
-  "id": 5,
+  "id": 7,
   "title": "Kitten",
   "file_name": "kitten.jpg"
-  }, {
-  "id": 6,
+}, {
+  "id": 8,
   "title": "Pug",
   "file_name": "pug.jpg"
 }, {
-  "id": 7,
+  "id": 9,
   "title": "Giraffes",
   "file_name": "giraffe.jpg"
 }, {
-  "id": 8,
+  "id": 10,
+  "title": "Horse",
+  "file_name": "horse.jpg"
+}, {
+  "id": 11,
   "title": "Sports Car",
   "file_name": "sports_car.jpg"
-  }, {
-  "id": 9,
+}, {
+  "id": 12,
   "title": "Moto GP",
   "file_name": "motogp.jpg"
 }, {
-  "id": 10,
+  "id": 13,
   "title": "Aurora",
   "file_name": "aurora.jpg"
 }, {
-  "id": 11,
+  "id": 14,
   "title": "Lego Trooper",
   "file_name": "trooper.jpg"
 }, {
-  "id": 12,
+  "id": 15,
   "title": "Click to Add",
   "file_name": "device.jpg"
 }]

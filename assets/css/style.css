@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 3 years
+*/
+
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
 :root {
@@ -151,6 +158,8 @@ div {
 }
 
 .how-to-play {
+  -ms-grid-row: 3;
+  -ms-grid-column: 3;
   grid-area: how;
 }
 
@@ -165,6 +174,9 @@ div {
 }
 
 .difficulty {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
   grid-area: difficulty;
 }
 
@@ -180,7 +192,6 @@ div {
   outline: none;
   opacity: 0.8;
   border-radius: 10px;
-  -webkit-transition: 0.2s;
   transition: opacity 0.2s;
   margin-top: 14px;
 }
@@ -203,6 +214,8 @@ div {
 }
 
 .puzzle-image {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
   grid-area: image;
   position: relative;
 }
@@ -238,7 +251,10 @@ div {
   text-shadow: 1px 1px #000;
   transition: 0.6s ease;
   cursor: pointer;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .puzzle-image__next {
@@ -295,15 +311,6 @@ div {
   animation-duration: 1.5s;
 }
 
-@-webkit-keyframes fade {
-  from {
-    opacity: 0.4;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 @keyframes fade {
   from {
     opacity: 0.4;
@@ -336,6 +343,9 @@ input[type="file"] {
 }
 
 .game-start {
+  -ms-grid-row: 5;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
   grid-area: control;
   text-align: center;
   margin-top: 25px;
@@ -880,6 +890,28 @@ input[type="file"] {
   .info__photo-size {
     height: 54px;
     width: auto;
+  }
+
+  .how-to-play {
+    -ms-grid-row: 7;
+    -ms-grid-column: 1;
+  }
+
+  .difficulty {
+    -ms-grid-row: 3;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+  }
+
+  .puzzle-image {
+    -ms-grid-row: 5;
+    -ms-grid-column: 1;
+  }
+
+  .game-start {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
   }
 
 }

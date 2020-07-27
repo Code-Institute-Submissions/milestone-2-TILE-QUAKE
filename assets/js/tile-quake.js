@@ -21,7 +21,7 @@ const sounds = {
   notGotHiscore: ( document.querySelector('#sound--not-got-hiscore') ),
   insertCoin: ( document.querySelector('#sound--insert-coin') ),
   tileMove: ( document.querySelector('#sound--tile-click') )
-}
+};
 
 // Object to handle all in game functions
 const puzzleGame = {
@@ -55,9 +55,9 @@ const puzzleGame = {
       if (info === 'difficulty') { infoDataElement.textContent = puzzleGame.difficultyLevel; }
       if (info === 'moves') { infoDataElement.textContent = puzzleGame.moves; }
       if (info === 'timer') {
-        timerMins = Math.floor(puzzleGame.timer / 60);
-        timerSecs = puzzleGame.timer % 60;
-        timerDisplay = `${timerMins < 10 ? '0' : ''}${timerMins}:${timerSecs < 10 ? '0' : ''}${timerSecs}`;
+        const timerMins = Math.floor(puzzleGame.timer / 60);
+        const timerSecs = puzzleGame.timer % 60;
+        const timerDisplay = `${timerMins < 10 ? '0' : ''}${timerMins}:${timerSecs < 10 ? '0' : ''}${timerSecs}`;
         infoDataElement.textContent = timerDisplay; }
     });
   },
@@ -98,7 +98,7 @@ const puzzleGame = {
         let gridElement = document.querySelector(`#gridpos-${x}${y}`);
 
         if (nextTile < (puzzleSize * puzzleSize)) {
-            tileClass = "tile__p" + puzzleGame.tileGrid[x][y].tileCode;
+            let tileClass = "tile__p" + puzzleGame.tileGrid[x][y].tileCode;
             gridElement.classList.add(tileClass, 'tile__border');
         }
 
@@ -118,7 +118,7 @@ const puzzleGame = {
       for (let y = 0; y < puzzleSize; y++) {
         if ( puzzleGame.tileGrid[x][y].tileCode === 0 ) {
           tileDetails = puzzleGame.tileGrid[x][y];
-          tileDetails['gridPos'] = `gridpos-${x}${y}`;
+          tileDetails.gridPos = `gridpos-${x}${y}`;
         }
       }
     }
@@ -152,8 +152,8 @@ const puzzleGame = {
     for (let n = 0; n < diffLevel; n++) {
       let tilesNextToBlank = [];
       let blankTileGridID = puzzleGame.blankTileDetails();
-      for (x = 0; x < puzzleGame.puzzleSize; x++) {
-        for (y = 0; y < puzzleGame.puzzleSize; y++) {
+      for (let x = 0; x < puzzleGame.puzzleSize; x++) {
+        for (let y = 0; y < puzzleGame.puzzleSize; y++) {
           if ( puzzleGame.tileGrid[x][y].tileCode != 0 ) {
             isTileNextToBlank = puzzleGame.nextToBlankTile(puzzleGame.tileGrid[x][y]);
             // if tile is next to the blank and it's not the tile which was shuffled before then consider it for next shuffle
@@ -181,7 +181,6 @@ const puzzleGame = {
 
   nextToBlankTile: (clickedTile) => {
     const blankTile = puzzleGame.blankTileDetails();
-    const gridTo = puzzleGame.getGridXY(blankTile.gridPos);
     let allowedToMove = false;
     //check if any sides of the clicked tile are touching any sides of the blank tile
     if ( clickedTile.topSide === blankTile.bottomSide ||
@@ -249,7 +248,6 @@ const puzzleGame = {
     const canIMove = puzzleGame.nextToBlankTile(puzzleGame.tileGrid[gridFrom.x][gridFrom.y]);
     let score;
     let scoreboardIndex;
-    let newEntry = {};
     if (canIMove) {
       puzzleGame.moveTile(clickedTile, false);
       if (puzzleGame.isPuzzleComplete()) {
@@ -321,8 +319,8 @@ const puzzleGame = {
     scoreOkButton.classList.remove('d-block');
     sounds.tileRumble.play();
     puzzleGame.startTileRumble();
-    const rumbleON = setTimeout(puzzleGame.shuffleTileGrid, 500);
-    const rumbleOFF = setTimeout(puzzleGame.stopTileRumble, 2500);
+    setTimeout(puzzleGame.shuffleTileGrid, 500);
+    setTimeout(puzzleGame.stopTileRumble, 2500);
     puzzleGame.moves = 0;
     puzzleGame.timer = puzzleGame.difficultyTime[puzzleGame.difficultyLevel - 1];
     gameSetupOptions.updatePuzzleImage(puzzleGame.puzzleImageIndex);
@@ -352,10 +350,12 @@ const puzzleGame = {
   },
 
   checkSafari: () => {
-    return isSafari = !!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/);
+    let isSafari;
+    // double !! used below to make sure we get a boolean returned
+    return isSafari === !!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/);
   }
 
-}
+};
 
 /* Object to handle the scoreboard */
 const scoreboard = {
@@ -364,7 +364,6 @@ const scoreboard = {
 
   checkExists: () => {
     let newScoreboard = [];
-    let nextChar;
     if (localStorage.getItem("tileQuakeScoreboard") === null) {
       for (let n = 10; n > 0; n--) {
         newScoreboard.push({ user: 'QTG', score: n * 1000, level: 1 });
@@ -385,7 +384,6 @@ const scoreboard = {
     scoreboard.readScores();
     let scoreboardPosition = scoreboard.data.length + 1;
     scoreboard.data.forEach((scoreEntry, index) => {
-      let tableScore = scoreEntry.score;
       if ((gameScore > scoreEntry.score && scoreboardPosition > scoreboard.data.length) ||
           (gameScore === scoreEntry.score && scoreEntry.user === 'QTG')) {
         scoreboardPosition = index;
@@ -406,7 +404,7 @@ const scoreboard = {
         <div class='game-scores__user' style='color: hsl(${(index * 25)}, 100%, 50%);'>${scoreEntry.user}</div>
         <div class='game-scores__level' style='color: hsl(${(index * 25)}, 100%, 50%);'>${scoreEntry.level}</div>
         <div class='game-scores__score' style='color: hsl(${(index * 25)}, 100%, 50%);'>${scoreEntry.score}</div>
-      `
+      `;
     }).join('');
     hiScoreTable.innerHTML = hiScoreHTML;
     exitScoreDiv.classList.add('d-block');
@@ -416,7 +414,7 @@ const scoreboard = {
     } else {
       displayTimeout = ((sounds.gotHiscore.duration - 3 - sounds.gotHiscore.currentTime) * 1000);
     }
-    scoreboardTimeout = setTimeout(scoreboard.hide, displayTimeout);
+    scoreboard.scoreboardTimeout = setTimeout(scoreboard.hide, displayTimeout);
   },
   
   hide: () => {
@@ -424,18 +422,18 @@ const scoreboard = {
     const exitScoreDiv = document.querySelector('.game-scores__exit');
     scoreboardScreen.classList.remove('game-scores__move-right');
     exitScoreDiv.classList.remove('d-block');
-    clearTimeout(scoreboardTimeout);
+    clearTimeout(scoreboard.scoreboardTimeout);
   },
 
   saveScore: (tablePosition, score) => {
     const userInitials = document.querySelector('#initials--input').value.toUpperCase();
     const hiScoreTable = document.querySelector('.game-scores__content');
     const saveScoreDiv = document.querySelector('.game-scores__save');
-    newEntry = {
+    const newEntry = {
       user: userInitials,
       score: score,
       level: parseInt(puzzleGame.difficultyLevel)
-    }
+    };
     sounds.button.play();
     scoreboard.data.splice(tablePosition, 0, newEntry);
     scoreboard.data.pop();
@@ -494,9 +492,9 @@ const scoreboard = {
 
     scoreboardScreen.classList.add('game-scores__move-right');
     saveScoreDiv.classList.add('d-block');
-    let inputTimeout = setTimeout(scoreboard.inputFocus, 1000);
+    setTimeout(scoreboard.inputFocus, 1000);
     if (score < 1) { 
-      scoreboardTimeout = setTimeout(scoreboard.hide, 6000);
+      scoreboard.scoreboardTimeout = setTimeout(scoreboard.hide, 6000);
     }
   },
 
@@ -504,7 +502,7 @@ const scoreboard = {
     document.getElementById("initials--input").focus();
   }
 
-}
+};
 
 // Object to handle all game setup options
 const gameSetupOptions = {
@@ -623,7 +621,8 @@ const gameSetupOptions = {
     let uploadCtx = uploadCanvas.getContext("2d");
     let finalCtx = finalCanvas.getContext("2d");
     const screenWidth = document.querySelector(".wrapper").offsetWidth;
-    if (screenWidth < 768) { puzzleImageSize = 300; } else { puzzleImageSize = 600; }
+    let puzzleImageSize = 600;
+    if (screenWidth < 768) { puzzleImageSize = 300; }
     const item = document.querySelector('#puzzle-upload').files[0];  //get the image selected
     let reader = new FileReader();  //create a FileReader
     //image turned to base64-encoded Data URI.
@@ -674,15 +673,15 @@ const gameSetupOptions = {
         // set the device image chosen to the active puzzle image
         puzzleGame.puzzleImageIndex = puzzleGame.puzzleChoiceData.length;
         gameSetupOptions.selectPuzzleImage(0);
-      }
-    }
+      };
+    };
   },
 
   fileInputClick: () => {
     const imageFileInput = document.querySelector('#puzzle-upload');
     imageFileInput.click();
   }
-}
+};
 
 // Object to handle the welcome logo screen and setup any eventListeners
 const setup = {
@@ -763,7 +762,7 @@ const setup = {
     });
     
   }
-}
+};
 
 setup.welcomeScreen(false);
 setup.eventListeners();

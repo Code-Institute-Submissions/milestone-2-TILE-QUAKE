@@ -655,10 +655,11 @@ const gameSetupOptions = {
         finalCtx.drawImage(uploadCanvas, offsetX, 0, puzzleImageSize, puzzleImageSize, 0, 0, puzzleImageSize, puzzleImageSize);
 
         //get the base64-encoded Data URI from the final resize/crop image
-        const srcEncoded = finalCtx.canvas.toDataURL(el.target, 'image/jpeg', 0);
+        const srcEncoded = finalCtx.canvas.toDataURL('image/jpeg', 1.0);
         const root = document.documentElement;
         const url = srcEncoded.replace(/(\r\n|\n|\r)/gm, "");
-        const imgUpload = "url('" + url.replace(/(\r\n|\n|\r)/gm, "") + "')";
+        // const imgUpload = "url('" + url.replace(/(\r\n|\n|\r)/gm, "") + "')";
+        const imgUpload = "url('" + url + "')";
         
         puzzleGame.deviceImageChosen = true;
         puzzleGame.devicePuzzleImage = imgUpload;

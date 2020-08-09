@@ -618,7 +618,9 @@ const gameSetupOptions = {
   },
 
   resize: () => {
-    gameSetupOptions.updatePuzzleImage(puzzleGame.puzzleImageIndex);
+    if (puzzleGame.puzzleChoiceData.length > 0 ) {
+      gameSetupOptions.updatePuzzleImage(puzzleGame.puzzleImageIndex);
+    }
   },
 
   processDeviceImage: () => {

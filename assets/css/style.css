@@ -897,6 +897,11 @@ input[type="file"] {
     -ms-grid-column: 1;
   }
 
+  .how-to-play__list-item {
+    font-size: 1.25em;
+    line-height: 1.4;
+  }
+
   .difficulty {
     -ms-grid-row: 3;
     -ms-grid-column: 1;

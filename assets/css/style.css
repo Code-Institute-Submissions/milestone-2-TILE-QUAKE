@@ -12,7 +12,7 @@
   --gameRed: rgb(245, 10, 10);
   --gameGreen: rgb(11, 206, 4);
   --gamePink: rgb(243, 76, 218);
-  --chosenImage: url('/assets/images/puzzles/img1.jpg');
+  --chosenImage: url('/assets/images/puzzles/t_rex.jpg');
 }
 
 body {

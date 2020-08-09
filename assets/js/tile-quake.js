@@ -350,9 +350,15 @@ const puzzleGame = {
   },
 
   checkSafari: () => {
-    let isSafari;
+    let isSafari = !!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/);
     // double !! used below to make sure we get a boolean returned
-    return isSafari === !!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/);
+    return isSafari;
+  },
+  
+  checkEdge: () => {
+    // double !! used below to make sure we get a boolean returned
+    let isEdge = !!navigator.userAgent.match(/Edge\//);
+    return isEdge;
   }
 
 };
@@ -520,9 +526,9 @@ const gameSetupOptions = {
 
     if (imageIndex < puzzleGame.puzzleChoiceData.length) {
     
-      // Safari appears to look for CSS background images from the root rather than css folder
+      // Safari and Edge appear to look for CSS background images from the root rather than css folder
       let imagePathStart = '..';
-      if (puzzleGame.checkSafari()) { imagePathStart = 'assets'; } 
+      if (puzzleGame.checkSafari() || puzzleGame.checkEdge()) { imagePathStart = 'assets'; } 
 
       let imageSize = '';
       let fileName = puzzleGame.puzzleChoiceData[imageIndex-1].file_name.slice(0, -4);

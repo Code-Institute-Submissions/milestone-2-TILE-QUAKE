@@ -71,9 +71,13 @@
         <h1 class="screen-title">GAME OPTIONS</h1>
         <div class="game-setup__content">
           <div class="difficulty">
-            <p>SET DIFFICULTY LEVEL: <span class="difficulty__value">1</span></p>
-            <span class="float-left">Super Easy</span>
-            <span class="float-right">Beyond Yoda</span>
+            <label for="difficulty--input">SET DIFFICULTY LEVEL: <span class="difficulty__value">1</span></label>
+            <div class="difficulty__range">
+              <span class="float-left">Super Easy</span>
+              <span class="float-right">Beyond Yoda</span>    
+            </div>
+            <!-- <span class="float-left">Super Easy</span>
+            <span class="float-right">Beyond Yoda</span> -->
             <input id="difficulty--input" class="difficulty__slider" type="range" min="1" max="10" step="1" value="1">
           </div>
           <div class="how-to-play">

@@ -709,9 +709,9 @@ const setup = {
       puzzleGame.toggleLastTile();
       welcomeTimeout = 1000;
     }
-    setTimeout(() => {
-      welcomeScreen.classList.add('welcome__scale-up');
-    }, welcomeTimeout);
+    // setTimeout(() => {
+    //   welcomeScreen.classList.add('welcome__scale-up');
+    // }, welcomeTimeout);
   },
 
   preventBehavior: (e) => {

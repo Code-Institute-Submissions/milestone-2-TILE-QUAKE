@@ -94,8 +94,8 @@ div {
   align-content: center;
   justify-items: center;
   background: linear-gradient(rgb(252, 72, 8), rgb(20, 105, 245));
-  transform: scale(0);
-  transition: all 0.8s;
+  /* transform: scale(0);
+  transition: all 0.8s; */
 }
 
 .welcome__scale-up {

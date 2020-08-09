@@ -192,12 +192,12 @@ div {
   outline: none;
   opacity: 0.8;
   border-radius: 10px;
-  transition: opacity 0.2s;
+  /* transition: opacity 0.2s; */
   margin-top: 14px;
 }
 
 .difficulty__slider:hover {
-  opacity: 1;
+  /* opacity: 1; */
 }
 
 /* this one */
@@ -212,6 +212,30 @@ div {
   background: orange;
   cursor: pointer;
 }
+
+.difficulty__slider::-moz-range-thumb {
+  appearance: none;
+  content: "";
+  width: 35px;
+  height: 45px;
+  border-radius: 10px;
+  border: 2px solid var(--gameRed);
+  background: orange;
+  cursor: pointer;
+}
+
+/* .difficulty__slider::-ms-thumb {
+  appearance: none;
+  content: "";
+  width: 35px;
+  height: 45px;
+  border-radius: 10px;
+  border: 2px solid var(--gameRed);
+  background: orange;
+  cursor: pointer;
+} */
+
+
 
 .difficulty__range {
   margin-top: 12px;

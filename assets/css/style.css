@@ -158,8 +158,8 @@ div {
 }
 
 .how-to-play {
-  -ms-grid-row: 3;
-  -ms-grid-column: 3;
+  /* -ms-grid-row: 3;
+  -ms-grid-column: 3; */
   grid-area: how;
 }
 
@@ -174,9 +174,9 @@ div {
 }
 
 .difficulty {
-  -ms-grid-row: 1;
+  /* -ms-grid-row: 1;
   -ms-grid-column: 1;
-  -ms-grid-column-span: 3;
+  -ms-grid-column-span: 3; */
   grid-area: difficulty;
 }
 
@@ -235,15 +235,13 @@ div {
   cursor: pointer;
 } */
 
-
-
 .difficulty__range {
   margin-top: 12px;
 }
 
 .puzzle-image {
-  -ms-grid-row: 3;
-  -ms-grid-column: 1;
+  /* -ms-grid-row: 3;
+  -ms-grid-column: 1; */
   grid-area: image;
   position: relative;
 }
@@ -371,9 +369,9 @@ input[type="file"] {
 }
 
 .game-start {
-  -ms-grid-row: 5;
+  /* -ms-grid-row: 5;
   -ms-grid-column: 1;
-  -ms-grid-column-span: 3;
+  -ms-grid-column-span: 3; */
   grid-area: control;
   text-align: center;
   margin-top: 25px;
@@ -921,8 +919,8 @@ input[type="file"] {
   }
 
   .how-to-play {
-    -ms-grid-row: 7;
-    -ms-grid-column: 1;
+    /* -ms-grid-row: 7;
+    -ms-grid-column: 1; */
   }
 
   .how-to-play__list-item {
@@ -931,20 +929,21 @@ input[type="file"] {
   }
 
   .difficulty {
-    -ms-grid-row: 3;
+    /* -ms-grid-row: 3;
     -ms-grid-column: 1;
     -ms-grid-column-span: 1;
+    grid-area: difficulty; */
   }
 
   .puzzle-image {
-    -ms-grid-row: 5;
-    -ms-grid-column: 1;
+    /* -ms-grid-row: 5;
+    -ms-grid-column: 1; */
   }
 
   .game-start {
-    -ms-grid-row: 1;
+    /* -ms-grid-row: 1;
     -ms-grid-column: 1;
-    -ms-grid-column-span: 1;
+    -ms-grid-column-span: 1; */
   }
 
 }

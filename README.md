@@ -1,5 +1,6 @@
-# Tile Quake
+![Tile Quake responsive view](docs/responsive-screenshot.jpg)
 
+# Tile Quake
 The purpose of ‘Tile Quake’ project is to create a simple fun to play puzzle-slide game that can be played by ages 5 and above.
 
 The live deployed site can be accessed using the following link: [Tile Quake](https://devtoguk.github.io/milestone-2-TILE-QUAKE/)
@@ -69,6 +70,7 @@ Most sounds from the game are also taken from retro arcade games.
 - [GitPod](https://www.gitpod.io/) - online IDE used to create this project.
 - [Autoprefixer](https://autoprefixer.github.io/) - used to ensure the CSS code was valid for browsers which match (last 2 versions, > 5%)
 - [Optimizilla](https://imagecompressor.com/) - used to compress JPEG/PNG content.
+- [CSS Gradient](https://cssgradient.io/) - used to help create the gradients.
 
 For this project I decided to use CSS-Grid for layout, as I did not believe this project warranted the extra overhead
 of Bootstrap.  I also chose not to use jQuery as I wanted to become more familiar with the pure Javascript methods of
@@ -180,14 +182,22 @@ Puzzle image photos have been downloaded from ?????? or Google images.
 These images remain the property of their respective copyright owners.
 (if this was not an educational project, permission would have been sought before using any unlicensed images from Google)
 
+### Audio
+The audio files for the game are mainly samples from games I remember as a teenager such as Star Force, Bomb Jack and Galaga. These audio files
+were downloaded from [Video Game Music](https://downloads.khinsider.com/). 
+The actual tile quake sound was downloaded from [Zapsplat](https://www.zapsplat.com/).
+
 ### Code
-Thanks to the Stackoverflow and Webflow communities for helping solve some problems. 
-- Problem. [Stackoverflow thread](https://stackoverflow.com/link-here)
+Thanks to the Stackoverflow and Webflow communities for helping solve some issues/problems. 
+- Fisher-Yates (aka Knuth) Shuffle. [Stackoverflow thread](https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array)
+
+The [RESET] and [QUIT] buttons were tweaked from an original style by Rumyra [The Big Red Panic Button](https://codepen.io/Rumyra/pen/GDLpJ)
 
 ## Acknowledgments
 Inspiration for this project originally came from an image my sister posted on social media showing loads of things from the 70's / 80's
 one of which was of an old toy slide-puzzle game, so when thinking about what todo for my MS2 I saw on Slack that some others were
 doing games and immediately the slide-puzzle popped back into my head.
+
 My mentor suggested looking at BEM and JSDoc for this project which I have done and implemented on a basic level, I have not gone for the
 full BEM on my project as I think it can be a little restrictive on other areas, so my CSS is slightly BEM.
 

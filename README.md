@@ -38,9 +38,10 @@ The live deployed site can be accessed using the following link: [Tile Quake](ht
 3. I want to play the game.
 4. I need to be able to see in-game information about how I’m doing.
 5. If I get stuck I would like to reset the game.
-6. I want to change the game setup.
-7. How do I get on the high-score table.
-8. I want to view the high-score table.
+6. I want to end my current game and change the game setup.
+7. I want to use an image on my device as the puzzle image.
+8. How do I get on the high-score table.
+9. I want to view the high-score table.
 
 ## Wireframe Designs
 

@@ -81,8 +81,6 @@ The game runs from a single page, using CSS animation to show the user the next 
 path I chose not to show the same navigation on each page, instead using clear buttons to guide the user through the game. 
 
 ### Welcome screen
-<img src="https://devtoguk.github.io/milestone-2-TILE-QUAKE/docs/screens/welcome.jpg" style="margin: 0;">
-
 The welcome screen has a large Tile Quake logo on a colored gradient background to create an opening screen with impact.
 The user is presented with two simple buttons [INSERT COIN] (to start) and [HIGH SCORES] (to view the high-score table)
 
@@ -188,8 +186,11 @@ were downloaded from [Video Game Music](https://downloads.khinsider.com/).
 The actual tile quake sound was downloaded from [Zapsplat](https://www.zapsplat.com/).
 
 ### Code
-Thanks to the Stackoverflow and Webflow communities for helping solve some issues/problems. 
+Thanks to the Stackoverflow and other communities & blogs for helping solve some issues/problems. 
 - Fisher-Yates (aka Knuth) Shuffle. [Stackoverflow thread](https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array)
+- Using a DIV to get screen width with offsetWidth. [Stackoverflow thread](https://stackoverflow.com/questions/4787527/how-to-find-the-width-of-a-div-using-vanilla-javascript)
+- Resizing an image using javascript. [TheRogerLab](https://www.therogerlab.com/how-can-i/javascript/resize-an-image.html)
+- JavaScript Fetch API to Get JSON Data. [Tania Rascia](https://www.taniarascia.com/how-to-use-the-javascript-fetch-api-to-get-json-data/)
 
 The [RESET] and [QUIT] buttons were tweaked from an original style by Rumyra [The Big Red Panic Button](https://codepen.io/Rumyra/pen/GDLpJ)
 
@@ -200,6 +201,9 @@ doing games and immediately the slide-puzzle popped back into my head.
 
 My mentor suggested looking at BEM and JSDoc for this project which I have done and implemented on a basic level, I have not gone for the
 full BEM on my project as I think it can be a little restrictive on other areas, so my CSS is slightly BEM.
+
+Thank you to the free JavaScript courses JavaScript 30 by Wes and Watch and Code's Practical JavaScript by Gordon Zhu both of which
+were very helpful additional learning. 
 
 A big thank you to my mentor, the Slack communnity and many great reference sites out there including Stackoverflow and W3Schools.
 

@@ -563,6 +563,7 @@ const gameSetupOptions = {
 
   setupPuzzleSlideshow: async () => {
     const puzzleChoice = document.querySelector('.puzzle-image__slideshow');
+    // Basic JSON fetch adapted from https://www.taniarascia.com/how-to-use-the-javascript-fetch-api-to-get-json-data/
     fetch('./assets/data/puzzles.json')
       .then((response) => {
         return response.json();
@@ -631,6 +632,7 @@ const gameSetupOptions = {
     const screenWidth = document.querySelector(".wrapper").offsetWidth;
     let puzzleImageSize = 600;
     if (screenWidth < 768) { puzzleImageSize = 300; }
+    // resize code below adapted from TheRogerLab resize-an-image.html
     const item = document.querySelector('#puzzle-upload').files[0];  //get the image selected
     let reader = new FileReader();  //create a FileReader
     //image turned to base64-encoded Data URI.

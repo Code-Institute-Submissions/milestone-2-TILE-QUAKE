@@ -24,7 +24,7 @@
 
     1. After clicking the [Insert Coin] button on the welcome screen the user can set the game options.
         1. Use the difficulty slider to set how difficult the puzzle will be to solve.
-        2. Use the arrows next to the puzzle image to select the required image.
+        2. Use the arrows <> next to the puzzle image to select the required image.
 
 3. I want to play the game.
 
@@ -45,33 +45,47 @@
 6. If I get stuck I would like to reset the game.
 
     1. If the user gets stuck in an existing game they can reset the puzzle by clicking the green [Reset] button.
-    2. The puzzle image, count-down timer and moves will all reset and then will begin again.
+    2. The puzzle image, count-down timer and moves will all reset and then the game will begin again.
 
 7. I want to end my current game and change the game setup.
 
     1. To end the current game the user can simply click the red [Quit] button.
-    2. Then to change the setup the user would click the [Insert Coin] button.
+    2. Then to change the setup the user would click the [Insert Coin] button on the welcome screen.
 
 8. I want to use an image on my device as the puzzle image.
 
     1. To play the game using an image from their device the user would click the [Insert Coin] button to get to the
     game options screen.
-    2. Use the image select arrows <> to select the last image (16 of 16).
-    3. Click on the image and then select a JPG image to use as the puzzle.
-    4. The image will be resized, horizontally centered and squared.
+    2. Use the image select arrows <> to select the last image (image 16 of 16).
+    3. Click on the image and then select a JPG image from your device to use as the puzzle image.
+    4. The image will be resized, horizontally centered and squared for use as the puzzle image.
 
 9. I want to view the high-score table.
 
-    1. To view the high-score table click the [High Score] button on the welcome screen.
+    1. To view the high score table click the [Hi Scores] button on the welcome screen.
     2. To exit the high score table the user would wait for the timeout or click the [Back] button.
 
-10. How do I get on the high-score table.
+10. How do I get on the high score table.
 
-    1. To get on the high-score table you need to get a score higher than the lowest displayed in the high-score table.
+    1. To get on the high-score table you need to get a score higher than the lowest displayed in the high score table.
+    2. A users score is based on time taken to complete, number of moves and difficulty level.
 
+
+## Testing elements and functionality of all game screens (manually tested)
 
 ## Automated tests (using Jasmine)
+Jasmine was used to create Test Driven Development for the high score table.
+This seemed to go well, although I think the testing script will now be out-of-date.
 
 ## Additional Testing
+1. Asked friends and family to play the game on their phone, tablets and desktops where possible and let me know
+any issues. Got good feedback, with no real issues.
+2. I have tested the site on a desktop using the following modern browsers: Chrome, Firefox and Edge. As well as 
+testing on Android phone/tablet and Apple iPhone.
+3. The game has not been written to work on Internet Explorer, the user will receive an error suggesting they use a
+more modern browser. In the real World if a client wanted a site to work on IE then that is fine, but a lot of
+the newer methods of coding Javascript, etc does not work on IE. IE has had it's day and I wanted to code the game
+using some of these newer methods.
 
 ## Errors/Issues Found
+

@@ -8,6 +8,7 @@ class TileData {
     }
 }
 
+// function to update the in-game timer
 function gameTimer() {
   puzzleGame.updateGameInfo(['timer']);
   puzzleGame.timer--;
@@ -363,7 +364,7 @@ const puzzleGame = {
 
 };
 
-/* Object to handle the scoreboard */
+// Object to handle the scoreboard
 const scoreboard = {
   data: [],
   scoreboardTimeout: 0,
@@ -668,7 +669,6 @@ const gameSetupOptions = {
         const srcEncoded = finalCtx.canvas.toDataURL('image/jpeg', 1.0);
         const root = document.documentElement;
         const url = srcEncoded.replace(/(\r\n|\n|\r)/gm, "");
-        // const imgUpload = "url('" + url.replace(/(\r\n|\n|\r)/gm, "") + "')";
         const imgUpload = "url('" + url + "')";
         
         puzzleGame.deviceImageChosen = true;
@@ -711,9 +711,6 @@ const setup = {
       puzzleGame.toggleLastTile();
       welcomeTimeout = 1000;
     }
-    // setTimeout(() => {
-    //   welcomeScreen.classList.add('welcome__scale-up');
-    // }, welcomeTimeout);
   },
 
   preventBehavior: (e) => {

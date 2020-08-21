@@ -60,14 +60,14 @@
     3. Click on the image and then select a JPG image from your device to use as the puzzle image.
     4. The image will be resized, horizontally centered and squared for use as the puzzle image.
 
-9. I want to view the high-score table.
+9. I want to view the hi-score table.
 
-    1. To view the high score table click the [Hi Scores] button on the welcome screen.
-    2. To exit the high score table the user would wait for the timeout or click the [Back] button.
+    1. To view the hi-score table click the [Hi Scores] button on the welcome screen.
+    2. To exit the hi-score table the user would wait for the timeout or click the [Back] button.
 
-10. How do I get on the high score table.
+10. How do I get on the hi-score table.
 
-    1. To get on the high-score table you need to get a score higher than the lowest displayed in the high score table.
+    1. To get on the hi-score table you need to get a score higher than the lowest displayed in the hi-score table.
     2. A users score is based on time taken to complete, number of moves and difficulty level.
 
 ## Testing elements and functionality of all game screens (manually tested)
@@ -100,8 +100,8 @@
 7. Confirm that a piece allowed to move will move with a click/tap or swipe, depending on the device.
 8. Check that the [RESET] button correctly resets the puzzle and information panel.
 9. Check that the [QUIT] button returns to the Welcome screen.
-10. When puzzle complete confirm the score and whether or not the user can enter initials on the high score table.
-11. If high score is achieved do the fireworks display.
+10. When puzzle complete confirm the score and whether or not the user can enter initials on the hi-score table.
+11. If a high score is achieved do the fireworks display.
 
 ### Hi Score screen
 1. Make sure the animation makes the screen appear/disappear as expected.
@@ -111,7 +111,7 @@
 5. Confirm that the [BACK] button works correctly.
 
 ## Automated tests (using Jasmine)
-Jasmine was used to create Test Driven Development for the high score table.
+Jasmine was used to create Test Driven Development for the hi-score table.
 This seemed to go well, although I think the testing script will now be out-of-date.
 
 ## Additional Testing
@@ -127,12 +127,12 @@ using some of these newer methods.
 ## Errors/Issues Found
 (only includes main errors rather than small typos/alignment which caused only minor errors)
 
-1. ** Game Play - using Google DevTools to simulate devices **
+1. **Game Play - using Google DevTools to simulate devices**
 If you use Google DevTools to simulate a device (such as Apple iPhone 6/7/8) the welcome screen, hi-score table
 and Game Setup options display OK, however the in-game puzzle does not display.  
 When tested on an actual iPhone device the puzzle displays OK. I believe this may be related to issue(2.) below.
 
-2. ** Game Play - in-game puzzle image not being display **
+2. **Game Play - in-game puzzle image not being display**
 I first noticed this issue on an actual iPhone.  After some research and testing I discovered that the Safari
 browser on the iPhone did not look for the puzzle image in the same way as say Chrome on my windows desktop.
 As I am using parts of a **background-image** to create the puzzle pieces normally the image would be addressed
@@ -140,14 +140,11 @@ relative to the location of the CSS file i.e.  ../images/puzzles/earth.jpg where
 to load the background-image relative to the index.html file.  After testing on other browser, EDGE also does the same.
 This was solved by adding some JS detect the browser and alter the initial file-path.
 
-3. ** Audio playback **
+3. **Audio playback**
 Audio playback on Windows desktop and Android devices works OK, but the playback of audio files on Apple devices seems
 to be very hit and miss. I have yet to find a solution to this intermittent problem.
 
-4. ** Game Setup Options - using device image on Firefox browser
+4. **Game Setup Options - using device image on Firefox browser**
 When using a device image on Firefox the image would rarely appear as the puzzle image even though the small puzzle 
-preview image did display.
-
-Found a parameter error when calling the toDataURL method on the final canvas, Chrome and Safari seemed to ignore the
+preview image did display. Found a parameter error when calling the toDataURL method on the final canvas, Chrome and Safari seemed to ignore the
 issue and just display the puzzle, whereas Firefox showed a blank puzzle.
-

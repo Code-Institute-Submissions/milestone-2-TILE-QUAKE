@@ -99,7 +99,7 @@ next to their score and use the [SAVE SCORE] to save the score.
 
 Desktops, tablets and mobiles all display in the same format.
 
-### Game Setup
+### Game Setup screen
 
 The game setup screen displays the setup options the user can change: difficulty level slider and puzzle image. One of the
 stock puzzle images can be used or the user can select an image from their device to use as the puzzle. Instructions on how
@@ -108,7 +108,7 @@ will start the game.
 
 On mobiles the [PLAY GAME] button is moved to the top of the screen area and the instructions are displayed at the bottom.
 
-### Game Play
+### Game Play screen
 The game play screen shows the actual game.
 In the left hand panel there is the Tile Quake logo and below that some in-game information: puzzle image preview, difficulty level,
 game timer and number of moves made.  In the right hand panel two buttons are displayed [RESET] and [QUIT], these buttons allow the
@@ -120,7 +120,7 @@ higher their score will be.
 On mobiles the Tile Quake logo and the game information are displayed at the top of the screen and the [RESET] and [QUIT] button are
 displayed at the bottom of the screen.
 
-### Puzzle Complete (aded overlay onto the game-play screen)
+### Puzzle Complete overlay (faded overlay onto the Game Play screen)
 This screen is displayed if the user completes the puzzle. Different music will be played depending on if the user has a high score.
 Their score will be displayed calculated on base score, time bonus and move bonus, if the score is high enough to go on the high score
 table the user is taken to the high score screen where they can input their initials.
@@ -128,6 +128,7 @@ table the user is taken to the high score screen where they can input their init
 ## Future Features/Changes
 - Use of a remote database to allow a shared high score table so you could use a try and beat your friends scores.
 - Use an API to access an on-line image library for puzzle images
+- Have the option for bigger grid size such as 4x4, 5x5 and 6x6.
 
 ## Testing
 For testing information please use the following link [TESTING.md](/TESTING.md)
@@ -175,7 +176,7 @@ All character names remain the property of their respective copyright owners.
 
 ### Logo
 The logo image was created from scratch using Adobe Photoshop.  
-(the cracked Earth image was downloaded from ??????????)
+(the cracked Earth effect was cropped from an image by Micaela Parente on [Unsplash](https://unsplash.com/photos/UzTBnxFiSWE)
 
 ### Photos
 Puzzle image photos have been downloaded from ?????? or Google images.
@@ -193,6 +194,7 @@ Thanks to the Stackoverflow and other communities & blogs for helping solve some
 - Using a DIV to get screen width with offsetWidth. [Stackoverflow thread](https://stackoverflow.com/questions/4787527/how-to-find-the-width-of-a-div-using-vanilla-javascript)
 - Resizing an image using javascript. [TheRogerLab](https://www.therogerlab.com/how-can-i/javascript/resize-an-image.html)
 - JavaScript Fetch API to Get JSON Data. [Tania Rascia](https://www.taniarascia.com/how-to-use-the-javascript-fetch-api-to-get-json-data/)
+- Browser detection. []()
 
 The [RESET] and [QUIT] buttons were tweaked from an original style by Rumyra [The Big Red Panic Button](https://codepen.io/Rumyra/pen/GDLpJ)
 
@@ -207,7 +209,7 @@ full BEM on my project as I think it can be a little restrictive on other areas,
 Thank you to the free JavaScript courses JavaScript 30 by Wes and Watch and Code's Practical JavaScript by Gordon Zhu both of which
 were very helpful additional learning. 
 
-A big thank you to my mentor, the Slack communnity and many great reference sites out there including Stackoverflow and W3Schools.
+A big thank you to my mentor, the Slack community and many great reference sites out there including Stackoverflow and W3Schools.
 
 ## Disclaimer
 The content of this website is solely for educational purposes.

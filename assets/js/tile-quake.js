@@ -7,8 +7,9 @@ class TileData {
         this.tileCode = id;
     }
 }
-
-// function to update the in-game timer
+/**
+ * This function updates the in-game count-down timer.
+ */
 function gameTimer() {
   puzzleGame.updateGameInfo(['timer']);
   puzzleGame.timer--;
@@ -24,12 +25,12 @@ const sounds = {
   tileMove: ( document.querySelector('#sound--tile-click') )
 };
 
-// Object to handle all in game functions
+/**
+ * Object to handle all in game functions.
+ */
 const puzzleGame = {
   puzzleSize: 3,  //force value for now
-
-  // tileGrid array of TileData objects to store the position of each tile col,row
-  tileGrid: [],
+  tileGrid: [], // array of TileData objects
   tiles: [],
   image: '',
   puzzleImageIndex: 1,
@@ -63,6 +64,11 @@ const puzzleGame = {
     });
   },
 
+/**
+ * This method initializes the tileGrid array with x & y grid positions for each tile piece and
+ * also calculates and stores side codes for each piece so that we can detect if a puzzle piece
+ * is touching the blank tile.
+ */
   initPuzzle: () => {
     const puzzleSize = puzzleGame.puzzleSize;
     let nextTile = 0;
@@ -143,12 +149,15 @@ const puzzleGame = {
     return new Promise(resolve => setTimeout(resolve, ms));
   },
 
+/**
+ * This method shuffles the tileGrid depending on the difficulty level.
+ * The shuffle is based on actual puzzle moves, so we know the puzzle can be solved.
+ */
   shuffleTileGrid: async () => {
     let isTileNextToBlank;
     let previousTile = "";
     const diffLevel = (puzzleGame.difficultyLevel * 2) + 1;
     const tileDelay = (diffLevel > 6) ? (2000 / diffLevel) : (1000 / diffLevel);
-    // shuffle the grid depending on the difficulty level
     // find all the tiles next to the blank tile
     for (let n = 0; n < diffLevel; n++) {
       let tilesNextToBlank = [];
@@ -157,7 +166,7 @@ const puzzleGame = {
         for (let y = 0; y < puzzleGame.puzzleSize; y++) {
           if ( puzzleGame.tileGrid[x][y].tileCode != 0 ) {
             isTileNextToBlank = puzzleGame.nextToBlankTile(puzzleGame.tileGrid[x][y]);
-            // if tile is next to the blank and it's not the tile which was shuffled before then consider it for next shuffle
+            // if tile next to the blank and it's not the tile which was shuffled before then consider it for next shuffle
             if ((isTileNextToBlank) && ((`gridpos-${x}${y}`) != previousTile)) {
               tilesNextToBlank.push((`gridpos-${x}${y}`));
             }
@@ -180,10 +189,13 @@ const puzzleGame = {
     return { x: tile.substring(8,9), y: tile.substring(9) };
   },
 
+/**
+ * This method checks if the clicked tile can be moved by comparing it's side codes
+ * with the side codes of the blank tile.
+ */
   nextToBlankTile: (clickedTile) => {
     const blankTile = puzzleGame.blankTileDetails();
     let allowedToMove = false;
-    //check if any sides of the clicked tile are touching any sides of the blank tile
     if ( clickedTile.topSide === blankTile.bottomSide ||
          clickedTile.bottomSide === blankTile.topSide ||
          clickedTile.leftSide === blankTile.rightSide ||
@@ -192,11 +204,14 @@ const puzzleGame = {
     return allowedToMove;
   },
 
+/**
+ * This method checks if the puzzle is complete by checking if each puzzle piece
+ * is in it's original grid position.
+ */
   isPuzzleComplete: () => {
     let tilesCorrect = 0;  // number of tiles in correct position
     let tileToCheck = 1;
     const puzzleSize = puzzleGame.puzzleSize;
-    // check if the right puzzle piece is in the correct grid space
     for (let x = 0; x < puzzleSize; x++) {
       for (let y = 0; y < puzzleSize; y++) {
         if ( puzzleGame.tileGrid[x][y].tileCode === tileToCheck ) { tilesCorrect++; }

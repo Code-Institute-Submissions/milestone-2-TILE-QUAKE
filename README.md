@@ -179,7 +179,7 @@ The logo image was created from scratch using Adobe Photoshop.
 (the cracked Earth effect was cropped from an image by Micaela Parente on [Unsplash](https://unsplash.com/photos/UzTBnxFiSWE)
 
 ### Photos
-Puzzle image photos have been downloaded from ?????? or Google images.
+Puzzle image photos have been downloaded from [Unsplash](https://unsplash.com/) or Google images.
 These images remain the property of their respective copyright owners.
 (if this was not an educational project, permission would have been sought before using any unlicensed images from Google)
 

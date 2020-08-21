@@ -203,8 +203,8 @@ Inspiration for this project originally came from an image my sister posted on s
 one of which was of an old toy slide-puzzle game, so when thinking about what todo for my MS2 I saw on Slack that some others were
 doing games and immediately the slide-puzzle popped back into my head.
 
-My mentor suggested looking at BEM and JSDoc for this project which I have done and implemented on a basic level, I have not gone for the
-full BEM on my project as I think it can be a little restrictive on other areas, so my CSS is slightly BEM.
+My mentor suggested looking at BEM for this project which I have done and implemented on a basic level, I have not gone for the
+full BEM on my project as I think it can be a little restrictive in areas, so my CSS is slightly BEM.
 
 Thank you to the free JavaScript courses JavaScript 30 by Wes and Watch and Code's Practical JavaScript by Gordon Zhu both of which
 were very helpful additional learning. 

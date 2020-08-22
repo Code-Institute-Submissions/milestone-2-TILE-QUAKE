@@ -63,6 +63,20 @@ The blue and green of the game-play screen are meant to reflect the sea and land
 
 Most sounds from the game are also taken from retro arcade games.
 
+## Core Game Logic
+For me probably the biggest challenge before writing a single line of code was to figure out whether or not a puzzle tile
+was allowed to move, basically is a puzzle tile next to the blank tile?
+Using traditional pen and paper I set about trying to solve the problem and after going down a few blind-alleys I came up
+with this [solution](https://devtoguk.github.io/milestone-2-TILE-QUAKE/docs/core-game-logic.pdf).  The PDF shows a 3x3 grid
+where I have manually filled in the grid side-codes for top, bottom, left & right for each grid position, starting with the
+code 101 and giving sides that touch the same code. I then wrote out the all side-codes for each grid position(x,y) to help
+me find a pattern so I could automatically generate the codes for each grid position.  I could have just hard-coded the
+side-codes into an array, but as I was looking at the possibility of have different sized puzzle grids creating a method to
+generate the codes would be a better idea.  The method which generates the codes is **initPuzzle**.
+
+With the side-code information in the tileGrid array I could quickly check if any of the sides of the the tile the user
+clicked on, matched any of the sides of the blank tile and if they did then that tile was allowed to move!
+
 ## Technologies Used
 - HTML
 - CSS
@@ -128,7 +142,8 @@ table the user is taken to the high score screen where they can input their init
 ## Future Features/Changes
 - Use of a remote database to allow a shared high score table so you could use a try and beat your friends scores.
 - Use an API to access an on-line image library for puzzle images
-- Have the option for bigger grid size such as 4x4, 5x5 and 6x6.
+- Have the option for bigger grid size such as 4x4 and 5x5. (this was in my original design but due to the extra complexity and
+time constraints I decided to consider this feature for a future version)
 
 ## Testing
 For testing information please use the following link [TESTING.md](/TESTING.md)

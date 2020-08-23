@@ -538,6 +538,7 @@ const gameSetupOptions = {
   updatePuzzleImage: (imageIndex) => {
     const root = document.documentElement;
     const screenWidth = document.querySelector(".wrapper").offsetWidth;
+    const screenHeight = document.querySelector(".wrapper").offsetHeight;
     const miniPhoto = document.querySelector('.info__photo');
 
     if (imageIndex < puzzleGame.puzzleChoiceData.length) {
@@ -548,7 +549,7 @@ const gameSetupOptions = {
 
       let imageSize = '';
       let fileName = puzzleGame.puzzleChoiceData[imageIndex-1].file_name.slice(0, -4);
-      if (screenWidth < 768) { imageSize = '_300x300'; }
+      if (screenWidth < 658 || screenHeight < 658) { imageSize = '_300x300'; }
       const image = `url('${imagePathStart}/images/puzzles/${fileName}${imageSize}.jpg')`;
       miniPhoto.innerHTML = `<img class="info__photo-size" src="assets/images/puzzles/${fileName}.jpg" 
       alt="Puzzle image" title="Puzzle image"/>`;
@@ -646,8 +647,10 @@ const gameSetupOptions = {
     let uploadCtx = uploadCanvas.getContext("2d");
     let finalCtx = finalCanvas.getContext("2d");
     const screenWidth = document.querySelector(".wrapper").offsetWidth;
+    const screenHeight = document.querySelector(".wrapper").offsetHeight;
+
     let puzzleImageSize = 600;
-    if (screenWidth < 768) { puzzleImageSize = 300; }
+    if (screenWidth < 658 || screenHeight < 658) { puzzleImageSize = 300; }
     // resize code below adapted from TheRogerLab resize-an-image.html
     const item = document.querySelector('#puzzle-upload').files[0];  //get the image selected
     let reader = new FileReader();  //create a FileReader

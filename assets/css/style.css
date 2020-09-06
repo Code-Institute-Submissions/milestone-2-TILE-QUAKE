@@ -27,11 +27,7 @@ div {
   -webkit-tap-highlight-color: rgba(0,0,0,0); /* mobile image click */
 }
 
-#upload--canvas {
-  display: none;
-}
-
-#final--canvas {
+#upload--canvas, #final--canvas {
   display: none;
 }
 
@@ -41,6 +37,8 @@ div {
   height: 100vh;
   width: 100%;
 }
+
+/* IE browser error */
 
 .ie-error {
   color: #fff;
@@ -86,6 +84,7 @@ div {
 }
 
 /* Welcome screen */
+
 .welcome {
   position: absolute;
   height: 100vh;
@@ -94,8 +93,6 @@ div {
   align-content: center;
   justify-items: center;
   background: linear-gradient(rgb(252, 72, 8), rgb(20, 105, 245));
-  /* transform: scale(0);
-  transition: all 0.8s; */
 }
 
 .welcome__scale-up {
@@ -158,8 +155,6 @@ div {
 }
 
 .how-to-play {
-  /* -ms-grid-row: 3;
-  -ms-grid-column: 3; */
   grid-area: how;
 }
 
@@ -174,9 +169,6 @@ div {
 }
 
 .difficulty {
-  /* -ms-grid-row: 1;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 3; */
   grid-area: difficulty;
 }
 
@@ -192,15 +184,9 @@ div {
   outline: none;
   opacity: 0.8;
   border-radius: 10px;
-  /* transition: opacity 0.2s; */
   margin-top: 14px;
 }
 
-.difficulty__slider:hover {
-  /* opacity: 1; */
-}
-
-/* this one */
 .difficulty__slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
@@ -224,24 +210,11 @@ div {
   cursor: pointer;
 }
 
-/* .difficulty__slider::-ms-thumb {
-  appearance: none;
-  content: "";
-  width: 35px;
-  height: 45px;
-  border-radius: 10px;
-  border: 2px solid var(--gameRed);
-  background: orange;
-  cursor: pointer;
-} */
-
 .difficulty__range {
   margin-top: 12px;
 }
 
 .puzzle-image {
-  /* -ms-grid-row: 3;
-  -ms-grid-column: 1; */
   grid-area: image;
   position: relative;
 }
@@ -369,15 +342,12 @@ input[type="file"] {
 }
 
 .game-start {
-  /* -ms-grid-row: 5;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 3; */
   grid-area: control;
   text-align: center;
   margin-top: 25px;
 }
 
-/* Hi Scores table */
+/* Hi-scores table */
 
 .game-scores {
   position: absolute;
@@ -431,8 +401,8 @@ input[type="file"] {
   justify-items: start;
 }
 
-.game-scores__heading-level {
-}
+/* .game-scores__heading-level {
+} */
 
 .game-scores__heading-score {
   display: grid;
@@ -444,8 +414,8 @@ input[type="file"] {
   justify-items: start;
 }
 
-.game-scores__level {
-}
+/* .game-scores__level {
+} */
 
 .game-scores__score {
   display: grid;
@@ -801,8 +771,9 @@ input[type="file"] {
   display: none;
 }
 
-/* Arcade push button */
-/* slightly adapted from rumyra's The Big Red Panic Button on CodePen */
+/* Arcade push button
+ * Slightly adapted from rumyra's The Big Red Panic Button on CodePen
+ */
 
 [class^=arcade__button] {
   display: block;
@@ -846,11 +817,9 @@ input[type="file"] {
   background-image: linear-gradient(273deg, #19a133 50%, #33a848 60%);
   box-shadow: inset 3px 4px 3px 2px rgba(10, 92, 24, 0.55), inset 0px 0px 1px 1px rgba(12, 112, 29, 0.9), inset -1px -1px 2px 3px rgba(20, 180, 47, 0.9), inset -2px -2px 1px 3px rgba(255, 255, 255, 0.8), inset 0px 0px 2px 7px rgba(52, 175, 73, 0.8), inset 0px 0px 3px 10px rgba(17, 155, 40, 0.9), 0px 0px 3px 2px rgba(20, 184, 48, 0.9), 0px 0px 2px 6px rgba(26, 230, 60, 0.9), -1px -1px 1px 6px rgba(255, 255, 255, 0.9), 0px 0px 2px 11px rgba(26, 230, 60, 0.9), 0px 0px 1px 12px rgba(20, 184, 48, 0.9), 1px 3px 14px 14px rgba(0, 0, 0, 0.4);
 }
-/* end Arcade push button */
 
 /* Media queries */
 
-/* @media (max-width: 768px) { */
 @media screen and (max-width: 800px) {
   body {
     font-size: 8px;
@@ -921,10 +890,8 @@ input[type="file"] {
     width: auto;
   }
 
-  .how-to-play {
-    /* -ms-grid-row: 7;
-    -ms-grid-column: 1; */
-  }
+  /* .how-to-play {
+  } */
 
   .how-to-play__list-item {
     font-size: 1.25em;
@@ -1008,7 +975,7 @@ input[type="file"] {
   }
 }
 
-/* media query to help and Amazon Fire Kids */
+/* media query to help for Amazon Fire Kids */
 @media screen and (max-width: 1025px) and (max-height: 415px) {
   .game-area__grid {
     font-size: 25px; 
@@ -1023,4 +990,3 @@ input[type="file"] {
   }
 
 }
-

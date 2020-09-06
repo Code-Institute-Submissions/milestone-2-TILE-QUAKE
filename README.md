@@ -209,9 +209,10 @@ Thanks to the Stackoverflow and other communities & blogs for helping solve some
 - Using a DIV to get screen width with offsetWidth. [Stackoverflow thread](https://stackoverflow.com/questions/4787527/how-to-find-the-width-of-a-div-using-vanilla-javascript)
 - Resizing an image using javascript. [TheRogerLab](https://www.therogerlab.com/how-can-i/javascript/resize-an-image.html)
 - JavaScript Fetch API to Get JSON Data. [Tania Rascia](https://www.taniarascia.com/how-to-use-the-javascript-fetch-api-to-get-json-data/)
-- Browser detection. []()
-
-The [RESET] and [QUIT] buttons were tweaked from an original style by Rumyra [The Big Red Panic Button](https://codepen.io/Rumyra/pen/GDLpJ)
+- Browser detection. [jlubean](http://jsfiddle.net/jlubean/dL5cLjxt/)
+- Slider bar styling. [Daniel Stern](https://css-tricks.com/styling-cross-browser-compatible-range-inputs-css/)
+- Fireworks effect on puzzle complete with hi-score. [Eddie Lin](https://jsfiddle.net/elin/7m3bL/)
+- The [RESET] and [QUIT] buttons were tweaked from an original style by Rumyra [The Big Red Panic Button](https://codepen.io/Rumyra/pen/GDLpJ)
 
 ## Acknowledgments
 Inspiration for this project originally came from an image my sister posted on social media showing loads of things from the 70's / 80's

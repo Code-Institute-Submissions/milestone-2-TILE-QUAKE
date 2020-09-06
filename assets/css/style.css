@@ -612,53 +612,49 @@ input[type="file"] {
 
 /* Puzzle tiles */
 
+[class^=tile__p] {
+  background-image: var(--chosenImage);
+}
+
 .tile__p0 {
   background: lightgray;
   background-position: -8em -8em;
 }
 
 .tile__p1 {
-  background-image: var(--chosenImage);
   background-position: 0 0;
 }
 
 .tile__p2 {
-  background-image: var(--chosenImage);
   background-position: 0 -4em;
 }
 
 .tile__p3 {
-  background-image: var(--chosenImage);
   background-position: 0 -8em;
 }
 
 .tile__p4 {
-  background-image: var(--chosenImage);
   background-position: -4em 0;
 }
 
 .tile__p5 {
-  background-image: var(--chosenImage);
   background-position: -4em -4em;
 }
 
 .tile__p6 {
-  background-image: var(--chosenImage);
   background-position: -4em -8em;
 }
 
 .tile__p7 {
-  background-image: var(--chosenImage);
   background-position: -8em 0;
 }
 
 .tile__p8 {
-  background-image: var(--chosenImage);
   background-position: -8em -4em;
 }
 
 .tile__p9 {
-  background-image: var(--chosenImage);
+  background-image: var(--chosenImage); /* added to show last piece on completion */
   background-position: -8em -8em;
 }
 

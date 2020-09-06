@@ -18,7 +18,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: black;
+  background: #000;
   font-family: "Press Start 2P", cursive;
   font-size: 14px;
 }
@@ -87,11 +87,11 @@ div {
 
 .welcome {
   position: absolute;
-  height: 100vh;
-  width: 100%;
   display: grid;
   align-content: center;
   justify-items: center;
+  height: 100vh;
+  width: 100%;
   background: linear-gradient(rgb(252, 72, 8), rgb(20, 105, 245));
 }
 
@@ -104,8 +104,8 @@ div {
 }
 
 .welcome__logo {
-  width: 80%;
   height: auto;
+  width: 80%;
 }
 
 .welcome__button {
@@ -124,12 +124,12 @@ div {
 /* Game setup */
 
 .game-setup {
-  height: 100vh;
-  width: 100%;
   position: absolute;
   overflow-x: hidden;
-  background: #000;
+  height: 100vh;
+  width: 100%;
   color: #fff;
+  background: #000;
   transform: translateX(-100%);
   transition: all 0.8s;
 }
@@ -139,13 +139,13 @@ div {
 }
 
 .game-setup__content {
-  margin: 20px 50px 50px 50px;
   display: grid;
   grid-template-areas:
     "difficulty difficulty"
     "image how"
     "control control";
   justify-content: center;
+  margin: 20px 50px 50px 50px;
   grid-gap: 30px;
   font-size: 1.2em;
 }
@@ -180,11 +180,11 @@ div {
   -webkit-appearance: none;
   width: 100%;
   height: 25px;
+  margin-top: 14px;
   background: var(--gameGreen);
   outline: none;
   opacity: 0.8;
   border-radius: 10px;
-  margin-top: 14px;
 }
 
 .difficulty__slider::-webkit-slider-thumb {
@@ -202,8 +202,8 @@ div {
 .difficulty__slider::-moz-range-thumb {
   appearance: none;
   content: "";
-  width: 35px;
   height: 45px;
+  width: 35px;
   border-radius: 10px;
   border: 2px solid var(--gameRed);
   background: orange;
@@ -215,8 +215,8 @@ div {
 }
 
 .puzzle-image {
-  grid-area: image;
   position: relative;
+  grid-area: image;
 }
 
 .puzzle-image__value {
@@ -269,8 +269,8 @@ div {
 .puzzle-image__text {
   position: absolute;
   bottom: -12px;
-  width: 70%;
   left: 50%;
+  width: 70%;
   margin-left: -35%;
   padding: 6px 0;
   color: #f7f7f7;
@@ -283,8 +283,8 @@ div {
 .puzzle-image__add {
   position: absolute;
   bottom: -12px;
-  width: 70%;
   left: 50%;
+  width: 70%;
   margin-left: -35%;
   padding: 6px 0;
   color: var(--gameRed);
@@ -343,8 +343,8 @@ input[type="file"] {
 
 .game-start {
   grid-area: control;
-  text-align: center;
   margin-top: 25px;
+  text-align: center;
 }
 
 /* Hi-scores table */
@@ -354,8 +354,8 @@ input[type="file"] {
   height: 100vh;
   width: 100%;
   overflow-x: hidden;
-  background: #000;
   color:#fff;
+  background: #000;
   text-align: center;
   transform: translateX(-100%);
   transition: all 0.8s;
@@ -423,8 +423,8 @@ input[type="file"] {
 }
 
 .game-scores__entry-input {
-  width: 3em;
   height: 1em;
+  width: 3em;
   background: transparent;
   color: white;
   border: 0;
@@ -479,12 +479,12 @@ input[type="file"] {
 
 .game-area {
   display: grid;
-  position: absolute;
-  width: 100%;
   grid-template-columns: auto auto 1fr auto auto;
   grid-template-rows: auto;
-  background: grey;
+  position: absolute;
   height: 100vh;
+  width: 100%;
+  background: grey;
   transform: translateX(100%);
   transition: all 0.8s;
 }
@@ -526,15 +526,15 @@ input[type="file"] {
   display: grid;
   align-items: center;
   justify-items: center;
+  padding: 20px;
   background: var(--gameGreen);
   color: white;
-  padding: 20px;
 }
 
 .game-area__grid {
   position: relative;
-  width: 12em;
   height: 12em;
+  width: 12em;
   margin: 0 auto;
   background: var(--gameGreen);
   font-size: 50px; /* used to increase grid square size via ems*/
@@ -547,9 +547,9 @@ input[type="file"] {
   grid-template-columns: repeat(1, minmax(80px, 150px));
   align-items: center;
   overflow: hidden;
-  background: var(--gameBlue);
-  color: white;
   padding: 20px 10px 20px 10px;
+  color: white;
+  background: var(--gameBlue);
   text-align: center;
 }
 
@@ -558,8 +558,8 @@ input[type="file"] {
 [id^=gridpos] {
   position: absolute;
   box-sizing: border-box;
-  width: 4em;
   height: 4em;
+  width: 4em;
 }
 
 #gridpos-00 {
@@ -610,7 +610,7 @@ input[type="file"] {
 /* Puzzle tiles */
 
 .tile__p0 {
-  background-color: lightgray;
+  background: lightgray;
   background-position: -8em -8em;
 }
 
@@ -691,9 +691,9 @@ input[type="file"] {
 
 .puzzle-complete {
   position: absolute;
+  display: none;
   height: 100vh;
   width: 100%;
-  display: none;
   background: rgba(0, 0, 0, .6);
 }
 
@@ -777,8 +777,8 @@ input[type="file"] {
 
 [class^=arcade__button] {
   display: block;
-  width: 100px;
   height: 100px;
+  width: 100px;
   margin: 2em auto;
   padding: 0 0 0 4px;
   border: none;
@@ -826,13 +826,13 @@ input[type="file"] {
   }
 
   .game-setup__content {
-    margin: 0 25px 25px 25px;
     display: grid;
     grid-template-areas:
       "control"
       "difficulty"
       "image"
       "how";
+    margin: 0 25px 25px 25px;
   }
 
   .game-scores__logo {
@@ -877,8 +877,8 @@ input[type="file"] {
   }
 
   [class^=arcade__button] {
-    width: 70px;
     height: 70px;
+    width: 70px;
   }
 
   .game-area__grid {
@@ -910,8 +910,8 @@ input[type="file"] {
   }
 
   .game-setup__content {
-    margin: 0 25px 25px 25px;
     display: grid;
+    margin: 0 25px 25px 25px;
   }
 
   .game-scores__logo {
@@ -956,8 +956,8 @@ input[type="file"] {
   }
 
   [class^=arcade__button] {
-    width: 70px;
     height: 70px;
+    width: 70px;
   }
 
   .game-area__grid {

@@ -67,7 +67,7 @@ Most sounds from the game are also taken from retro arcade games.
 For me probably the biggest challenge before writing a single line of code was to figure out whether or not a puzzle tile
 was allowed to move, basically is a puzzle tile next to the blank tile?
 Using traditional pen and paper I set about trying to solve the problem and after going down a few blind-alleys I came up
-with this [solution](https://devtoguk.github.io/milestone-2-TILE-QUAKE/docs/core-game-logic.pdf).  The PDF shows a 3x3 grid
+with this solution [[PDF scan of workings]](https://devtoguk.github.io/milestone-2-TILE-QUAKE/docs/core-game-logic.pdf).  The PDF shows a 3x3 grid
 where I have manually filled in the grid side-codes for top, bottom, left & right for each grid position, starting with the
 code 101 and giving sides that touch the same code. I then wrote out all the side-codes for each grid position(x,y) to help
 me find a pattern so I could automatically generate the codes for each grid position.  I could have just hard-coded the
@@ -81,7 +81,6 @@ clicked on, matched any of the sides of the blank tile and if they did then that
 - HTML
 - CSS
 - JavaScript
-- [Bootstrap v4.4.1](https://getbootstrap.com/) - used to help with grid layout and responsive design.
 - [Google Fonts](https://fonts.google.com/) - for the website font 'Play'.
 - [GitPod](https://www.gitpod.io/) - online IDE used to create this project.
 - [Autoprefixer](https://autoprefixer.github.io/) - used to ensure the CSS code was valid for browsers which match (last 2 versions, > 5%)
@@ -200,7 +199,7 @@ These images remain the property of their respective copyright owners.
 
 ### Audio
 The audio files for the game are mainly samples from games I remember as a teenager such as Star Force, Bomb Jack and Galaga. These audio files
-were downloaded from [Video Game Music](https://downloads.khinsider.com/). 
+were downloaded from a website I found called [Video Game Music](https://downloads.khinsider.com/). 
 The actual tile quake sound was downloaded from [Zapsplat](https://www.zapsplat.com/).
 (if this was not an educational project, permission would have been sought before using any audio files)
 

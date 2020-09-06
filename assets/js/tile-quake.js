@@ -29,7 +29,7 @@ const sounds = {
  * Object to handle all in game functions.
  */
 const puzzleGame = {
-  puzzleSize: 3,  //force value for now
+  puzzleSize: 3,  // force value for now, use for future setup option
   tileGrid: [], // array of TileData objects
   tiles: [],
   image: '',
@@ -84,7 +84,8 @@ const puzzleGame = {
       for (let y = 0; y < puzzleSize; y++) {
         // calculate side codes for the current tile
         if (y > 0 ) {
-            topCode = puzzleGame.tileGrid[x][y-1].bottomSide; // find prev BOTTOM code from gridpos [x][y-1][0]
+            // find prev BOTTOM code from gridpos [x][y-1][0]
+            topCode = puzzleGame.tileGrid[x][y-1].bottomSide;
         } else {
             topCode = nextSideCode;
             nextSideCode++;
@@ -92,7 +93,8 @@ const puzzleGame = {
         bottomCode = nextSideCode;
         nextSideCode++;
         if (x > 0 ) {
-            leftCode = puzzleGame.tileGrid[x-1][y].rightSide; //find the RIGHT-SIDE code from gridpos [x-1][y]
+            // find the RIGHT-SIDE code from gridpos [x-1][y]
+            leftCode = puzzleGame.tileGrid[x-1][y].rightSide; 
         } else {
             leftCode = nextSideCode;
             nextSideCode++;
@@ -366,8 +368,8 @@ const puzzleGame = {
   },
 
   checkSafari: () => {
-    let isSafari = !!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/);
     // double !! used below to make sure we get a boolean returned
+    let isSafari = !!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/);
     return isSafari;
   },
   
@@ -654,11 +656,11 @@ const gameSetupOptions = {
     // resize code below adapted from TheRogerLab resize-an-image.html
     const item = document.querySelector('#puzzle-upload').files[0];  //get the image selected
     let reader = new FileReader();  //create a FileReader
-    //image turned to base64-encoded Data URI.
+    // image turned to base64-encoded Data URI.
     reader.readAsDataURL(item);
     reader.onload = function(event) {
-      let img = new Image(); //create a image
-      img.src = event.target.result; //result is base64-encoded Data URI
+      let img = new Image(); // create a image
+      img.src = event.target.result; // result is base64-encoded Data URI
       img.onload = function(el) {
         let offsetX = 0;
         if (el.target.width < puzzleImageSize || el.target.height < puzzleImageSize) {
@@ -683,7 +685,7 @@ const gameSetupOptions = {
         uploadCtx.drawImage(el.target, 0, 0, uploadCanvas.width, uploadCanvas.height);
         finalCtx.drawImage(uploadCanvas, offsetX, 0, puzzleImageSize, puzzleImageSize, 0, 0, puzzleImageSize, puzzleImageSize);
 
-        //get the base64-encoded Data URI from the final resize/crop image
+        // get the base64-encoded Data URI from the final resize/crop image
         const srcEncoded = finalCtx.canvas.toDataURL('image/jpeg', 1.0);
         const root = document.documentElement;
         const url = srcEncoded.replace(/(\r\n|\n|\r)/gm, "");

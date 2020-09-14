@@ -128,13 +128,11 @@ using some of these newer methods.
 (only includes main errors rather than small typos/alignment which caused only minor errors)
 
 1. **Game Play - using Google DevTools to simulate devices**  
-
 If you use Google DevTools to simulate a device (such as Apple iPhone 6/7/8) the welcome screen, hi-scores table
 and Game Setup options display OK, however the in-game puzzle does not display.  
 When tested on an actual iPhone device the puzzle displays OK. I believe this may be related to issue(2.) below.
 
 2. **Game Play - in-game puzzle image not being displayed**  
-
 I first noticed this issue on an actual iPhone.  After some research and testing I discovered that the Safari
 browser on the iPhone did not look for the puzzle image in the same way as say Chrome on my windows desktop.
 As I am using parts of a **background-image** to create the puzzle pieces normally the image would be addressed
@@ -143,12 +141,10 @@ to load the background-image relative to the index.html file.  After testing on 
 This was solved by adding some JS to detect the browser and alter the initial file-path.
 
 3. **Audio playback**  
-
 Audio playback on Windows desktop and Android devices works OK, but the playback of audio files on Apple devices seems
 to be very hit and miss. I have yet to find a solution to this intermittent problem.
 
 4. **Game Setup Options - using device image on Firefox browser**  
-
 When using a device image on Firefox the image would rarely appear as the puzzle image even though the small puzzle 
 preview image did display. Found a parameter error when calling the **toDataURL** method on the final canvas, Chrome and
 Safari seemed to ignore the issue and just display the puzzle, whereas Firefox showed a blank puzzle.

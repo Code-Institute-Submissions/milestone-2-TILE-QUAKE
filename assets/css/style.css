@@ -106,6 +106,7 @@ div {
 .welcome__logo {
   height: auto;
   width: 70%;
+  margin-bottom: 24px;
 }
 
 .welcome__button {

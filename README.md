@@ -102,13 +102,13 @@ The user is presented with two simple buttons [INSERT COIN] (to start) and [HI S
 Desktops, tablets and mobiles all display in the same format.
 
 ### Hi Scores screen
-The hi-scores screen shows the user the top 10 hi-scoress, the initials of who made the scores and the level they were
+The hi-scores screen shows the user the top 10 hi-scores, the initials of who made the scores and the level they were
 playing. These scores are stored locally on the device. The hi-scores screen will timeout after several seconds and return the
 user back to the welcome screen. At the bottom of the screen is a [BACK] button which will also take the user back to the
 welcome screen.
 
 If you complete the puzzle and get a hi-score, this screen is automatically displayed and the user can input there initials
-next to their score and use the [SAVE SCORE] to save the score.
+next to their score and use the [SAVE SCORE] to save the score or press/click their devices [ENTER] key.
 
 Desktops, tablets and mobiles all display in the same format.
 
@@ -134,7 +134,7 @@ On mobiles the Tile Quake logo and the game information are displayed at the top
 displayed at the bottom of the screen.
 
 ### Puzzle Complete overlay (faded overlay onto the Game Play screen)
-This screen is displayed if the user completes the puzzle. Different music will be played depending on if the user has a hi score.
+This screen is displayed if the user completes the puzzle. Different music will be played depending on if the user has a hi-score.
 Their score will be displayed calculated on base score, time bonus and move bonus, if the score is high enough to go on the hi-scores
 table the user is taken to the hi-scores screen where they can input their initials.
 
@@ -216,7 +216,7 @@ Thanks to the Stackoverflow and other communities & blogs for helping solve some
 
 ## Acknowledgments
 Inspiration for this project originally came from an image my sister posted on social media showing loads of things from the 70's / 80's
-one of which was of an old toy slide-puzzle game, so when thinking about what todo for my MS2 I saw on Slack that some others were doing
+one of which was of an old toy slide-puzzle game, so when thinking about what to do for my MS2 I saw on Slack that some others were doing
 games and immediately the slide-puzzle popped back into my head.
 
 My mentor suggested looking at BEM for this project which I have done and implemented on a basic level, I have not gone for the full BEM

@@ -143,6 +143,8 @@ table the user is taken to the hi-scores screen where they can input their initi
 - Use an API to access an on-line image library for puzzle images
 - Have the option for bigger grid size such as 4x4 and 5x5. (this was in my original design but due to the extra complexity and
 time constraints I decided to consider this feature for a future version)
+- My CSS media-queries are a little non-standard I feel, but they do work for the game.  I will return to these in 
+the future to perhaps refine them in some way.
 
 ## Testing
 For testing information please use the following link [TESTING.md](/TESTING.md)

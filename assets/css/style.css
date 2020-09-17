@@ -700,7 +700,7 @@ input[type="file"] {
 .puzzle-complete__message {
   position: absolute;
   width: 70%;
-  top: 50%;
+  top: 40%;
   left: 50%;
   margin: -12vh 0 0 -35%;
   /* margin-top: -12vh; */

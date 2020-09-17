@@ -374,7 +374,7 @@ input[type="file"] {
 .game-scores h1 {
   margin: 12px 0;
   color: var(--gamePink);
-  font-size: 2.6em;
+  font-size: 2.4em;
 }
 
 .game-scores__logo {

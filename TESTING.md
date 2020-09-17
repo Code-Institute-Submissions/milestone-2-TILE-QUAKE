@@ -153,3 +153,7 @@ Safari seemed to ignore the issue and just display the puzzle, whereas Firefox s
 When you enter your initials on an Android device it does not limit the number of characters you can enter to only 3.
 However it still only uses the first 3 you enter when saving your score.  I have not yet found a solution to this 
 problem.
+
+6. **Landscape Orientation - on smaller mobile devices**  
+While the game does play in this mode on smaller mobile devices, there are elements of the game which simply don't
+have enough space to display i.e. when the virtual keyboard pops up to enter your initials on the scoreboard.

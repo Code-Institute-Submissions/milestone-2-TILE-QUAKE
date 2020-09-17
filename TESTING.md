@@ -148,3 +148,8 @@ to be very hit and miss. I have yet to find a solution to this intermittent prob
 When using a device image on Firefox the image would rarely appear as the puzzle image even though the small puzzle 
 preview image did display. Found a parameter error when calling the **toDataURL** method on the final canvas, Chrome and
 Safari seemed to ignore the issue and just display the puzzle, whereas Firefox showed a blank puzzle.
+
+5. **Hi-score table - entering your initials on an Android device**  
+When you enter your initials on an Android device it does not limit the number of characters you can enter to only 3.
+However it still only uses the first 3 you enter when saving your score.  I have not yet found a solution to this 
+problem.

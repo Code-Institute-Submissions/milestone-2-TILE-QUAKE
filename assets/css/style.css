@@ -146,7 +146,6 @@ div {
     "control control";
   justify-content: center;
   margin: 20px 50px 50px;
-  /* margin: 20px 50px 50px 50px; */
   grid-gap: 30px;
   font-size: 1.2em;
 }
@@ -387,7 +386,6 @@ input[type="file"] {
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
   margin: 30px 100px 0;
-  /* margin: 30px 100px 0 100px; */
   font-size: 1.6em;
 }
 
@@ -396,7 +394,6 @@ input[type="file"] {
   grid-template-columns: repeat(3, 1fr);
   row-gap: 20px;
   margin: 25px 100px 30px;
-  /* margin: 25px 100px 30px 100px; */
   font-size: 2em;
 }
 
@@ -404,9 +401,6 @@ input[type="file"] {
   display: grid;
   justify-items: start;
 }
-
-/* .game-scores__heading-level {
-} */
 
 .game-scores__heading-score {
   display: grid;
@@ -417,9 +411,6 @@ input[type="file"] {
   display: grid;
   justify-items: start;
 }
-
-/* .game-scores__level {
-} */
 
 .game-scores__score {
   display: grid;
@@ -455,7 +446,6 @@ input[type="file"] {
 
 .button__save-score {
   margin: 25px auto 0;
-  /* margin-top: 25px; */
   padding: 10px 25px;
   color: #282828;
   background: #fff;
@@ -470,7 +460,6 @@ input[type="file"] {
 
 .button__exit-scores {
   margin: 50px auto 0;
-  /* margin-top: 50px; */
   padding: 10px 25px;
   color: #282828;
   background: #fff;
@@ -703,8 +692,6 @@ input[type="file"] {
   top: 40%;
   left: 50%;
   margin: -12vh 0 0 -35%;
-  /* margin-top: -12vh; */
-  /* margin-left: -35%; */
   color: #fff;
   text-align: center;
   text-shadow: 2px 2px #000;
@@ -737,7 +724,6 @@ input[type="file"] {
 
 .puzzle-complete__score {
   margin: 0 auto 31px;
-  /* margin-bottom: 31px; */
 }
 
 [class^=score__] {
@@ -880,7 +866,6 @@ input[type="file"] {
       "image"
       "how";
     margin: 0 25px 25px;
-    /* margin: 0 25px 25px 25px; */
   }
 
   .game-scores__logo {
@@ -889,13 +874,11 @@ input[type="file"] {
 
   .game-scores__headers {
     margin: 20px 20px 0;
-    /* margin: 20px 20px 0 20px; */
   }
 
   .game-scores__content {
     row-gap: 14px;
     margin: 15px 20px 20px;
-    /* margin: 15px 20px 20px 20px; */
   }
 
   .game-area {
@@ -940,9 +923,6 @@ input[type="file"] {
     width: auto;
   }
 
-  /* .how-to-play {
-  } */
-
   .how-to-play__list-item {
     font-size: 1.25em;
     line-height: 1.4;
@@ -962,7 +942,6 @@ input[type="file"] {
   .game-setup__content {
     display: grid;
     margin: 0 25px 25px;
-    /* margin: 0 25px 25px 25px; */
   }
 
   .game-scores__logo {
@@ -971,13 +950,11 @@ input[type="file"] {
 
   .game-scores__headers {
     margin: 20px 20px 0;
-    /* margin: 20px 20px 0 20px; */
   }
 
   .game-scores__content {
     row-gap: 14px;
     margin: 15px 20px 20px;
-    /* margin: 15px 20px 20px 20px; */
   }
 
   .game-area {
@@ -996,7 +973,6 @@ input[type="file"] {
   grid-template-rows: repeat(5, 1fr);
   grid-template-columns: repeat(1, minmax(80px, 150px));
   padding: 20px 10px;
-  /* padding: 20px 10px 20px 10px; */
   }
 
   .info__logo-size {
@@ -1007,7 +983,6 @@ input[type="file"] {
     grid-template-rows: repeat(5, 1fr);
     grid-template-columns: repeat(1, minmax(80px, 150px));
     padding: 20px 10px;
-    /* padding: 20px 10px 20px 10px; */
   }
 
   [class^=arcade__button] {

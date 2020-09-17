@@ -147,6 +147,11 @@ time constraints I decided to consider this feature for a future version)
 ## Testing
 For testing information please use the following link [TESTING.md](/TESTING.md)
 
+## Additional Notes
+I did briefly consider splitting both my JS and CSS files into smaller separate files as I thought they may be 
+quite large, however I decided to leave them as is due to the game only having one page and also that more files
+would also add further server request.
+
 ## Deployment
 The live project was deployed using GitHub Pages, this was done using the procedure below:
 
